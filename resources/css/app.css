@@ -9,6 +9,23 @@
     @apply flex flex-row items-center justify-center
 }
 
+.ccontainer {
+    @apply container;
+    width: 1135px !important;
+    max-width: none !important;
+    /* background-color: chartreuse; */
+    padding: 0;
+}
+
+/* On screens that are 1135px wide or less, make the menu links stack on top of each other instead of next to each other */
+@media screen and (max-width: 1135px) {
+    .ccontainer {
+        /* @apply container; */
+        width: 100% !important;
+        /* background-color: gold; */
+    }
+}
+
 .dashed-border {
     /*Horizontal*/
 background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);

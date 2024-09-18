@@ -3,21 +3,21 @@
         الصفحة الرئيسية
     </x-slot>
 
-    <div class="bg-base-100 pb-6">
-        <div class="w-full lg:px-10 lg:container m-auto flex items-center justify-center gap-2 lg:gap-6 p-4">
+    <div class="bg-base-100 pb-6" style="padding:20px 0px 20px 0px;">
+        <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 lg:gap-6 p-4">
             <x-carousel/>
             <div class="bg-base-300 w-[20em] h-[20em] rounded-box hidden lg:flex justify-center items-center">
                 <span>Ad Space</span>
             </div>
         </div>
-        <div class="w-full flex justify-center items-center lg:px-10 lg:container m-auto">
+        <div class="w-full flex justify-center items-center ccontainer m-auto">
             <hr class="h-2 border-gray-400 w-1/3 mt-[6px]"/>
             <h1 class="text-lg w-full font-normal mx-8 outline text-center m-auto outline-1 p-1 rounded-full"><span class="">{{env('APP_NAME')}} - احدث كود خصم وكوبون فعال لكل المواقع</span></h1>
             <hr class="h-2 border-gray-400 w-1/3 mt-[6px]"/>
         </div>
     </div>
 
-    <div class="lg:px-10 lg:container p-2 w-full m-auto my-4">
+    <div class="ccontainer p-2 w-full m-auto my-4">
         <h2 class="text-3xl my-4">
             أحدث الكوبونات
         </h2>
@@ -43,7 +43,7 @@
     </div>
 
 
-    <div class="lg:px-10 lg:container p-2 w-full m-auto my-4">
+    <div class="ccontainer p-2 w-full m-auto my-4">
         <h2 class="text-3xl my-4">
             الأسئلة الشائعة
         </h2>

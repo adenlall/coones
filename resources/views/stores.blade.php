@@ -3,7 +3,7 @@
         الصفحة الرئيسية
     </x-slot>
 
-    <div class="container m-auto w-full">
+    <div class="ccontainer m-auto w-full">
         <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=>'جميع المتاجر']]"/>
         <h1 class="text-3xl font-medium mb-3 mt-2">اختر المتجر المفضل لديك!</h1>
         <div class="swiper flex">

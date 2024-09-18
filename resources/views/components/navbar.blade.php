@@ -1,4 +1,4 @@
-<div class="navbar w-full container lg:px-10 m-auto">
+<div class="navbar w-full ccontainer p-0 m-auto">
     <div class="flex-none lg:hidden">
         <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
             <svg
@@ -14,7 +14,7 @@
             </svg>
         </label>
     </div>
-    <div class="mx-2 flex-1 px-2">
+    <div class="flex-1">
         <img alt="شعار {{env('APP_NAME')}}" class="h-16" src="/logo.webp"/>
     </div>
     <div class="hidden flex-none lg:block">
@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class=" hidden lg:block bg-primary">
-    <div class="m-auto container lg:px-10 w-full">
+    <div class="m-auto ccontainer p-0 w-full">
         <ul class="menu menu-horizontal px-1 gap-2 pr-2">
             <x-nav-menu/>
         </ul>

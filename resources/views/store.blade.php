@@ -3,8 +3,8 @@
         الصفحة الرئيسية
     </x-slot>
     <div class="m-auto w-full">
-        <div class="w-full md:px-0 px-2  bg-base-100 pt-2 pb-4">
-            <div class="w-full container lg:px-10 m-auto">
+        <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
+            <div class="w-full ccontainer m-auto">
                 <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[160px] min-w-full space-y-2">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full flex items-start flex-row-reverse gap-5 p-4">
+        <div class="ccontainer w-full flex items-start flex-col-reverse md:flex-row-reverse gap-5 p-4" style="padding-top:20px;">
             <div class="min-w-[18em]">
                 <x-aside/>
             </div>
