@@ -11,13 +11,13 @@ export default {
                 center: true, // To center the container
                 padding: '1rem', // Adds padding around the container
             },
-            screens: {
-                sm: '480px', // Small screens (default is 640px)
-                md: '640px', // Medium screens (default is 768px)
-                lg: '800px', // Large screens (default is 1024px)
-                xl: '960px', // Extra-large screens (default is 1280px)
-                '2xl': '1120px', // 2XL screens (default is 1536px)
-            },          
+            // screens: {
+            //     sm: '480px', // Small screens (default is 640px)
+            //     md: '640px', // Medium screens (default is 768px)
+            //     lg: '800px', // Large screens (default is 1024px)
+            //     xl: '960px', // Extra-large screens (default is 1280px)
+            //     '2xl': '1120px', // 2XL screens (default is 1536px)
+            // },          
         },
     },
     plugins: [

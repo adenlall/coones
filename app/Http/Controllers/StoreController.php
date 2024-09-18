@@ -24,7 +24,11 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         $categories = Taxonomy::where('taxonomy', 'storecategory')->get();
-        $stores = Post::type('stores')->status('publish')->get();
+        if(isset($request->search)){
+            $stores = Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->get();
+        }else{
+            $stores = Post::type('stores')->status('publish')->get();
+        }
         if (isset($request->category)) {
             $stores = Post::published()
             ->whereHas('taxonomies', function($query) use($request) {
@@ -51,6 +55,7 @@ class StoreController extends Controller
         ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')
         ->first();
         $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
+        // dd($store);
         return view('store')->with([
             'store'=>$store,
             'rate'=>$this->percentageToStars($average),

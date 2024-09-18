@@ -5,7 +5,11 @@
 
     <div class="ccontainer m-auto w-full">
         <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=>'جميع المتاجر']]"/>
-        <h1 class="text-3xl font-medium mb-3 mt-2">اختر المتجر المفضل لديك!</h1>
+        @if(app('request')->input('search'))
+            <h1 class="text-3xl font-medium mb-3 mt-2">نتائج البحث عن : {{app('request')->input('search')}}</h1>
+        @else
+            <h1 class="text-3xl font-medium mb-3 mt-2">اختر المتجر المفضل لديك!</h1>
+        @endif
         <div class="swiper flex">
             <div class="swiper-wrapper">
                 <div style="width:fit-content" class="swiper-slide">

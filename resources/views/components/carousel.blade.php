@@ -35,7 +35,7 @@
     }
 </style>
 
-<div id="carousel" class="carousel min-w-[860px] bg-red-500 min-h-[315px] rounded-box">
+<div id="carousel" class="carousel  md:min-w-[860px] bg-red-500 min-w-0 min-h-0 w-full h-[200px] md:min-h-[315px] rounded-box">
     @foreach($items as $index => $slide)
         <div id="{{ $slide->ID }}" class="carousel-item {{ $index === 0 ? 'active' : '' }} relative w-full">
             <a href="{{$slide->_slide_url}}" class="w-full h-full">

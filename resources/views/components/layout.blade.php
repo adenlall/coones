@@ -1,5 +1,6 @@
 <html data-theme="cobones" dir="rtl">
 <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{{ $title }} - كوبون على السريع</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

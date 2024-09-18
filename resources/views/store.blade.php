@@ -52,7 +52,7 @@
                     @foreach($coupons as $coupon)
                         <div class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_coupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_coupon_desc" :code="$coupon->_coupon_code" />
-                            <div class="flex justify-between items-center gap-3 p-8">
+                            <div class="flex md:flex-row flex-col justify-between items-start gap-3 p-8">
                                 <h3 class="font-bold text-lg">{{$coupon->title}}</h3>
                                 <div class="w-auto" dir="ltr">
                                     @if($coupon->_coupon_type==="3" && isset($coupon->_coupon_link))

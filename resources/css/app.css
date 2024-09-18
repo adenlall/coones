@@ -21,8 +21,10 @@
 @media screen and (max-width: 1135px) {
     .ccontainer {
         /* @apply container; */
-        width: 100% !important;
+        width: unset !important;
         /* background-color: gold; */
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 

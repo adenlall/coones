@@ -4,9 +4,9 @@
     </x-slot>
 
     <div class="bg-base-100 pb-6" style="padding:20px 0px 20px 0px;">
-        <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 lg:gap-6 p-4">
+        <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 md:gap-6 p-4">
             <x-carousel/>
-            <div class="bg-base-300 w-[20em] h-[20em] rounded-box hidden lg:flex justify-center items-center">
+            <div class="bg-base-300 w-[20em] h-[20em] rounded-box hidden md:flex justify-center items-center">
                 <span>Ad Space</span>
             </div>
         </div>
@@ -22,7 +22,7 @@
             أحدث الكوبونات
         </h2>
         @if(count($paginated_coupons))
-            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch justify-center gap-6">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-stretch justify-center gap-6">
                 @foreach($paginated_coupons as $coupon)
                     <x-cobone-card
                         :id="$coupon->ID"

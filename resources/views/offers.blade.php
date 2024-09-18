@@ -4,23 +4,29 @@
     </x-slot>
     <div class="ccontainer flex flex-col-reverse md:gap-0 gap-8 md:flex-row-reverse px-4">
     <aside class="p-4 flex flex-col items-center justify-start gap-4">
-        <div class="join w-full">
-            <input class="input w-full input-bordered join-item" placeholder="ابحث باسم المتجر" />
-            <button class="btn join-item rounded-r-full btn-primary">بحث</button>
-        </div>
+        <form action="" class="join w-full">
+            <input value="{{app('request')->input('offer')}}" name="offer" class="input w-full input-bordered join-item" placeholder="ابحث باسم المتجر" />
+            <button type="submit" class="btn join-item rounded-r-full btn-primary">بحث</button>
+        </form>
         <div class="w-full">
             <x-aside/>
         </div>
     </aside>
     <div class="m-auto w-full px-4">
         <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=> app('request')->input('sort') === 'top'?'أقوى العروض':'أحدث العروض']]"/>
-        <h1 class="text-3xl font-medium mb-5 mt-2">
-            @if(app('request')->input('sort') === 'top')
-                أقوى العروض
-            @else
-                احدث العروض
-            @endif
-        </h1>
+        @if(app('request')->input('offer'))
+            <h1 class="text-3xl font-medium mb-5 mt-2">
+                نتائج البحث عن : {{app('request')->input('offer')}}
+            </h1>
+        @else
+            <h1 class="text-3xl font-medium mb-5 mt-2">
+                @if(app('request')->input('sort') === 'top')
+                    أقوى العروض
+                @else
+                    احدث العروض
+                @endif
+            </h1>
+        @endif
         <div class="flex gap-3 mb-4">
             <a href="?" class="{{app('request')->input('sort') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 rounded-full text-center px-6 py-2">
                 الاحدث
