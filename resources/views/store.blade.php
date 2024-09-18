@@ -1,0 +1,135 @@
+<x-layout>
+    <x-slot:title>
+        الصفحة الرئيسية
+    </x-slot>
+    <div class="m-auto w-full">
+        <div class="w-full md:px-0 px-2  bg-base-100 pt-2 pb-4">
+            <div class="w-full container lg:px-10 m-auto">
+                <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
+                <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
+                    <div class="md:min-w-[160px] min-w-full space-y-2">
+                        <img class="w-[160px] h-[88px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}"/>
+                        <button class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</button>
+                    </div>
+                    <div class="w-full h-full">
+                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <div class="flex  mb-4">
+                            <p>كوبونات وعروض {{getCurrentMonthInArabic()}}</p>
+                            <div class="rating rating-half">
+                                <input {{$rate>=0?'checked':''}} type="radio" disabled name="rating-10" class="rating-hidden" />
+                                <input {{$rate>=0.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
+                                <input {{$rate>=1?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
+                                <input {{$rate>=1.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
+                                <input {{$rate>=2?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
+                                <input {{$rate>=2.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
+                                <input {{$rate>=3?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
+                                <input {{$rate>=3.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
+                                <input {{$rate>=4?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
+                                <input {{$rate>=4.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
+                                <input {{$rate>=5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
+                            </div>
+                            <span class="mr-1">
+                                {{$rate}} / 5
+                            </span>
+                            <span class="mr-1">
+                                {{"("}} {{$totalrate+((int)$store->_store_stars)}} تقييم {{")"}}
+                            </span>
+                        </div>
+                        <p>
+                            {{$store->_store_description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full flex items-start flex-row-reverse gap-5 p-4">
+            <div class="min-w-[18em]">
+                <x-aside/>
+            </div>
+            <div class="w-full">
+                @if(count($coupons))
+                    <ul class="flex-center-col gap-4 mb-4">
+                    @foreach($coupons as $coupon)
+                        <div class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
+                            <x-coupon-modal :store="$store" :link="$coupon->_coupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_coupon_desc" :code="$coupon->_coupon_code" />
+                            <div class="flex justify-between items-center gap-3 p-8">
+                                <h3 class="font-bold text-lg">{{$coupon->title}}</h3>
+                                <div class="w-auto" dir="ltr">
+                                    @if($coupon->_coupon_type==="3" && isset($coupon->_coupon_link))
+                                        <a href="{{$coupon->_coupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
+                                            الحصول على العرض
+                                        </a>
+                                    @elseif($coupon->_coupon_type==="1" && isset($link))
+                                        <div onclick="function openmodaland(){
+                                            window.location.href = '{{$coupon->_coupon_link}}';
+                                            window.open('{{url()->current()}}?modal={{$coupon->ID}}#card_{{$coupon->ID}}_p', '_blank');
+                                        }
+                                        openmodaland();" class="inline-flex w-full items-center group">
+                                            <div class="relative overflow-hidden">
+                                                <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] text-xl rounded-l-md">
+                                                    {{ str_split($coupon->_coupon_code, 3)[0] }}
+                                                </div>
+                                            </div>
+                                            <button
+                                                class="bg-accent w-[130%] text-white text-xl py-3 px-4 font-bold rounded-r-md transition-colors duration-200 relative z-10"
+                                                aria-label="عرض الكوبون AZ"
+                                            >
+                                                عرض الكوبون
+                                            </button>
+                                        </div>
+                                    @else
+                                        <div onclick="{{'coupon_modal_'.$coupon->ID.'_o'}}.showModal();"  class="inline-flex w-full items-center group">
+                                            <div class="relative overflow-hidden">
+                                                <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] font-medium text-xl rounded-l-md">
+                                                    {{ str_split($coupon->_coupon_code, 3)[0] }}
+                                                </div>
+                                            </div>
+                                            <button
+                                                class="bg-accent w-[130%] text-white text-xl py-3 px-4 font-bold rounded-r-md transition-colors duration-200 relative z-10"
+                                                aria-label="عرض الكوبون AZ"
+                                            >
+                                                عرض الكوبون
+                                            </button>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <hr class="mb-2"/>
+                            <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2 indent-4">@php echo $coupon->_coupon_desc @endphp</p>
+                            <div>
+                                <h5 onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
+                                    <span id="show_more_{{$coupon->ID}}">
+                                        عرض المزيد 
+                                    </span>
+                                    <x-tabler-chevron-down id="show_icon_{{$coupon->ID}}" class="rotate-0"/>
+                                </h5>
+                            </div>
+                        </div>
+                    @endforeach
+                    </ul>
+                @endif
+                <x-paginator :paginator="$coupons" />
+                <div class="bg-base-100 p-4 rounded-md w-full">
+                    <div class="prose-sm">@php echo $store->content @endphp</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @push('scripts')
+    <script>
+        function showMore(id) {
+            var desc = document.getElementById('desc_' + id);
+            var icon = document.getElementById('show_icon_' + id);
+            desc.classList.toggle('viss');
+            desc.classList.toggle('hidd');
+            icon.classList.toggle('rotate-0');
+            icon.classList.toggle('rotate-180');
+            if (desc.classList.contains('viss')) {
+                document.getElementById('show_more_' + id).innerText = 'اخفاء المزيد';
+            } else {
+                document.getElementById('show_more_' + id).innerText = 'عرض المزيد';
+            }
+        }
+    </script>
+    @endpush
+</x-layout>

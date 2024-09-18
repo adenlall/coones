@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-center-col{
+    @apply flex flex-col items-center justify-center
+}
+.flex-center-row{
+    @apply flex flex-row items-center justify-center
+}
+
+.dashed-border {
+    /*Horizontal*/
+background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+background-position: bottom;
+background-size: 3px 1px;
+background-repeat: repeat-x;
+
+/*Vertical*/
+background-image: linear-gradient(black 33%, rgba(255,255,255,0) 0%);
+background-position: right;
+background-size: 1px 3px;
+background-repeat: repeat-y;
+}
+
+* {
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:"slnt" 0;
+}
+
+.btn-flip {
+    opacity: 1;
+    outline: 0;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+}
+.btn-flip:hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+.btn-flip:hover:before {
+    opacity: 0;
+    transform: translateY(50%) rotateX(90deg);
+}
+.btn-flip:after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    content: attr(data-back);
+    background: oklch(var(--a));
+    border-radius: .5rem;
+    font-weight: 800;
+    transform: translateY(-50%) rotateX(90deg);
+}
+.btn-flip:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    display: block;
+    line-height: 40px;
+    transition: 0.5s;
+    position: relative;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
+}
+.swiper-wrapper {
+    width: 100%;
+    padding: 1em 0;
+    height: auto !important;
+    margin-bottom: 1rem;
+    display: flex;
+}
+.swiper-slide{
+    margin-right: 8px;
+}
+
+.hidd {
+    max-height: 0;
+    overflow: hidd;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+.viss {
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
