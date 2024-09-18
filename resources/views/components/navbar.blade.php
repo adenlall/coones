@@ -1,4 +1,4 @@
-<div class="navbar w-full ccontainer p-0 m-auto">
+<div class="navbar w-full ccontainer p-0 m-auto" style="padding:8px 0px;">
     <div class="flex-none lg:hidden">
         <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
             <svg
