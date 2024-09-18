@@ -24,10 +24,10 @@
     <div class="drawer-side z-50">
         <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
         <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4 gap-2">
-            <li class="flex flex-row flex-nowrap">
-                <input class="input input-bordered w-full rounded-l-none join-item" placeholder="البحث عن المتاجر والعروض" />
-                <button class="btn join-item rounded-l-full btn-primary">بحث</button>
-            </li>
+            <form action="{{route('store.index')}}"  class="flex flex-row flex-nowrap">
+                <input value="{{app('request')->input('search')}}" name="search" class="input input-bordered rounded-r-full rounded-l-none join-item" placeholder="البحث عن المتاجر والعروض" />
+                <button type="submit" class="btn join-item rounded-l-full rounded-r-none btn-primary">بحث</button>
+            </form>
             <x-nav-menu/>
         </ul>
     </div>
