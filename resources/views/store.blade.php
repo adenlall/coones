@@ -16,17 +16,17 @@
                         <div class="flex  mb-4">
                             <p>كوبونات وعروض {{getCurrentMonthInArabic()}}</p>
                             <div class="rating rating-half">
-                                <input {{$rate>=0?'checked':''}} type="radio" disabled name="rating-10" class="rating-hidden" />
-                                <input {{$rate>=0.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
-                                <input {{$rate>=1?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
-                                <input {{$rate>=1.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
-                                <input {{$rate>=2?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
-                                <input {{$rate>=2.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
-                                <input {{$rate>=3?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
-                                <input {{$rate>=3.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
-                                <input {{$rate>=4?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
-                                <input {{$rate>=4.5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-1 bg-yellow-600" />
-                                <input {{$rate>=5?'checked':''}} type="radio" disabled name="rating-10" class="mask mask-star-2 mask-half-2 bg-yellow-600" />
+                                <input type="radio" name="rating-10" class="rating-hidden" {{$rate>=0?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-1 bg-primary" {{$rate>=0.5?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-2 bg-primary" {{$rate>=1?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-1 bg-primary" {{$rate>=1.5?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-2 bg-primary" {{$rate>=2?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-1 bg-primary" {{$rate>=2.5?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-2 bg-primary" {{$rate>=3?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-1 bg-primary" {{$rate>=3.5?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-2 bg-primary" {{$rate>=4?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-1 bg-primary" {{$rate>=4.5?'checked':''}} />
+                                <input type="radio" name="rating-10" class="mask mask-star-2 mask-half-2 bg-primary" {{$rate>=5?'checked':''}} />
                             </div>
                             <span class="mr-1">
                                 {{$rate}} / 5
@@ -52,8 +52,8 @@
                     @foreach($coupons as $coupon)
                         <div class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_coupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_coupon_desc" :code="$coupon->_coupon_code" />
-                            <div class="flex md:flex-row flex-col justify-between items-start gap-3 p-8">
-                                <h3 class="font-bold text-lg">{{$coupon->title}}</h3>
+                            <div class="flex md:flex-row flex-col justify-between items-start gap-3 p-8 pl-5">
+                                <h3 class="font-bold text-md">{{$coupon->title}}</h3>
                                 <div class="w-auto" dir="ltr">
                                     @if($coupon->_coupon_type==="3" && isset($coupon->_coupon_link))
                                         <a href="{{$coupon->_coupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
@@ -95,11 +95,16 @@
                                 </div>
                             </div>
                             <hr class="mb-2"/>
-                            <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2 indent-4">@php echo $coupon->_coupon_desc @endphp</p>
+                            <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
+                                @php echo $coupon->_coupon_desc @endphp
+                                @if($coupon->_coupon_image) 
+                                    <img class="m-auto mt-3" src="{{$coupon->_coupon_image}}" alt="وصف صورة العروض والكوبونات"/>
+                                @endif
+                            </p>
                             <div>
                                 <h5 onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
                                     <span id="show_more_{{$coupon->ID}}">
-                                        عرض المزيد 
+                                       عرض التفاصيل 
                                     </span>
                                     <x-tabler-chevron-down id="show_icon_{{$coupon->ID}}" class="rotate-0"/>
                                 </h5>
@@ -110,7 +115,7 @@
                 @endif
                 <x-paginator :paginator="$coupons" />
                 <div class="bg-base-100 p-4 rounded-md w-full">
-                    <div class="prose-sm">@php echo $store->content @endphp</div>
+                    <div class="prose-md">@php echo $store->content @endphp</div>
                 </div>
             </div>
         </div>
@@ -125,9 +130,9 @@
             icon.classList.toggle('rotate-0');
             icon.classList.toggle('rotate-180');
             if (desc.classList.contains('viss')) {
-                document.getElementById('show_more_' + id).innerText = 'اخفاء المزيد';
+                document.getElementById('show_more_' + id).innerText = 'اخفاء التفاصيل';
             } else {
-                document.getElementById('show_more_' + id).innerText = 'عرض المزيد';
+                document.getElementById('show_more_' + id).innerText = 'عرض التفاصيل';
             }
         }
     </script>

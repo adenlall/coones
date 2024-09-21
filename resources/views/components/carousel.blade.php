@@ -1,4 +1,4 @@
-
+<!-- 
 <style>
     .carousel {
         position: relative;
@@ -21,21 +21,25 @@
         justify-content: center;
         align-items: center;
     }
-    .carousel-dot {
+    .swiper-pagination-bullet {
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: oklch(var(--p)/.5);
         margin: 0 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-    .carousel-dot.active {
-        background-color: white;
+    .swiper-pagination-bullet-active {
+        background-color: oklch(var(--p));
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 10px;
     }
 </style>
 
-<div id="carousel" class="carousel  md:min-w-[860px] bg-red-500 min-w-0 min-h-0 w-full h-[200px] md:min-h-[315px] rounded-box">
+
+<div id="carousel" class="carousel  box:min-w-[860px] bg-red-500 min-w-0 min-h-0 w-full h-[300px] box:min-h-[315px] rounded-box">
     @foreach($items as $index => $slide)
         <div id="{{ $slide->ID }}" class="carousel-item {{ $index === 0 ? 'active' : '' }} relative w-full">
             <a href="{{$slide->_slide_url}}" class="w-full h-full">
@@ -47,7 +51,7 @@
     <div class="w-full flex-center-row absolute bottom-0">
     <div class="carousel-dots p-2">
         @foreach($items as $index => $slide)
-            <div class="carousel-dot {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}"></div>
+            <div class="carousel-dot p-2 {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}"></div>
         @endforeach
     </div>
     </div>
@@ -118,7 +122,7 @@
         // Auto-advance slides every 5 seconds
         let autoAdvance = setInterval(() => {
             showSlide(currentSlide + 1);
-        }, 2000);
+        }, 4000);
 
         // Pause auto-advance on mouse enter, resume on mouse leave
         carousel.addEventListener('mouseenter', function() {
@@ -128,7 +132,58 @@
         carousel.addEventListener('mouseleave', function() {
             autoAdvance = setInterval(() => {
                 showSlide(currentSlide + 1);
-            }, 2000);
+            }, 4000);
         });
     });
+</script> -->
+<style>
+    .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            opacity: 0.65;
+            border-radius: 50%;
+            background-color: oklch(var(--b1));
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    .swiper-pagination-bullet-active {
+        background-color: oklch(var(--p));
+        padding-left: 15px;
+        opacity: 1;
+        padding-right: 15px;
+        border-radius: 10px;
+    }
+</style>
+<div class="bg-base-100 md:w-[77%!important] w-full">
+    <div style="width:100% !important; padding:0 !important;" class="w-full rounded-box ccontainer m-auto flex items-center justify-center h-[14em] sm:h-[18em] md:h-[20em!important]">
+        <div class="swiper  w-full h-full rounded-box" style="width:100% !important; height:100% !important;">
+            <div style="width:100% !important; height:100% !important; padding:0 !important;" class="swiper-wrapper w-full h-full rounded-box">
+                @foreach($items as $slide)
+                    <a target="_blank" href="{{$slide->_slide_url}}" id="{{$slide->ID}}" class="swiper-slide" style="width:100% !important; height:100% !important; margin:0 !important;">
+                        <div style="background: url('{{ $slide->_slide_image}}') center; background-size: cover" class="p-4 bg-accent rounded-box text-3xl w-full h-full"></div>
+                    </a>
+                @endforeach
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+@push('scripts')
+<script>
+    window.addEventListener('load', function() {
+        const swiper = new Swiper('.swiper', {
+            slidesPerView:'auto',
+            spaceBetween:'0',
+            // autoplay: {
+            //     delay: 4000,
+            //     disableOnInteraction: false
+            // },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            modules: [ Pagination, Autoplay ],
+        });
+    })
 </script>
+@endpush

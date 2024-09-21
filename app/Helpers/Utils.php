@@ -1,6 +1,5 @@
 <?php
 use Carbon\Carbon;
-use IntlDateFormatter;
 
 if (!function_exists('getCurrentMonthInArabic')) {
     function getCurrentMonthInArabic()

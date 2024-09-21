@@ -4,16 +4,18 @@
     </x-slot>
 
     <div class="bg-base-100 pb-6" style="padding:20px 0px 20px 0px;">
-        <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 md:gap-6 p-4">
+        <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 lg:gap-6 p-4">
             <x-carousel/>
-            <div class="bg-base-300 w-[20em] h-[20em] rounded-box hidden md:flex justify-center items-center">
+            <div class="bg-base-300 w-[20em] h-[20em] rounded-box hidden lg:flex justify-center items-center">
                 <span>Ad Space</span>
             </div>
         </div>
         <div class="w-full flex justify-center items-center ccontainer m-auto">
-            <hr class="h-2 border-gray-400 w-1/3 mt-[6px]"/>
-            <h1 class="text-lg w-full font-normal mx-8 outline text-center m-auto outline-1 p-1 rounded-full"><span class="">{{env('APP_NAME')}} - احدث كود خصم وكوبون فعال لكل المواقع</span></h1>
-            <hr class="h-2 border-gray-400 w-1/3 mt-[6px]"/>
+            <hr class="md:block hidden h-2 border-gray-400 w-1/3 mt-[6px]"/>
+            <h1 class="md:text-lg text-sm font-[700!important] w-full md:font-[400!important] md:mx-8 mx-0 outline text-center m-auto outline-1 p-1 rounded-full">
+                {{env('APP_NAME')}} - احدث كود خصم وكوبون فعال لكل المواقع
+            </h1>
+            <hr class="md:block hidden h-2 border-gray-400 w-1/3 mt-[6px]"/>
         </div>
     </div>
 

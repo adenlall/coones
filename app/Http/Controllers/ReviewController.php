@@ -30,8 +30,9 @@ class ReviewController extends Controller
     public function store(StoreReviewRequest $request)
     {
         $req = $request->validated();
-        Review::create($req); //?modal={{$id}}#card_{{$id}}_p
-        return redirect()->route('home',['modal'=>$req['couponId'],'review'=> ((string) $req['review'] === "1" ? 'true':'false') , '#card_'.$req['couponId'].'_p']);
+        Review::create($req);
+        return $req['review'] === "1" ? 'true' : 'false';
+        // return redirect()->route('home',['modal'=>$req['couponId'],'review'=> ((string) $req['review'] === "1" ? 'true':'false') , '#card_'.$req['couponId'].'_p']);
     }
 
     /**

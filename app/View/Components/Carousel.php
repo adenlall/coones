@@ -18,6 +18,7 @@ class Carousel extends Component
     public function __construct()
     {
         $this->items = $this->getCarouselItems();
+        // dd($this->items);
     }
 
     /**

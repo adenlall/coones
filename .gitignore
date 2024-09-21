@@ -2,6 +2,7 @@
 /node_modules
 .env
 /blog
+/public/blog
 /vendor
 .env.backup
 .env.production

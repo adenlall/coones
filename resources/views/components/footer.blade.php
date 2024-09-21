@@ -1,5 +1,5 @@
 <footer class="bg-accent text-accent-content py-8 mt-8">
-        <div class="container lg:px-10 mx-auto px-4">
+        <div class="ccontainer mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                 <div class="mb-6 md:mb-0">
                     <img alt="شعار موقع كوبون على السريع" src="/logo.webp" class="h-12 my-2" />

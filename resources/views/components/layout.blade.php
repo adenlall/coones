@@ -24,10 +24,6 @@
     <div class="drawer-side z-50">
         <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
         <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4 gap-2">
-            <form action="{{route('store.index')}}"  class="flex flex-row flex-nowrap">
-                <input value="{{app('request')->input('search')}}" name="search" class="input input-bordered rounded-r-full rounded-l-none join-item" placeholder="البحث عن المتاجر والعروض" />
-                <button type="submit" class="btn join-item rounded-l-full rounded-r-none btn-primary">بحث</button>
-            </form>
             <x-nav-menu/>
         </ul>
     </div>
@@ -35,5 +31,34 @@
 <x-footer/>
 @vite('resources/js/app.js')
 @stack('scripts')
+
+<script>
+    async function postReview(type) {
+        console.log(type);
+        const url = "/api/review?couponId="+type.couponId+"&storeName="+type.storeName+"&review="+type.review+"&fingerprint="+type.fingerprint;
+        try {
+            const response = await fetch(url, {
+                method:'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+            const json = await response.json();
+            console.log(json);
+            if (json === true || json === 'true') {
+                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'block';
+                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'none';
+            }else{
+                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'block';
+                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'none';
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+</script>
 </body>
 </html>

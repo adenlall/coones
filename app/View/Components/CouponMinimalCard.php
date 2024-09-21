@@ -13,7 +13,7 @@ class CouponMinimalCard extends Component
      */
     public function __construct(
         public string $title,
-        public string $code,
+        public $code,
         public string $created,
         public string|null $desc,
         public $type,

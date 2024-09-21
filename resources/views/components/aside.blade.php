@@ -14,7 +14,7 @@
         </p>
     </div>
     <div class="w-1/2 bg-base-100 rounded-md p-3 space-y-2">
-        <h4 class="my-1 text-center font-bold text-accent">أقوى المتاجر</h4>
+        <h4 class="my-1 text-center font-bold text-accent">اشهر المتاجر</h4>
         <p>
             <ul class="flex-center-col gap-2">
                 @foreach($top as $item)

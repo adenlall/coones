@@ -17,17 +17,19 @@
     <div class="flex-1">
         <img alt="شعار {{env('APP_NAME')}}" class="h-16" src="/logo.webp"/>
     </div>
-    <div class="hidden flex-none md:block">
-        <form action="{{route('store.index')}}" class="join">
-            <input value="{{app('request')->input('search')}}" name="search" class="input input-bordered join-item" placeholder="البحث عن المتاجر والعروض" />
+    <div class="flex-none">
+        <form action="{{route('store.index')}}" class="join m-0 ml-2 md:ml-6">
+            <input value="{{app('request')->input('search')}}" name="search" class="input input-bordered join-item w-[9em]" placeholder="بحث …" />
             <button type="submit" class="btn join-item rounded-r-full btn-primary">بحث</button>
         </form>
     </div>
 </div>
-<div class=" hidden md:block bg-primary">
+<div class="hidden md:block bg-primary">
     <div class="m-auto ccontainer p-0 w-full">
         <ul class="menu menu-horizontal px-1 gap-2 pr-2">
             <x-nav-menu/>
         </ul>
     </div>
+</div>
+<div class="md:hidden block bg-primary py-2">
 </div>

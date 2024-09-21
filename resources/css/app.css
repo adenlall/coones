@@ -26,6 +26,9 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    .full-width {
+        width: 100% !important;
+    }
 }
 
 .dashed-border {

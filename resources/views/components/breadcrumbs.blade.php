@@ -1,5 +1,5 @@
 @isset($items)
-<div class="breadcrumbs text-sm p-0 pt-2">
+<div class="breadcrumbs text-sm p-0 pt-2 overflow-hidden">
   <ul>
       @foreach($items as $index => $item)
           @if(isset($item['path']))

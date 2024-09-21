@@ -17,66 +17,54 @@ class OfferController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Post::type('coupons')->status('publish');
-
-        // Apply search filter if the 'search' parameter is present
+        $query = Post::type('offers')->status('publish');
         if ($request->has('offer')) {
             $searchTerm = $request->input('offer');
             $query->where(function ($subQuery) use ($searchTerm) {
                 $subQuery->where('post_title', 'like', '%' . $searchTerm . '%');
             });
         }
-
-        // Apply sorting logic if the 'sort' parameter is present
         if ($request->sort) {
             try {
-                $paginated_coupons_ids = DB::table('posts as p')
-                    ->join('postmeta as pm', 'p.ID', '=', 'pm.post_id')
-                    ->where('p.post_type', 'coupons')
-                    ->where('p.post_status', 'publish')
-                    ->where('pm.meta_key', '_coupon_value')
-                    ->orderByRaw('CAST(pm.meta_value AS UNSIGNED) DESC')
-                    ->select('p.ID')
-                    ->paginate(30);
-
-                $postIds = $paginated_coupons_ids->pluck('ID')->toArray();
-                $paginated_coupons = Post::type('coupons')
-                    ->whereIn('ID', $postIds)
-                    ->orderByRaw("FIELD(ID, " . implode(',', $postIds) . ")")
-                    ->get();
-
-                $query=[];
-                try {
-                    $query = $paginated_coupons_ids->query();
-                } catch (\Throwable $th) {
-                    $query = [];
-                }
-
-                $paginated_coupons = new LengthAwarePaginator(
-                    $paginated_coupons,
-                    $paginated_coupons_ids->total(),
-                    $paginated_coupons_ids->perPage(),
-                    $paginated_coupons_ids->currentPage(),
-                    ['path' => $paginated_coupons_ids->path(), 'query' => $query]
-                );
-            
+                $paginated_offers = Post::type('offers')
+                ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
+                ->where('postmeta.meta_key', '_offer_value')
+                ->orderBy('postmeta.meta_value', 'DESC')
+                ->paginate(30);
             } catch (\Throwable $th) {
-                $paginated_coupons = $query->latest()->paginate(30);
+                $paginated_offers = $query->latest()->paginate(30);
+                dd("err",$paginated_offers, $th);
             }
         } else {
-            $paginated_coupons = $query->latest()->paginate(30);
+            $paginated_offers = $query->latest()->paginate(30);
         }
+        return view('offers', compact('paginated_offers'));
+    }
 
-        // Fetch the related stores for each coupon
-        foreach ($paginated_coupons as $coupon) {
-            $store = Post::type('stores')
-                ->status('publish')
-                ->hasMeta('_store_name', $coupon->meta->_coupon_store)
-                ->first();
-            $coupon->store = $store;
+    public function api(Request $request)
+    {
+        $query = Post::type('offers')->status('publish');
+        if ($request->has('offer')) {
+            $searchTerm = $request->input('offer');
+            $query->where(function ($subQuery) use ($searchTerm) {
+                $subQuery->where('post_title', 'like', '%' . $searchTerm . '%');
+            });
         }
-
-        return view('offers', compact('paginated_coupons'));
+        if ($request->sort) {
+            try {
+                $paginated_offers = Post::type('offers')
+                ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
+                ->where('postmeta.meta_key', '_offer_value')
+                ->orderBy('postmeta.meta_value', 'DESC')
+                ->paginate(30);
+            } catch (\Throwable $th) {
+                $paginated_offers = $query->latest()->paginate(30);
+                dd("err",$paginated_offers, $th);
+            }
+        } else {
+            $paginated_offers = $query->latest()->paginate(30);
+        }
+        return response()->json(['paginated_offers'=>$paginated_offers]);
     }
 
 }

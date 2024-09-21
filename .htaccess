@@ -14,9 +14,9 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Handle requests to the WordPress blog
-    RewriteCond %{REQUEST_URI} ^/blog/
-    RewriteRule ^ blog/index.php [L]
+    # # Handle requests to the WordPress blog
+    # RewriteCond %{REQUEST_URI} ^/blog/
+    # RewriteRule ^ blog/index.php [L]
 
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d

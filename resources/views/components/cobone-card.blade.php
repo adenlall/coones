@@ -1,7 +1,7 @@
 <div id="card_{{$id}}_p" class="flex flex-col justify-between items-center shadow-md shadow-black/30 rounded-md bg-base-100 p-3 space-y-2 w-full">
     <div class="w-full space-y-2">
     <div class="flex flex-row items-center justify-between w-full">
-        <a href="{{'/store/'.$store->_store_name}}"><img class="w-[110px] h-[58px] rounded-md" src="{{$store->thumbnail}}"/></a>
+        <a href="{{'/store/'.$store->_store_name}}"><img class="w-[135px] h-[68px] rounded-md" src="{{$store->thumbnail}}"/></a>
         <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
             {{--<span class="badge badge-error py-3 px-3 gap-1"> جديد<x-pepicon-fire class="w-4 h-4"/></span>--}}
             {{--<span class="badge badge-warning py-3 px-3 gap-1"> مميز<x-pepicon-stars class="w-4 h-4"/></span>--}}
