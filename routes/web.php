@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Corcel\Model\Post;
 
 Route::get('/', function () {
-    $paginated_coupons = Post::type('coupons')->status('publish')->latest()->take(6)->get();
+    $paginated_coupons = Post::type('ncoupons')->status('publish')->latest()->take(6)->get();
     foreach ($paginated_coupons as $coupon) {
         $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_coupon_store)->first();
         $coupon->store = $store;
