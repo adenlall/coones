@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <div class="w-full text-center bg-base-200 rounded-lg flex-row-center gap-4">
+    <div class="w-full text-center bg-base-200 rounded-lg flex-row-center gap-4 mt-4">
         {{-- Previous Page Link --}}
         @if (! $paginator->onFirstPage())
             <a class="btn btn-primary" href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo; السابق</a>

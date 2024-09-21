@@ -25,9 +25,9 @@ class StoreController extends Controller
     {
         $categories = Taxonomy::where('taxonomy', 'storecategory')->get();
         if(isset($request->search)){
-            $stores = Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->get();
+            $stores = Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->paginate(36);
         }else{
-            $stores = Post::type('stores')->status('publish')->get();
+            $stores = Post::type('stores')->status('publish')->paginate(36);
         }
         if (isset($request->category)) {
             $stores = Post::published()
@@ -37,7 +37,7 @@ class StoreController extends Controller
                         $query->where('slug', urlencode($request->category));
                     });
             })
-            ->get();
+            ->paginate(36);
             // $stores = Taxonomy::where('taxonomy', 'storecategory')->slug(urlencode($request->category))->with('posts')->get();
         }
         return view('stores')->with(['categories'=>$categories, 'stores'=>$stores]);
@@ -49,7 +49,7 @@ class StoreController extends Controller
     public function single(string $name)
     {
         $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->firstOrFail();
-        $coupons = Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(30);
+        $coupons = Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(360);
         $rate = DB::table('reviews')
         ->where('storeName', $name)
         ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')

@@ -30,13 +30,13 @@ class OfferController extends Controller
                 ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
                 ->where('postmeta.meta_key', '_offer_value')
                 ->orderBy('postmeta.meta_value', 'DESC')
-                ->paginate(30);
+                ->paginate(20);
             } catch (\Throwable $th) {
-                $paginated_offers = $query->latest()->paginate(30);
+                $paginated_offers = $query->latest()->paginate(20);
                 dd("err",$paginated_offers, $th);
             }
         } else {
-            $paginated_offers = $query->latest()->paginate(30);
+            $paginated_offers = $query->latest()->paginate(20);
         }
         return view('offers', compact('paginated_offers'));
     }
@@ -56,13 +56,13 @@ class OfferController extends Controller
                 ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
                 ->where('postmeta.meta_key', '_offer_value')
                 ->orderBy('postmeta.meta_value', 'DESC')
-                ->paginate(30);
+                ->paginate(20);
             } catch (\Throwable $th) {
-                $paginated_offers = $query->latest()->paginate(30);
+                $paginated_offers = $query->latest()->paginate(20);
                 dd("err",$paginated_offers, $th);
             }
         } else {
-            $paginated_offers = $query->latest()->paginate(30);
+            $paginated_offers = $query->latest()->paginate(20);
         }
         return response()->json(['paginated_offers'=>$paginated_offers]);
     }

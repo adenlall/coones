@@ -45,6 +45,7 @@
                 </li>
             @endforeach
         </ul>
+        <x-paginator :paginator="$stores" />
     </div>
     @push('scripts')
     <script>
