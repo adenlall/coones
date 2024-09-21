@@ -67,7 +67,7 @@
                                         openmodaland();" class="inline-flex w-full items-center group">
                                             <div class="relative overflow-hidden">
                                                 <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] text-xl rounded-l-md">
-                                                    {{ str_split($coupon->_ncoupon_code, 3)[0] }}
+                                                    {{ $coupon->_ncoupon_code ? str_split($coupon->_ncoupon_code, 3)[0] : '' }}
                                                 </div>
                                             </div>
                                             <button
@@ -81,7 +81,7 @@
                                         <div onclick="{{'coupon_modal_'.$coupon->ID.'_o'}}.showModal();"  class="inline-flex w-full items-center group">
                                             <div class="relative overflow-hidden">
                                                 <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] font-medium text-xl rounded-l-md">
-                                                    {{ str_split($coupon->_ncoupon_code, 3)[0] }}
+                                                    {{ $coupon->_ncoupon_code ? str_split($coupon->_ncoupon_code, 3)[0] : '' }}
                                                 </div>
                                             </div>
                                             <button
