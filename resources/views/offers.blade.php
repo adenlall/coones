@@ -47,7 +47,7 @@
                         :id="$offer->ID"
                         :title="$offer->title"
                         :store="$offer->_offer_store"
-                        :desc="$offer->_offer_desc"
+                        :desc="$offer->content"
                         :value="$offer->_offer_value"
                         :image="$offer->_offer_image"
                         :type="$offer->_offer_type"

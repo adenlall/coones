@@ -1,5 +1,5 @@
 <div id="card_{{$id}}_p" class="flex flex-col items-center shadow-md shadow-black/30 rounded-md bg-base-100 space-y-2 w-full lg:w-[790px]">
-    <div style="background:{{$image?'url('.$image.')':''}}; background-size:cover;" class="w-full min-h-[14em] lg:min-h-[318px] border-accent border-[3px] border-r-[7px] bg-primary"></div>
+    <div style="background:{{$image?'url('.$image.')':''}}; background-size:cover; background-position:center;" class="w-full min-h-[14em] lg:min-h-[318px] border-accent border-[3px] border-r-[7px] bg-primary"></div>
     <div class="p-2 pr-4 w-full flex flex-col justify-between h-full">
         <div class="w-full space-y-2">
             <span>تاريخ انشر : {{ParseDateIntoArabic($created)}}</span>

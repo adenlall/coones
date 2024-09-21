@@ -96,10 +96,7 @@
                             </div>
                             <hr class="mb-2"/>
                             <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
-                                @php echo $coupon->_coupon_desc @endphp
-                                @if($coupon->_coupon_image) 
-                                    <img class="m-auto mt-3" src="{{$coupon->_coupon_image}}" alt="وصف صورة العروض والكوبونات"/>
-                                @endif
+                                @php echo $coupon->content @endphp
                             </p>
                             <div>
                                 <h5 onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
