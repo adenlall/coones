@@ -49,7 +49,7 @@ class StoreController extends Controller
     public function single(string $name)
     {
         $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->firstOrFail();
-        $coupons = Post::type('coupons')->status('publish')->latest()->hasMeta('_coupon_store', $name)->paginate(30);
+        $coupons = Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(30);
         $rate = DB::table('reviews')
         ->where('storeName', $name)
         ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')

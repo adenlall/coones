@@ -51,23 +51,23 @@
                     <ul class="flex-center-col gap-4 mb-4">
                     @foreach($coupons as $coupon)
                         <div class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
-                            <x-coupon-modal :store="$store" :link="$coupon->_coupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_coupon_desc" :code="$coupon->_coupon_code" />
+                            <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
                             <div class="flex md:flex-row flex-col justify-between items-start gap-3 p-8 pl-5">
                                 <h3 class="font-bold text-md">{{$coupon->title}}</h3>
                                 <div class="w-auto" dir="ltr">
-                                    @if($coupon->_coupon_type==="3" && isset($coupon->_coupon_link))
-                                        <a href="{{$coupon->_coupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
+                                    @if($coupon->_ncoupon_type==="3" && isset($coupon->_ncoupon_link))
+                                        <a href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
                                             الحصول على العرض
                                         </a>
-                                    @elseif($coupon->_coupon_type==="1" && isset($link))
+                                    @elseif($coupon->_ncoupon_type==="1" && isset($link))
                                         <div onclick="function openmodaland(){
-                                            window.location.href = '{{$coupon->_coupon_link}}';
+                                            window.location.href = '{{$coupon->_ncoupon_link}}';
                                             window.open('{{url()->current()}}?modal={{$coupon->ID}}#card_{{$coupon->ID}}_p', '_blank');
                                         }
                                         openmodaland();" class="inline-flex w-full items-center group">
                                             <div class="relative overflow-hidden">
                                                 <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] text-xl rounded-l-md">
-                                                    {{ str_split($coupon->_coupon_code, 3)[0] }}
+                                                    {{ str_split($coupon->_ncoupon_code, 3)[0] }}
                                                 </div>
                                             </div>
                                             <button
@@ -81,7 +81,7 @@
                                         <div onclick="{{'coupon_modal_'.$coupon->ID.'_o'}}.showModal();"  class="inline-flex w-full items-center group">
                                             <div class="relative overflow-hidden">
                                                 <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] font-medium text-xl rounded-l-md">
-                                                    {{ str_split($coupon->_coupon_code, 3)[0] }}
+                                                    {{ str_split($coupon->_ncoupon_code, 3)[0] }}
                                                 </div>
                                             </div>
                                             <button

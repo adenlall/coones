@@ -14,8 +14,8 @@ class CouponModal extends Component
     public function __construct(
         public int $id,
         public $store,
-        public string $title,
-        public string $code,
+        public $title,
+        public $code,
         public string|null $desc,
         public string|null $link,
     )

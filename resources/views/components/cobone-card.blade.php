@@ -29,7 +29,7 @@
                 openmodaland();" class="inline-flex w-full items-center group">
                 <div class="relative overflow-hidden">
                     <div class="bg-gray-100 border-[3px] border-dotted border-r-0 border-gray-400 text-gray-700 px-3 py-[.55rem] text-xl rounded-l-md">
-                        {{ str_split($code, 3)[0] }}
+                        {{ $code ? str_split($code, 3)[0] : '' }}
                     </div>
                 </div>
                 <button
@@ -43,7 +43,7 @@
             <div onclick="{{'coupon_modal_'.$id.'_o'}}.showModal();"  class="inline-flex w-full items-center group">
             <div class="relative overflow-hidden">
                     <div class="bg-gray-100 border-[3px] border-dotted border-r-0 border-gray-400 text-gray-700 px-3 py-[.55rem] font-medium text-xl rounded-l-md">
-                        {{ str_split($code, 3)[0] }}
+                        {{ $code ? str_split($code, 3)[0] : '' }}
                     </div>
                 </div>
                 <button

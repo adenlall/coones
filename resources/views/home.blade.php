@@ -23,17 +23,17 @@
         <h2 class="text-3xl my-4">
             أحدث الكوبونات
         </h2>
-        @if(count($paginated_coupons))
+        @if(count($paginated_ncoupons))
             <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-stretch justify-center gap-6">
-                @foreach($paginated_coupons as $coupon)
+                @foreach($paginated_ncoupons as $ncoupon)
                     <x-cobone-card
-                        :id="$coupon->ID"
-                        :title="$coupon->title"
-                        :store="$coupon->store"
-                        :desc="$coupon->_coupon_desc"
-                        :type="$coupon->_coupon_type"
-                        :link="$coupon->_coupon_link"
-                        :code="$coupon->_coupon_code"
+                        :id="$ncoupon->ID"
+                        :title="$ncoupon->title"
+                        :store="$ncoupon->store"
+                        :desc="$ncoupon->_ncoupon_desc"
+                        :type="$ncoupon->_ncoupon_type"
+                        :link="$ncoupon->_ncoupon_link"
+                        :code="$ncoupon->_ncoupon_code"
                     />
                 @endforeach
             </ul>

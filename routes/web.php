@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Route;
 use Corcel\Model\Post;
 
 Route::get('/', function () {
-    $paginated_coupons = Post::type('ncoupons')->status('publish')->latest()->take(6)->get();
-    foreach ($paginated_coupons as $coupon) {
-        $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_coupon_store)->first();
+    $paginated_ncoupons = Post::type('ncoupons')->status('publish')->latest()->take(6)->get();
+    foreach ($paginated_ncoupons as $coupon) {
+        $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->first();
         $coupon->store = $store;
     }
-    return view('home', compact('paginated_coupons'));
+    return view('home', compact('paginated_ncoupons'));
 })->name('home');
 
 Route::get('/auto-replay', function () {
