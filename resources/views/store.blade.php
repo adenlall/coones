@@ -55,11 +55,11 @@
                             <div class="flex md:flex-row flex-col justify-between items-start gap-3 p-8 pl-5">
                                 <h3 class="font-bold text-md">{{$coupon->title}}</h3>
                                 <div class="w-auto" dir="ltr">
-                                    @if($coupon->_ncoupon_type==="3" && isset($coupon->_ncoupon_link))
+                                    @if($coupon->_ncoupon_type==="3")
                                         <a href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
                                             الحصول على العرض
                                         </a>
-                                    @elseif($coupon->_ncoupon_type==="1" && isset($link))
+                                    @elseif($coupon->_ncoupon_type==="1")
                                         <div onclick="function openmodaland(){
                                             window.location.href = '{{$coupon->_ncoupon_link}}';
                                             window.open('{{url()->current()}}?modal={{$coupon->ID}}#card_{{$coupon->ID}}_p', '_blank');
