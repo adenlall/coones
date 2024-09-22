@@ -52,7 +52,7 @@ class OfferController extends Controller
         }
         if ($request->sort) {
             try {
-                $paginated_offers = Post::type('offers')
+                $paginated_offers = Post::type('offers')->status('publish')
                 ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
                 ->where('postmeta.meta_key', '_offer_value')
                 ->orderBy('postmeta.meta_value', 'DESC')
