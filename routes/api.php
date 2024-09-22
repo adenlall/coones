@@ -22,7 +22,7 @@ Route::get('/stores', function (Request $request) {
         })
         ->get();
     }else{
-        $stores = Post::published()->type('stores');
+        $stores = Post::type('stores')->status('publish')->get();
     }
     return response()->json(['stores'=>$stores]);
 });

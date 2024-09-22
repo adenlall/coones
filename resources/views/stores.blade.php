@@ -14,7 +14,7 @@
             <div class="swiper flex">
                 <div class="swiper-wrapper">
                     <div style="width:fit-content" class="swiper-slide">
-                        <button onclick="getData()" id="all" class="cat-item {{app('request')->input('category') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 rounded-full text-center px-6 py-2">
+                        <button onclick="getData('all')" id="all" class="cat-item {{app('request')->input('category') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 rounded-full text-center px-6 py-2">
                             عرض الكل
                         </button>
                     </div>
@@ -50,7 +50,7 @@
     @push('scripts')
     <script>
         async function getData(type) {
-            const url = "/api/stores"+(type?("?category="+type):'');
+            const url = "/api/stores"+((type&&type!=='all')?("?category="+type):'');
             try {
                 const response = await fetch(url, {
                     headers: {
