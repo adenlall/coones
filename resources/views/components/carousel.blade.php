@@ -17,8 +17,9 @@
         border-radius: 10px !important;
     }
 </style>
-<div class="bg-base-100 md:w-[77%!important] w-full">
-    <div style="width:100% !important; padding:0 !important;" class="w-full rounded-box ccontainer m-auto flex items-center justify-center h-[14em] sm:h-[18em] md:h-[20em!important]">
+<!-- h-[145px!important] sm:h-[200px!important] md: -->
+<div class="bg-base-100 h-auto max-w-[880px] w-full" style="aspect-ratio: 860 / 316;">
+    <div style="width:100% !important; padding:0 !important;" class="rounded-box ccontainer m-auto flex items-center justify-center h-[100%!important]">
         <div class="swiper  w-full h-full rounded-box" style="width:100% !important; height:100% !important;">
             <div style="width:100% !important; height:100% !important; padding:0 !important;" class="swiper-wrapper w-full h-full rounded-box">
                 @foreach($items as $slide)

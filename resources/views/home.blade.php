@@ -2,11 +2,10 @@
     <x-slot:title>
         الصفحة الرئيسية
     </x-slot>
-
     <div class="bg-base-100 pb-6" style="padding:20px 0px 20px 0px;">
         <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 lg:gap-6 p-4">
             <x-carousel/>
-            <div class="bg-base-300 w-[20em] h-[20em] rounded-box hidden lg:flex justify-center items-center">
+            <div class="bg-base-300 w-[16em] h-[315px] rounded-box hidden lg:flex justify-center items-center">
                 <span>Ad Space</span>
             </div>
         </div>
