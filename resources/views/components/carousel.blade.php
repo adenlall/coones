@@ -38,10 +38,10 @@
         const swiper = new Swiper('.swiper', {
             slidesPerView:'auto',
             spaceBetween:'0',
-            // autoplay: {
-            //     delay: 4000,
-            //     disableOnInteraction: false
-            // },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
             pagination: {
                 el: ".swiper-pagination",
             },
