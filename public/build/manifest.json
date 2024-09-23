@@ -1,6 +1,11 @@
 {
+  "public/blog/wp-content/themes/coupon-theme/style.css": {
+    "file": "assets/style-D1YffPx6.css",
+    "src": "public/blog/wp-content/themes/coupon-theme/style.css",
+    "isEntry": true
+  },
   "resources/css/app.css": {
-    "file": "assets/app-C_oXPSzT.css",
+    "file": "assets/app-CCuW_ofv.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

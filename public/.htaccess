@@ -1,25 +1,22 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
 
     RewriteEngine On
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Redirect non-SSL to SSL, except for subdomains like 'dev'
+    RewriteCond %{HTTP_HOST} !^dev\. [NC]
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
 
-    # Redirect Trailing Slashes If Not A Folder...
+    # Redirect trailing slashes if not a directory
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-    # Handle requests to the WordPress blog
-    RewriteCond %{REQUEST_URI} ^/blog/
-    RewriteRule ^ blog/index.php [L]
-
-    # Send Requests To Front Controller...
+    
+    # Handle front controller (send all other requests to index.php)
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+    
+    RewriteCond %{REQUEST_URI} !^/blog/ #
+
 </IfModule>

@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="ccontainer p-2 w-full m-auto my-4">
+    <div class="ccontainer p-2 w-full mx-[0px!important] md:mx-[auto!important] my-4">
         <h2 class="text-3xl my-4">
             أحدث الكوبونات
         </h2>

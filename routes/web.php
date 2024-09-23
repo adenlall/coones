@@ -1,10 +1,6 @@
 <?php
 
-// لا أدري ادا فهمت الفكرة من الحل الاول وهو ان نضيف صفحة في الداشبورد تماما متل صفحة الاسئلة الشائعة و تضيف الاسئلة وستطبق على جميع المتاجر وبامكانك تخصيص الاسئلة متل باستعمال %store% ستعوض بشكل اوتوماتيكي باسم المتجر.
-
-// هدا الحل ايضا يتطلب اتصال بقاعدة البيانات لاكنه اسرع.
-// هناك الحل الاسرع وهو ان نضيف الاسئلة في كود الموقع بحث لن تتطلب اي اتصال بالانترنت ولاكن ستفقد ميزة التخصيص الاسئلة مستقبلا
-// ادا كانت اسئلة المتاجر ستتكرر فالافضل تضمينها في كود الموقع لأفضل سرعة ممكنة
+use Illuminate\Support\Facades\File;
 
 
 use Illuminate\Support\Facades\Route;
@@ -28,6 +24,21 @@ Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index'])->n
 Route::get('/store/{name}', [\App\Http\Controllers\StoreController::class, 'single'])->name('store.single');
 Route::get('/offers', [\App\Http\Controllers\OfferController::class, 'index'])->name('offers.index');
 
-Route::get('/blog/{any?}', function () {
-    return redirect('/blog/index.php');
+
+Route::get('/blog/{any?}', function ($any = null) {
+    // Path to your WordPress index file inside public/blog
+    $wordpress_index = public_path('blog/index.php');
+
+    // Forward request to WordPress if the file doesn't exist (handle WordPress routing)
+    if (!File::exists(public_path("blog/$any"))) {
+        include $wordpress_index;
+        exit; // Make sure Laravel stops processing after forwarding to WordPress
+    }
+    // Return the requested file (e.g., CSS, JS, etc.) if it exists
+    return response()->file(public_path("blog/$any"));
 })->where('any', '.*');
+
+
+// Route::any('/blog/{any?}', function () {
+//     return redirect('/blog/index.php');
+// })->where('any', '.*');
