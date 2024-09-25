@@ -107,8 +107,16 @@
                     </ul>
                 @endif
                 <x-paginator :paginator="$coupons" />
-                <div class="bg-base-100 p-4 rounded-md w-full">
-                    <div class="prose-md">@php echo $store->content @endphp</div>
+                <div class="w-full">
+                    <div class="prose-md">
+                        @php
+                            $content = $store->content;
+                            $parsed = str_replace('$$$', '<div style="width:calc(100% + 16px); margin-right:-8px;" class="separator w-full bg-base-200 p-2 my-2"></div>', $content);
+                        @endphp
+                        <div class="bg-base-100 mb-4 p-2 rounded-md">
+                            @php echo $parsed @endphp
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
