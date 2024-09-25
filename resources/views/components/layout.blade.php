@@ -34,7 +34,7 @@
 
 <script>
     async function postReview(type) {
-        console.log(type);
+        console.log('postReview',type);
         const url = "/api/review?couponId="+type.couponId+"&storeName="+type.storeName+"&review="+type.review+"&fingerprint="+type.fingerprint;
         try {
             const response = await fetch(url, {
@@ -47,16 +47,18 @@
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
-            console.log(json);
-            if (json === true || json === 'true') {
-                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'block';
-                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'none';
-            }else{
-                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'block';
-                document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'none';
+            console.log('json',json);
+            if(type.couponId){
+                if (json === true || json === 'true') {
+                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'block';
+                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'none';
+                }else{
+                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'block';
+                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'none';
+                }
             }
         } catch (error) {
-            console.error(error.message);
+            console.error(error);
         }
     }
 </script>

@@ -4,7 +4,7 @@
     </x-slot>
     <div class="w-full bg-base-100 mb-8 pb-4">
     <div class="ccontainer full-width bg-base-100" style="padding:0px 20px;">
-        <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=> app('request')->input('sort') === 'top'?'أقوى العروض':'أحدث العروض']]"/>
+        <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=> app('request')->input('sort') === 'top'?'أقوى العروض':'أحدث العروض']]"/>
         @if(app('request')->input('offer'))
             <h1 class="text-3xl font-medium mb-5 mt-2">
                 نتائج البحث عن : {{app('request')->input('offer')}}
@@ -30,16 +30,10 @@
     </div>
 
     <div class="ccontainer flex flex-col-reverse md:gap-0 gap-8 md:flex-row-reverse px-2">
-    <aside class="p-4 flex w-[40%] flex-col items-center justify-start gap-4">
-        <!-- <form action="" class="join w-full min-w-full">
-            <input value="{{app('request')->input('offer')}}" name="offer" class="input w-full input-bordered join-item" placeholder="ابحث باسم المتجر" />
-            <button type="submit" class="btn join-item rounded-r-full btn-primary">بحث</button>
-        </form> -->
-        <div class="w-full">
-            <x-aside/>
-        </div>
-    </aside>
-    <div class="m-auto w-full px-4">
+    <div class="w-full md:w-[22em]">
+        <x-aside/>
+    </div>
+    <div class="m-auto lg:w-[800px] md:px-4">
         @if(count($paginated_offers))
             <ul id="offerlist" class="grid grid-cols-1 items-stretch justify-center gap-5 md:px-0 px-2">
                 @foreach($paginated_offers as $offer)
@@ -82,23 +76,23 @@
                 list.innerHTML = '';
                 let liElements = '';
                 const elem = (id, image, created, sort, title, value, desc, link, store_name) => `
-                    <div id="card_${id}_p" class="flex flex-col items-center shadow-md shadow-black/30 rounded-md bg-base-100 space-y-2 w-full lg:w-[790px]">
-                        <div style="background:${image ? `url(${image})` : ''}; background-size:cover;" class="w-full min-h-[14em] lg:min-h-[318px] border-accent border-[3px] border-r-[7px] bg-primary"></div>
+                <div id="card_{$id}_p" class="flex flex-col items-center shadow-md shadow-black/30 rounded-md bg-base-100 space-y-2">
+                    <div style="background:${image?`url(${image})`:''}; background-size:cover; background-position:center;aspect-ratio: 800 / 400;" class="w-full border-accent border-[3px] border-r-[7px] bg-primary max-h-[400px] max-w-[800px]"></div>    
                         <div class="p-2 pr-4 w-full flex flex-col justify-between h-full">
                             <div class="w-full space-y-2">
-                                <span>تاريخ النشر : ${created}</span>
-                                ${type === 'top' ? `<span class='badge badge-primary mx-2'>خصم ${value}%</span>` : ''}
+                                <span class="text-gray-700 font-bold">تاريخ النشر : ${created}</span>
+                                <span class='badge badge-primary mx-2 font-bold'>خصم ${value}%</span>
                                 <h3 class="text-lg font-bold">${title}</h3>
                             </div>
                             <p id="desc_${id}" class="hidd w-full text-lg py-2">${desc}</p>
                             <div class="w-full mt-2 flex flex-wrap justify-between items-center gap-2">
-                                <h5 onclick="showMore(${id})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
+                                <h5 onclick="showMore(${id})" class="md:pb-4 relative z-10 md:pt-1 cursor-pointer w-fit flex gap-1 md:pr-4 pr-1 text-accent">
                                     <span id="show_more_${id}">عرض التفاصيل</span>
                                     <svg id="show_icon_${id}" class="rotate-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M6 9l6 6l6 -6"></path>
                                     </svg>
                                 </h5>
-                                <div class="flex flex-wrap gap-2 p-2">
+                                <div class="flex flex-wrap gap-2 p-2 md:w-auto w-full justify-center">
                                     <a href="/store/${store_name}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent rounded-full">كود خصم إضافي</a>
                                     ${link ? `<a target="_blank" href="${link}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent rounded-full">زيارة العرض</a>` : ''}
                                 </div>
@@ -107,7 +101,7 @@
                     </div>
                 `;
                 json.paginated_offers.data.forEach(item => {
-                    liElements += elem(item.ID, bringFromList(item.meta,'_offer_image'), item.post_date?.split('T')[0], 'sort', item.title, bringFromList(item.meta,'_offer_value'), bringFromList(item.meta,'_offer_desc'), bringFromList(item.meta,'_offer_link'), bringFromList(item.meta,'_offer_store'));
+                    liElements += elem(item.ID, bringFromList(item.meta,'_offer_image'), item.post_date?.split('T')[0], 'sort', item.title, bringFromList(item.meta,'_offer_value'), item.content, bringFromList(item.meta,'_offer_link'), bringFromList(item.meta,'_offer_store'));
                 });
                 list.innerHTML += liElements;
                 const catItems = document.getElementsByClassName('cat-item');

@@ -5,7 +5,7 @@
 
     <div class="w-full bg-base-100 mb-6">
         <div class="ccontainer m-auto w-full">
-            <x-breadcrumbs :items="[['name'=>'الرئيسبة', 'path'=>'/'],['name'=>'جميع المتاجر']]"/>
+            <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر']]"/>
             @if(app('request')->input('search'))
                 <h1 class="text-3xl font-medium mb-3 mt-2">نتائج البحث عن : {{app('request')->input('search')}}</h1>
             @else
@@ -51,7 +51,7 @@
     <script>
         async function getData(type) {
             const url = "/api/stores"+((type&&type!=='all')?("?category="+type):'');
-            try {
+            // try {
                 const response = await fetch(url, {
                     headers: {
                         "Content-Type": "application/json",
@@ -104,9 +104,9 @@
                     element.classList.remove('text-accent','border-accent','font-bold','border-[3px]');
                 }
                 document.getElementById(type).classList.add('text-accent','border-accent','font-bold','border-[3px]');
-            } catch (error) {
-                console.error(error.message);
-            }
+            // } catch (error) {
+            //     console.error(error.message);
+            // }
         }
         function bringFromList(list, meta_key) {
             for (const item of list) {
