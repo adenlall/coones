@@ -9,6 +9,7 @@ use Corcel\Model\Taxonomy;
 use Corcel\Model\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class StoreController extends Controller
 {
@@ -23,23 +24,28 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Taxonomy::where('taxonomy', 'storecategory')->get();
-        if(isset($request->search)){
-            $stores = Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->paginate(36);
-        }else{
-            $stores = Post::type('stores')->status('publish')->paginate(36);
-        }
-        if (isset($request->category)) {
-            $stores = Post::published()
-            ->whereHas('taxonomies', function($query) use($request) {
-                $query->where('taxonomy', 'storecategory')
-                    ->whereHas('term', function($query) use($request) {
-                        $query->where('slug', urlencode($request->category));
-                    });
-            })
-            ->paginate(36);
-            // $stores = Taxonomy::where('taxonomy', 'storecategory')->slug(urlencode($request->category))->with('posts')->get();
-        }
+        $categories = Cache::remember('stores_categories', 5000, function () {
+            return Taxonomy::where('taxonomy', 'storecategory')->get();
+        });
+
+        $cacheKey = 'stores_list_' . md5($request->fullUrl() . json_encode($request->all()));
+        $stores = Cache::remember($cacheKey, 5000, function () use($request) {
+            if(isset($request->search)){
+                return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->paginate(36);
+            }else{
+                return Post::type('stores')->status('publish')->paginate(36);
+            }
+            if (isset($request->category)) {
+                return Post::published()
+                ->whereHas('taxonomies', function($query) use($request) {
+                    $query->where('taxonomy', 'storecategory')
+                        ->whereHas('term', function($query) use($request) {
+                            $query->where('slug', urlencode($request->category));
+                        });
+                })
+                ->paginate(36);
+            }
+        });
         return view('stores')->with(['categories'=>$categories, 'stores'=>$stores]);
     }
 
@@ -48,18 +54,24 @@ class StoreController extends Controller
      */
     public function single(string $name)
     {
-        $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->firstOrFail();
-        $coupons = Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(360);
-        $rate = DB::table('reviews')
-        ->where('storeName', $name)
-        ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')
-        ->first();
-        $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
-        // dd($store);
+        $store = Cache::remember('store_'.md5($name), 5000, function () use($name) {
+            return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->firstOrFail();
+        });
+        $coupons = Cache::remember('coupons_'.md5($name), 5000, function () use($name) {
+            return Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(360);
+        });
+        $stats = Cache::remember('stats_'.md5($name), 5000, function () use($name) {
+            $rate = DB::table('reviews')
+            ->where('storeName', $name)
+            ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')
+            ->first();
+            $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
+            return ['rate'=>$rate, 'average'=>$average];
+        });
         return view('store')->with([
             'store'=>$store,
-            'rate'=>$this->percentageToStars($average),
-            'totalrate'=>$rate->total
+            'rate'=>$this->percentageToStars($stats['average']),
+            'totalrate'=>$stats['rate']->total
         ])->with(compact('coupons'));
     }
 }

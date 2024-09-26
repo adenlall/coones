@@ -1,11 +1,11 @@
 <?php
-
 namespace App\View\Components;
 
 use Closure;
 use Corcel\Model\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Cache;
 
 class Aside extends Component
 {
@@ -32,16 +32,22 @@ class Aside extends Component
      */
     private function getLastStores()
     {
-        return Post::type('stores')->status('publish')->latest()->take(5)->get();
+        $lastStores = Cache::remember('last_stores', 5000, function () {
+            return Post::type('stores')->status('publish')->latest()->take(5)->get();
+        });
+        return $lastStores;
     }
     /**
      * Get Last 5 store
      */
     private function getTopStores()
     {
-        return Post::type('stores')
-        ->status('publish')
-        ->hasMeta('_store_pined', 'on')
-        ->take(5)->get();
+        $topStores = Cache::remember('top_stores', 5000, function () {
+            return Post::type('stores')
+            ->status('publish')
+            ->hasMeta('_store_pined', 'on')
+            ->take(5)->get();
+        });
+        return $topStores;
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Review;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Cache;
 
 class Rate extends Component
 {
@@ -35,16 +36,15 @@ class Rate extends Component
      */
     private function getFaqItems($store)
     {
-        $totalReviews = Review::where('storeName', $this->store)->count();
-        error_log($store);
-
-        $positiveReviews = Review::where('storeName', $this->store)
-            ->where('review', '1')
-            ->count();
-
-        $percentage = $totalReviews > 0 ? ($positiveReviews / $totalReviews) * 100 : 0;
-
-        return round($percentage) . '%';
-
+        $store = $this->store;
+        $percentage = Cache::remember('slides', 5000, function () use($store) {
+            $totalReviews = Review::where('storeName', $store)->count();
+            $positiveReviews = Review::where('storeName', $store)
+                ->where('review', '1')
+                ->count();
+            $percentage = $totalReviews > 0 ? ($positiveReviews / $totalReviews) * 100 : 0;
+            return round($percentage);
+        });
+        return $percentage . '%';
     }
 }

@@ -7,6 +7,7 @@ use Corcel\Model\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\CarouselItem; // Assuming you have a CarouselItem model
+use Illuminate\Support\Facades\Cache;
 
 class Carousel extends Component
 {
@@ -34,7 +35,10 @@ class Carousel extends Component
      */
     private function getCarouselItems()
     {
-        // Adjust this query based on your needs
-        return Post::type('slides')->status('publish')->get();
+        $slides = Cache::remember('slides_items', 5000, function () {
+            return Post::type('slides')->status('publish')->get();
+        });
+        // dd($slides);
+        return $slides;
     }
 }

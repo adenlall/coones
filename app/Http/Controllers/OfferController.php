@@ -9,6 +9,7 @@ use JetBrains\PhpStorm\NoReturn;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 class OfferController extends Controller
 {
@@ -17,53 +18,60 @@ class OfferController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Post::type('offers')->status('publish');
-        if ($request->has('offer')) {
-            $searchTerm = $request->input('offer');
-            $query->where(function ($subQuery) use ($searchTerm) {
-                $subQuery->where('post_title', 'like', '%' . $searchTerm . '%');
-            });
-        }
-        if ($request->sort) {
-            try {
-                $paginated_offers = Post::type('offers')->status('publish')
-                ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
-                ->where('postmeta.meta_key', '_offer_value')
-                ->orderBy('postmeta.meta_value', 'DESC')
-                ->paginate(20);
-            } catch (\Throwable $th) {
-                $paginated_offers = $query->latest()->paginate(20);
-                dd("err",$paginated_offers, $th);
+        $cacheKey = 'offers_' . md5($request->fullUrl() . json_encode($request->all()));
+        error_log("\n Offer Lists : ".$cacheKey." \n");
+        $paginated_offers = Cache::remember($cacheKey, 5000, function () use($request) {
+            $query = Post::type('offers')->status('publish');
+            if ($request->has('offer')) {
+                $searchTerm = $request->input('offer');
+                $query->where(function ($subQuery) use ($searchTerm) {
+                    $subQuery->where('post_title', 'like', '%' . $searchTerm . '%');
+                });
             }
-        } else {
-            $paginated_offers = $query->latest()->paginate(20);
-        }
+            if ($request->sort) {
+                try {
+                    return Post::type('offers')->status('publish')
+                    ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
+                    ->where('postmeta.meta_key', '_offer_value')
+                    ->orderBy('postmeta.meta_value', 'DESC')
+                    ->paginate(20);
+                } catch (\Throwable $th) {
+                    return $query->latest()->paginate(20);
+                }
+            } else {
+                return $query->latest()->paginate(20);
+            }
+        });
         return view('offers', compact('paginated_offers'));
     }
 
     public function api(Request $request)
     {
-        $query = Post::type('offers')->status('publish');
-        if ($request->has('offer')) {
-            $searchTerm = $request->input('offer');
-            $query->where(function ($subQuery) use ($searchTerm) {
-                $subQuery->where('post_title', 'like', '%' . $searchTerm . '%');
-            });
-        }
-        if ($request->sort) {
-            try {
-                $paginated_offers = Post::type('offers')->status('publish')
-                ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
-                ->where('postmeta.meta_key', '_offer_value')
-                ->orderBy('postmeta.meta_value', 'DESC')
-                ->paginate(20);
-            } catch (\Throwable $th) {
-                $paginated_offers = $query->latest()->paginate(20);
-                dd("err",$paginated_offers, $th);
+        $cacheKey = 'offers_' . md5($request->fullUrl() . json_encode($request->all()));
+        error_log("\n API :: Offer Lists : ".$cacheKey." \n");
+        $paginated_offers = Cache::remember($cacheKey, 5000, function () use($request) {
+            error_log("\n API :: Cache Expires \n");
+            $query = Post::type('offers')->status('publish');
+            if ($request->has('offer')) {
+                $searchTerm = $request->input('offer');
+                $query->where(function ($subQuery) use ($searchTerm) {
+                    $subQuery->where('post_title', 'like', '%' . $searchTerm . '%');
+                });
             }
-        } else {
-            $paginated_offers = $query->latest()->paginate(20);
-        }
+            if ($request->sort) {
+                try {
+                    return Post::type('offers')->status('publish')
+                    ->join('postmeta', 'posts.ID', '=', 'postmeta.post_id')
+                    ->where('postmeta.meta_key', '_offer_value')
+                    ->orderBy('postmeta.meta_value', 'DESC')
+                    ->paginate(20);
+                } catch (\Throwable $th) {
+                    return $query->latest()->paginate(20);
+                }
+            } else {
+                return $query->latest()->paginate(20);
+            }
+        });
         return response()->json(['paginated_offers'=>$paginated_offers]);
     }
 

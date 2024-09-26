@@ -6,16 +6,19 @@
 // هناك الحل الاسرع وهو ان نضيف الاسئلة في كود الموقع بحث لن تتطلب اي اتصال بالانترنت ولاكن ستفقد ميزة التخصيص الاسئلة مستقبلا
 // ادا كانت اسئلة المتاجر ستتكرر فالافضل تضمينها في كود الموقع لأفضل سرعة ممكنة
 
-
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Corcel\Model\Post;
 
 Route::get('/', function () {
-    $paginated_ncoupons = Post::type('ncoupons')->status('publish')->latest()->take(6)->get();
-    foreach ($paginated_ncoupons as $coupon) {
-        $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->first();
-        $coupon->store = $store;
-    }
+    $paginated_ncoupons = Cache::remember('paginated_ncoupons_home', 5000, function () {
+        $pagcop = Post::type('ncoupons')->status('publish')->latest()->take(12)->get();
+        foreach ($pagcop as $coupon) {
+            $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->first();
+            $coupon->store = $store;
+        }
+        return $pagcop;
+    });
     return view('home', compact('paginated_ncoupons'));
 })->name('home');
 

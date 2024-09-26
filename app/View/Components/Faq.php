@@ -6,6 +6,7 @@ use Closure;
 use Corcel\Model\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Cache;
 
 class Faq extends Component
 {
@@ -32,7 +33,9 @@ class Faq extends Component
      */
     private function getFaqItems()
     {
-        // Adjust this query based on your needs
-        return Post::type('faqs')->status('publish')->get();
+        $faq_items = Cache::remember('faq_items', 5000, function () {
+            return Post::type('faqs')->status('publish')->get();
+        });
+        return $faq_items;
     }
 }
