@@ -33,7 +33,7 @@ class Faq extends Component
      */
     private function getFaqItems()
     {
-        $faq_items = Cache::remember('faq_items', 5000, function () {
+        $faq_items = Cache::remember('faq_items', 300, function () {
             return Post::type('faqs')->status('publish')->get();
         });
         return $faq_items;

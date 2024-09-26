@@ -35,7 +35,7 @@ class Carousel extends Component
      */
     private function getCarouselItems()
     {
-        $slides = Cache::remember('slides_items', 5000, function () {
+        $slides = Cache::remember('slides_items', 300, function () {
             return Post::type('slides')->status('publish')->get();
         });
         // dd($slides);

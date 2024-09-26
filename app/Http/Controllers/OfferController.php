@@ -20,7 +20,7 @@ class OfferController extends Controller
     {
         $cacheKey = 'offers_' . md5($request->fullUrl() . json_encode($request->all()));
         error_log("\n Offer Lists : ".$cacheKey." \n");
-        $paginated_offers = Cache::remember($cacheKey, 5000, function () use($request) {
+        $paginated_offers = Cache::remember($cacheKey, 300, function () use($request) {
             $query = Post::type('offers')->status('publish');
             if ($request->has('offer')) {
                 $searchTerm = $request->input('offer');
@@ -49,7 +49,7 @@ class OfferController extends Controller
     {
         $cacheKey = 'offers_' . md5($request->fullUrl() . json_encode($request->all()));
         error_log("\n API :: Offer Lists : ".$cacheKey." \n");
-        $paginated_offers = Cache::remember($cacheKey, 5000, function () use($request) {
+        $paginated_offers = Cache::remember($cacheKey, 300, function () use($request) {
             error_log("\n API :: Cache Expires \n");
             $query = Post::type('offers')->status('publish');
             if ($request->has('offer')) {

@@ -32,7 +32,7 @@ class Aside extends Component
      */
     private function getLastStores()
     {
-        $lastStores = Cache::remember('last_stores', 5000, function () {
+        $lastStores = Cache::remember('last_stores', 300, function () {
             return Post::type('stores')->status('publish')->latest()->take(5)->get();
         });
         return $lastStores;
@@ -42,7 +42,7 @@ class Aside extends Component
      */
     private function getTopStores()
     {
-        $topStores = Cache::remember('top_stores', 5000, function () {
+        $topStores = Cache::remember('top_stores', 300, function () {
             return Post::type('stores')
             ->status('publish')
             ->hasMeta('_store_pined', 'on')

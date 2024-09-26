@@ -24,12 +24,12 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Cache::remember('stores_categories', 5000, function () {
+        $categories = Cache::remember('stores_categories', 300, function () {
             return Taxonomy::where('taxonomy', 'storecategory')->get();
         });
 
         $cacheKey = 'stores_list_' . md5($request->fullUrl() . json_encode($request->all()));
-        $stores = Cache::remember($cacheKey, 5000, function () use($request) {
+        $stores = Cache::remember($cacheKey, 300, function () use($request) {
             if(isset($request->search)){
                 return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->paginate(36);
             }else{
@@ -54,13 +54,13 @@ class StoreController extends Controller
      */
     public function single(string $name)
     {
-        $store = Cache::remember('store_'.md5($name), 5000, function () use($name) {
+        $store = Cache::remember('store_'.md5($name), 300, function () use($name) {
             return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->firstOrFail();
         });
-        $coupons = Cache::remember('coupons_'.md5($name), 5000, function () use($name) {
+        $coupons = Cache::remember('coupons_'.md5($name), 300, function () use($name) {
             return Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(360);
         });
-        $stats = Cache::remember('stats_'.md5($name), 5000, function () use($name) {
+        $stats = Cache::remember('stats_'.md5($name), 300, function () use($name) {
             $rate = DB::table('reviews')
             ->where('storeName', $name)
             ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')

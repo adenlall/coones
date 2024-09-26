@@ -37,7 +37,7 @@ class Rate extends Component
     private function getFaqItems($store)
     {
         $store = $this->store;
-        $percentage = Cache::remember('slides', 5000, function () use($store) {
+        $percentage = Cache::remember('slides', 300, function () use($store) {
             $totalReviews = Review::where('storeName', $store)->count();
             $positiveReviews = Review::where('storeName', $store)
                 ->where('review', '1')

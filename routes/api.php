@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 
 Route::get('/stores', function (Request $request) {
     $cacheKey = 'api_store_item_' . md5($request->fullUrl() . json_encode($request->all()));
-    $stores = Cache::remember($cacheKey, 5000, function () use($request) {
+    $stores = Cache::remember($cacheKey, 300, function () use($request) {
         if (isset($request->category)) {
             return Post::published()->type('stores')
             ->whereHas('taxonomies', function($query) use($request) {
