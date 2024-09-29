@@ -21,7 +21,7 @@
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
         <!-- Navbar -->
-        <div class="bg-base-100">
+        <div itemscope itemtype="https://schema.org/SiteNavigationElement" class="bg-base-100">
             <x-navbar />
         </div>
         <!-- Page content here -->
