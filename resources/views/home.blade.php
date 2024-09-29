@@ -12,7 +12,7 @@
         <div class="w-full flex justify-center items-center ccontainer m-auto">
             <hr class="md:block hidden h-2 border-gray-400 w-1/3 mt-[6px]"/>
             <h1 class="md:text-lg text-[11px] font-[700!important] w-full md:font-[400!important] md:mx-8 mx-0 outline text-center m-auto outline-1 p-1 rounded-full">
-                {{env('APP_NAME')}} - احدث كود خصم وكوبون فعال لكل المواقع
+                كوبون على السريع - احدث كود خصم وكوبون فعال لكل المواقع
             </h1>
             <hr class="md:block hidden h-2 border-gray-400 w-1/3 mt-[6px]"/>
         </div>
