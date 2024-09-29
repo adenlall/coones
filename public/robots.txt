@@ -1,2 +1,15 @@
 User-agent: *
 Disallow:
+
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-login.php
+Disallow: /wp-register.php
+
+User-agent: Googlebot-Image
+Allow: /wp-content/uploads/
+
+User-agent: bingbot
+Crawl-delay: 10
+
+Sitemap: https://coral-quetzal-195094.hostingersite.com/blog/sitemap_index.xml

@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div itemscope itemtype="https://schema.org/FAQPage" class="ccontainer p-2 w-full full-width my-4">
+    <div class="ccontainer p-2 w-full full-width my-4">
         <h2 class="text-3xl my-4">
             أحدث الكوبونات
         </h2>
@@ -44,7 +44,7 @@
     </div>
 
 
-    <div class="ccontainer p-2 w-full m-auto my-4">
+    <div itemscope itemtype="https://schema.org/FAQPage" class="ccontainer p-2 w-full m-auto my-4">
         <h2 class="text-3xl my-4">
             الأسئلة الشائعة
         </h2>
