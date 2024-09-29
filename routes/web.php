@@ -40,6 +40,32 @@ Route::get('/auto-replay', function () {
     return view('bots');
 })->name('autoreplay');
 
+Route::get('/privacy', function () {
+    
+    SEOTools::setTitle('سياسة الخصوصية - كوبون على السريع');
+    SEOTools::setDescription("استكشف سياسة الخصوصية على كوبون على السريع. احصل على تحديثات فورية حول العروض والخصومات عبر بوتنا في تيليجرام وكن دائماً على اطلاع بأفضل الكوبونات.");
+    SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/privacy');
+    SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/privacy');
+    SEOTools::opengraph()->addProperty('type', 'product.group');
+    SEOTools::twitter()->setSite('@COSN275');
+    SEOTools::addImages('https://cosn275.com/wp-content/uploads/2023/05/6603270-1024x1010.png');
+
+    return view('privacy');
+})->name('privacy');
+
+Route::get('/contact', function () {
+    
+    SEOTools::setTitle('تواصل معنا - كوبون على السريع');
+    SEOTools::setDescription("استكشف تواصل معنا على كوبون على السريع. احصل على تحديثات فورية حول العروض والخصومات عبر بوتنا في تيليجرام وكن دائماً على اطلاع بأفضل الكوبونات.");
+    SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/privacy');
+    SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/privacy');
+    SEOTools::opengraph()->addProperty('type', 'product.group');
+    SEOTools::twitter()->setSite('@COSN275');
+    SEOTools::addImages('https://cosn275.com/wp-content/uploads/2023/05/6603270-1024x1010.png');
+
+    return view('contact');
+})->name('contact');
+
 Route::post('/review', [\App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
 Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index'])->name('store.index');
 Route::get('/store/{name}', [\App\Http\Controllers\StoreController::class, 'single'])->name('store.single');

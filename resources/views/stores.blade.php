@@ -30,7 +30,7 @@
             </div>
         </div>
         </div>
-        <div class="ccontainer m-auto w-full full-width">
+        <div class="ccontainer m-auto w-full full-width min-h-[50vh]">
         @isset($stores)
         <ul id="offerlist" class="grid grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-5 md:px-0 px-2">
             @foreach($stores as $store)
