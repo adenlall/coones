@@ -6,10 +6,11 @@ use App\Http\Requests\StoreStoreRequest;
 use App\Http\Requests\UpdateStoreRequest;
 use App\Models\Store;
 use Corcel\Model\Taxonomy;
-use Corcel\Model\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class StoreController extends Controller
 {
@@ -24,16 +25,19 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Cache::remember('stores_categories', 300, function () {
+        // $dd = Store::type('stores')->status('publish')->first();
+        // dd($dd->thumbnail()->with(''));
+
+        $categories = Cache::remember('stores_categories_items', 300, function () {
             return Taxonomy::where('taxonomy', 'storecategory')->get();
         });
 
-        $cacheKey = 'stores_list_' . md5($request->fullUrl() . json_encode($request->all()));
+        $cacheKey = 'store_items_' . md5($request->fullUrl() . json_encode($request->all()));
         $stores = Cache::remember($cacheKey, 300, function () use($request) {
             if(isset($request->search)){
-                return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->paginate(36);
+                return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->with('thumbnail')->paginate(36);
             }else{
-                return Post::type('stores')->status('publish')->paginate(36);
+                return Post::type('stores')->status('publish')->with('thumbnail')->paginate(36);
             }
             if (isset($request->category)) {
                 return Post::published()
@@ -42,7 +46,7 @@ class StoreController extends Controller
                         ->whereHas('term', function($query) use($request) {
                             $query->where('slug', urlencode($request->category));
                         });
-                })
+                })->with('thumbnail')
                 ->paginate(36);
             }
         });
@@ -55,12 +59,12 @@ class StoreController extends Controller
     public function single(string $name)
     {
         $store = Cache::remember('store_'.md5($name), 300, function () use($name) {
-            return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->firstOrFail();
+            return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->with('thumbnail')->firstOrFail();
         });
-        $coupons = Cache::remember('coupons_'.md5($name), 300, function () use($name) {
+        $coupons = Cache::remember('store_coupons_'.md5($name), 300, function () use($name) {
             return Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(360);
         });
-        $stats = Cache::remember('stats_'.md5($name), 300, function () use($name) {
+        $stats = Cache::remember('store_stats_'.md5($name), 300, function () use($name) {
             $rate = DB::table('reviews')
             ->where('storeName', $name)
             ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')

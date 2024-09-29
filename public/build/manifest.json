@@ -1,21 +1,21 @@
 {
   "public/blog/wp-content/themes/coupon-theme/style.css": {
-    "file": "assets/style-CIiSl223.css",
+    "file": "assets/style-BidoU-4y.css",
     "src": "public/blog/wp-content/themes/coupon-theme/style.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-CUy75xGf.css",
+    "file": "assets/app-D2HZa5aC.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-WdNrdYWg.js",
+    "file": "assets/app-BQW7Zg3h.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-CadXE96n.css"
+      "assets/app-BswZJUt7.css"
     ]
   }
 }

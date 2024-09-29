@@ -80,7 +80,7 @@
                     <div style="background:${image?`url(${image})`:''}; background-size:cover; background-position:center;aspect-ratio: 800 / 400;" class="w-full border-accent border-[3px] border-r-[7px] bg-primary max-h-[400px] max-w-[800px]"></div>    
                         <div class="p-2 pr-4 w-full flex flex-col justify-between h-full">
                             <div class="w-full space-y-2">
-                                <span class="text-gray-700 font-bold">تاريخ النشر : ${created}</span>
+                                <span class="text-gray-600 font-bold opacity-50">تاريخ النشر : ${created}</span>
                                 <span class='badge badge-primary mx-2 font-bold'>خصم ${value}%</span>
                                 <h3 class="text-lg font-bold">${title}</h3>
                             </div>

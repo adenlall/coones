@@ -2,20 +2,20 @@
     <x-slot:title>
         الصفحة الرئيسية
     </x-slot>
-    <div class="m-auto w-full">
+    <div itemscope itemtype="https://schema.org/Organization" class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <div class="w-full ccontainer m-auto">
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
-                        <img class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}"/>
-                        <button onclick="window.location.href='/store/{{$store->_store_name}}'" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</button>
+                        <img itemprop="logo" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}"/>
+                        <a itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                     </div>
                     <div class="w-full h-full">
-                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
                         <div class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
-                            <div class="flex items-center">
+                            <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
                                 <div class="rating rating-half mr-1">
                                     <input disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
                                     <input disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=1?'checked':''}} />
@@ -24,14 +24,14 @@
                                     <input disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
                                 </div>
                                 <span class="mr-1">
-                                    {{$rate}} / 5
+                                    <span itemprop="ratingValue">{{$rate}}</span> / 5
                                 </span>
                                 <span class="mr-1" id="totale-rates">
-                                    {{"("}} {{$totalrate+((int)$store->_store_stars)}} تقييم {{")"}}
+                                    {{"("}} <span itemprop="reviewCount">{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
                                 </span>
                             </div>
                         </div>
-                        <p>
+                        <p itemprop="description">
                             {{$store->_store_description}}
                         </p>
                     </div>
@@ -46,10 +46,10 @@
                 @if(count($coupons))
                     <ul class="flex-center-col gap-4 mb-4">
                     @foreach($coupons as $coupon)
-                        <div class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
+                        <div itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
                             <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
-                                <h3 class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
+                                <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
                                 <div class="md:w-auto w-full md:p-0 px-3" dir="ltr">
                                     @if($coupon->_ncoupon_type==="3")
                                         <a href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <hr class="md:mt-0 mt-2 mb-2"/>
-                            <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
+                            <p itemprop="description" id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
                                 @php echo $coupon->content @endphp
                             </p>
                             <div>
@@ -108,12 +108,12 @@
                 @endif
                 <x-paginator :paginator="$coupons" />
                 <div class="w-full">
-                    <div class="prose-md">
+                    <div itemprop="detailedDescription" itemscope itemtype="https://schema.org/CreativeWork" class="prose-md">
                         @php
                             $content = $store->content;
                             $parsed = str_replace('$$$', '<div style="width:calc(100% + 16px); margin-right:-8px;" class="separator w-full bg-base-200 p-2 my-2"></div>', $content);
                         @endphp
-                        <div class="bg-base-100 mb-4 p-2 rounded-md">
+                        <div itemprop="text" class="bg-base-100 mb-4 p-2 rounded-md">
                             @php echo $parsed @endphp
                         </div>
                     </div>

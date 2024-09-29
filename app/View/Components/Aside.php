@@ -2,7 +2,7 @@
 namespace App\View\Components;
 
 use Closure;
-use Corcel\Model\Post;
+use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Cache;

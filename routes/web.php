@@ -8,13 +8,24 @@
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
-use Corcel\Model\Post;
+use App\Models\Post;
+use Spatie\Sitemap\Sitemap;
+
+Route::get('map', function() {
+    dd(Post::type('stores')->status('publish')->first());
+    $file = public_path('sitemap.xml');
+    $dd = Sitemap::create()
+    ->add(Post::type('stores')->status('publish')->get())
+    ->writeToFile($file);
+    dd($dd);
+    return "Ok~~~";
+});
 
 Route::get('/', function () {
     $paginated_ncoupons = Cache::remember('paginated_ncoupons_home', 300, function () {
         $pagcop = Post::type('ncoupons')->status('publish')->latest()->take(12)->get();
         foreach ($pagcop as $coupon) {
-            $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->first();
+            $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->with('thumbnail')->first();
             $coupon->store = $store;
         }
         return $pagcop;

@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class="hidden md:block bg-primary">
-    <div class="m-auto ccontainer p-0 w-full">
+    <div itemscope itemtype="https://schema.org/SiteNavigationElement" class="m-auto ccontainer p-0 w-full">
         <ul class="menu menu-horizontal px-1 gap-2 pr-2">
             <x-nav-menu/>
         </ul>

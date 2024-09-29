@@ -1,10 +1,8 @@
-<div id="card_{{$id}}_p" class="flex flex-col justify-between items-center shadow-md shadow-black/30 rounded-md bg-base-100 p-3 space-y-2 w-full">
+<div itemscope itemtype="https://schema.org/Offer" id="card_{{$id}}_p" class="flex flex-col justify-between items-center shadow-md shadow-black/30 rounded-md bg-base-100 p-3 space-y-2 w-full">
     <div class="w-full space-y-2">
-    <div class="flex flex-row items-center justify-between w-full">
-        <a href="{{'/store/'.$store->_store_name}}"><img class="w-[135px] h-[68px] rounded-md" src="{{$store->thumbnail}}"/></a>
+    <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
+        <a itemprop="url" href="{{'/store/'.$store->_store_name}}"><img itemprop="logo" class="w-[135px] h-[68px] rounded-md" src="{{$store->thumbnail}}"/></a>
         <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
-            {{--<span class="badge badge-error py-3 px-3 gap-1"> جديد<x-pepicon-fire class="w-4 h-4"/></span>--}}
-            {{--<span class="badge badge-warning py-3 px-3 gap-1"> مميز<x-pepicon-stars class="w-4 h-4"/></span>--}}
             <x-tabler-share class="hover:bg-base-200/80 rounded-full h-8 w-8 p-1 cursor-pointer" />
         </div>
     </div>
@@ -12,7 +10,7 @@
     </div>
     <x-coupon-modal :store="$store" :link="$link" :id="$id" :title="$title" :desc="$desc" :code="$code" />
     <x-share-modal :id="$id" :title="$title" :url="urlencode('http://localhost/store/'.$store->_store_name)" />
-    <h2 class="text-xl text-right w-full h-full">{{$title}}</h2>
+    <h2 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h2>
     <hr class="border-base-content/30 w-full"/>
     <div class="w-full space-y-2">
         <a href="/store/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>

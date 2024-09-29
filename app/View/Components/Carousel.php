@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use Closure;
-use Corcel\Model\Post;
+use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\CarouselItem; // Assuming you have a CarouselItem model
@@ -36,7 +36,7 @@ class Carousel extends Component
     private function getCarouselItems()
     {
         $slides = Cache::remember('slides_items', 300, function () {
-            return Post::type('slides')->status('publish')->get();
+            return Post::type('slides')->status('publish')->with('thumbnail')->get();
         });
         // dd($slides);
         return $slides;

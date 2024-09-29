@@ -5,6 +5,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <!-- 
+        TODO:
+         * add all meta tags < Description Opengraph Twitter >
+         * DONE :: add sitemap.xml
+         * add Schema.org
+         * add Language Doctype Encodingc Canonical Robots Tags 
+     -->
     @vite('resources/css/app.css')
     @stack('styles')
 </head>
