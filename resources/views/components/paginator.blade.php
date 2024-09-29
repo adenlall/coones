@@ -14,7 +14,7 @@
                     @if ($page == $paginator->currentPage())
                         <span class="active btn btn-primary">{{ $page }}</span>
                     @else
-                        <a href="{{ $url }}">{{ $page }}</a>
+                        <a aria-label="{{ $url }}" href="{{ $url }}">{{ $page }}</a>
                     @endif
                 @endforeach
             @endif

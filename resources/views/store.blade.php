@@ -6,7 +6,7 @@
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
                         <img itemprop="logo" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}"/>
-                        <a itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
+                        <a aria-label="زيارة المتجر" itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                     </div>
                     <div class="w-full h-full">
                         <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
@@ -14,11 +14,11 @@
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
                             <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
                                 <div class="rating rating-half mr-1">
-                                    <input disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
-                                    <input disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=1?'checked':''}} />
-                                    <input disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=2?'checked':''}} />
-                                    <input disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=3?'checked':''}} />
-                                    <input disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
+                                    <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
+                                    <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=1?'checked':''}} />
+                                    <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=2?'checked':''}} />
+                                    <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=3?'checked':''}} />
+                                    <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
                                 </div>
                                 <span class="mr-1">
                                     <span itemprop="ratingValue">{{$rate}}</span> / 5
@@ -56,7 +56,7 @@
                                 <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
                                 <div class="md:w-auto w-full md:p-0 px-3" dir="ltr">
                                     @if($coupon->_ncoupon_type==="3")
-                                        <a href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
+                                        <a aria-label="الحصول على العرض" href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
                                             الحصول على العرض
                                         </a>
                                     @elseif($coupon->_ncoupon_type==="1")

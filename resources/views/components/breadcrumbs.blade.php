@@ -3,7 +3,7 @@
   <ul>
       @foreach($items as $index => $item)
           @if(isset($item['path']))
-              <li><a href="{{$item['path']}}">{{$item['name']}}</a></li>
+              <li><a aria-label="{{$item['path']}}" href="{{$item['path']}}">{{$item['name']}}</a></li>
           @else
             <li>{{$item['name']}}</li>
           @endif

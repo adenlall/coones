@@ -35,7 +35,7 @@
         <ul id="offerlist" class="grid grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-5 md:px-0 px-2">
             @foreach($stores as $store)
                 <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
-                    <a itemscope itemtype="https://schema.org/Organization" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
+                    <a aria-label="{{$store->_store_name}}" itemscope itemtype="https://schema.org/Organization" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <div class="my-5">
                             <img itemprop="logo" class="w-[135px] h-[68px] rounded-md m-auto" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->_store_name}}"/>
                         </div>

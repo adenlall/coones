@@ -16,7 +16,7 @@
             }
         handler()" class="bg-accent cursor-pointer rounded-full text-accent-content p-2 text-lg font-bold px-6">نسخ</div>
         </div>
-        <p class="text-md mb-6">قم بنسخ الكود وألصقه في <a class="underline text-purple-900" target="_blank" href="{{$link?$link:$store->_store_url}}">{{$store->_store_name}}</a></p>
+        <p class="text-md mb-6">قم بنسخ الكود وألصقه في <a class="underline text-purple-900" target="_blank" href="{{$link?$link:$store->_store_url}}" aria-label="{{$store->_store_name}}">{{$store->_store_name}}</a></p>
         <x-rate :id="$id" :store="$store->_store_name" />
 
         <form method="dialog" class="absolute p-2 top-0 left-0">

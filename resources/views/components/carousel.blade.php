@@ -23,7 +23,7 @@
         <div class="swiper  w-full h-full rounded-box" style="width:100% !important; height:100% !important;">
             <div style="width:100% !important; height:100% !important; padding:0 !important;" class="swiper-wrapper w-full h-full rounded-box">
                 @foreach($items as $slide)
-                    <a target="_blank" href="{{$slide->_slide_url}}" id="{{$slide->ID}}" class="swiper-slide" style="width:100% !important; height:100% !important; margin:0 !important;">
+                    <a aria-label="زيارة العرض" target="_blank" href="{{$slide->_slide_url}}" id="{{$slide->ID}}" class="swiper-slide" style="width:100% !important; height:100% !important; margin:0 !important;">
                         <div style="background: url('{{ $slide->_slide_image}}') center; background-size: cover" class="p-4 bg-accent rounded-box text-3xl w-full h-full"></div>
                     </a>
                 @endforeach

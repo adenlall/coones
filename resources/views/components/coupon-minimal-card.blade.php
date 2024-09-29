@@ -17,10 +17,10 @@
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="flex flex-wrap gap-2 p-2 md:w-auto w-full justify-center">
                 @if(isset($store)&&$store)
-                    <a itemprop="url" href="/store/{{$store}}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent z-10 rounded-full">كود خصم اضافي</a>
+                    <a aria-label="كود خصم اضافي" itemprop="url" href="/store/{{$store}}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent z-10 rounded-full">كود خصم اضافي</a>
                 @endif
                 @if(isset($link)&&$link)
-                    <a itemprop="url" target="_blank" href="{{$link}}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent z-10 rounded-full">زيارة العرض</a>
+                    <a aria-label="زيارة العرض" itemprop="url" target="_blank" href="{{$link}}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent z-10 rounded-full">زيارة العرض</a>
                 @endif
             </div>
         </div>

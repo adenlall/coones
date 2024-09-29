@@ -29,7 +29,7 @@
 <body class="bg-base-200">
 
 <div class="drawer">
-    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+    <input aria-label="فتح القائمة الجانبية" id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
         <!-- Navbar -->
         <div itemscope itemtype="https://schema.org/SiteNavigationElement" class="bg-base-100">

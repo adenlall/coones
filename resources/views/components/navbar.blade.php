@@ -19,7 +19,7 @@
     </div>
     <div class="flex-none">
         <form action="{{route('store.index')}}" class="join m-0 ml-2 md:ml-6">
-            <input value="{{app('request')->input('search')}}" name="search" class="input input-bordered join-item w-[9em]" placeholder="بحث …" />
+            <input aria-label="بحث" value="{{app('request')->input('search')}}" name="search" class="input input-bordered join-item w-[9em]" placeholder="بحث …" />
             <button aria-label="بحث" type="submit" class="btn join-item rounded-r-full btn-primary">بحث</button>
         </form>
     </div>

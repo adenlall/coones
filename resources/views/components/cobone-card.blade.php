@@ -1,7 +1,7 @@
 <div itemscope itemtype="https://schema.org/Offer" id="card_{{$id}}_p" class="flex flex-col justify-between items-center shadow-md shadow-black/30 rounded-md bg-base-100 p-3 space-y-2 w-full">
     <div class="w-full space-y-2">
     <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
-        <a itemprop="url" href="{{'/store/'.$store->_store_name}}"><img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/></a>
+        <a aria-label="زيارة العرض" itemprop="url" href="{{'/store/'.$store->_store_name}}"><img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/></a>
         <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
             <x-tabler-share class="hover:bg-base-200/80 rounded-full h-8 w-8 p-1 cursor-pointer" />
         </div>
@@ -13,10 +13,10 @@
     <h2 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h2>
     <hr class="border-base-content/30 w-full"/>
     <div class="w-full space-y-2">
-        <a href="/store/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
+        <a aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
         <div class="w-full" dir="ltr">
             @if($type==="3" && isset($link))
-                <a href="{{$link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
+                <a aria-label="الحصول على العرض" href="{{$link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
                     الحصول على العرض
                 </a>
             @elseif($type==="1" && isset($link))
