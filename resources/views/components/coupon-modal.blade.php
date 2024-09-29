@@ -20,10 +20,10 @@
         <x-rate :id="$id" :store="$store->_store_name" />
 
         <form method="dialog" class="absolute p-2 top-0 left-0">
-            <button class="btn rounded-sm btn-circle btn-sm"><x-tabler-x /></button>
+            <button aria-label="اغلاق" class="btn rounded-sm btn-circle btn-sm"><x-tabler-x /></button>
         </form>
     </div>
     <form method="dialog" class="modal-backdrop absolute top-0">
-        <button>اغلاق</button>
+        <button aria-label="اغلاق" >اغلاق</button>
     </form>
 </dialog>

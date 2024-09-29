@@ -16,10 +16,10 @@
             </h1>
         @endif
         <div class="flex gap-3 mb-4">
-            <button id="all" onclick="getData('all')" class="cat-item {{app('request')->input('sort') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
+            <button aria-label="الأحدث" id="all" onclick="getData('all')" class="cat-item {{app('request')->input('sort') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
                 الاحدث
             </button>
-            <button id="top" onclick="getData('top')" class="cat-item {{app('request')->input('sort') === 'top' ? 'text-accent border-accent font-bold border-[3px]' : ''}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
+            <button aria-label="اقوى الخصومات" id="top" onclick="getData('top')" class="cat-item {{app('request')->input('sort') === 'top' ? 'text-accent border-accent font-bold border-[3px]' : ''}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
                 اقوى الخصومات
             </button>
         </div>

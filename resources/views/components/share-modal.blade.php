@@ -119,10 +119,10 @@
         </a>
         </ul>
         <form method="dialog" class="absolute p-2 top-0 left-0">
-            <button class="btn btn-circle btn-sm"><x-tabler-x /></button>
+            <button aria-label="اغلاق" class="btn btn-circle btn-sm"><x-tabler-x /></button>
         </form>
     </div>
     <form method="dialog" class="modal-backdrop">
-        <button>اغلاق</button>
+        <button aria-label="اغلاق" >اغلاق</button>
     </form>
 </dialog>
