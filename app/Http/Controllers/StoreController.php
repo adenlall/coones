@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class StoreController extends Controller
 {
@@ -25,8 +26,14 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        // $dd = Store::type('stores')->status('publish')->first();
-        // dd($dd->thumbnail()->with(''));
+
+        SEOTools::setTitle('جميع المتاجر والكوبونات - كوبون على السريع');
+        SEOTools::setDescription("تصفح جميع المتاجر والكوبونات المتاحة على كوبون على السريع. احصل على خصومات حصرية وعروض مميزة من متاجر متنوعة لتوفير المزيد على مشترياتك.");
+        SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/store');
+        SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/store');
+        SEOTools::opengraph()->addProperty('type', 'product.group');
+        SEOTools::twitter()->setSite('@COSN275');
+        SEOTools::addImages('https://coral-quetzal-195094.hostingersite.com/logo.webp');
 
         $categories = Cache::remember('stores_categories_items', 300, function () {
             return Taxonomy::where('taxonomy', 'storecategory')->get();
@@ -58,6 +65,14 @@ class StoreController extends Controller
      */
     public function single(string $name)
     {
+
+        SEOTools::setTitle('متجر'. $name .' - كوبون على السريع');
+        SEOTools::setDescription("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.");
+        SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/store/'.$name);
+        SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/store/'.$name);
+        SEOTools::opengraph()->addProperty('type', 'product.item');
+        SEOTools::twitter()->setSite('@COSN275');
+
         $store = Cache::remember('store_'.md5($name), 300, function () use($name) {
             return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->with('thumbnail')->firstOrFail();
         });
@@ -72,6 +87,9 @@ class StoreController extends Controller
             $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
             return ['rate'=>$rate, 'average'=>$average];
         });
+
+        SEOTools::addImages($store->thumbnail);
+
         return view('store')->with([
             'store'=>$store,
             'rate'=>$this->percentageToStars($stats['average']),

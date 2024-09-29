@@ -1,10 +1,12 @@
-<html data-theme="cobones" dir="rtl">
+<!DOCTYPE html>
+<html data-theme="cobones" lang="ar" dir="rtl">
 <head>
+    <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>{{ $title }} - كوبون على السريع</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    {!! SEO::generate() !!}
     <!-- 
         TODO:
          * add all meta tags < Description Opengraph Twitter >

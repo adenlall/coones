@@ -1,8 +1,4 @@
 <x-layout>
-    <x-slot:title>
-        الصفحة الرئيسية
-    </x-slot>
-
     <div class="flex md:flex-row bg-base-100 flex-col w-full gap-4 items-center justify-center p-8">
         <img style="width:30em;" src="https://cosn275.com/wp-content/uploads/2023/05/6603270-1024x1010.png" alt="صورة بوت كوبون على السريع">
         <div class="text-center">

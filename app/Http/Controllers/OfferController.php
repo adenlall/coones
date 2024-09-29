@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class OfferController extends Controller
 {
@@ -18,6 +19,15 @@ class OfferController extends Controller
      */
     public function index(Request $request)
     {
+
+        SEOTools::setTitle('جميع العروض والخصومات - كوبون على السريع');
+        SEOTools::setDescription("استعرض جميع العروض والخصومات المتاحة على كوبون على السريع. احصل على أفضل الكوبونات والتخفيضات الفورية لتوفير المزيد على مشترياتك من مختلف المتاجر.");
+        SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/offers');
+        SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/offers');
+        SEOTools::opengraph()->addProperty('type', 'product.group');
+        SEOTools::twitter()->setSite('@COSN275');
+        SEOTools::addImages('https://coral-quetzal-195094.hostingersite.com/logo.webp');
+
         $cacheKey = 'offers_' . md5($request->fullUrl() . json_encode($request->all()));
         $paginated_offers = Cache::remember($cacheKey, 300, function () use($request) {
             $query = Post::type('offers')->status('publish')->with(['thumbnail', 'meta']);

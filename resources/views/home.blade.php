@@ -1,7 +1,4 @@
 <x-layout>
-    <x-slot:title>
-        الصفحة الرئيسية
-    </x-slot>
     <div class="bg-base-100 pb-6" style="padding:20px 0px 20px 0px;">
         <div class="w-full ccontainer m-auto flex mb-[15px] items-center justify-center gap-2 lg:gap-6 p-4">
             <x-carousel/>

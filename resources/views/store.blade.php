@@ -1,7 +1,4 @@
 <x-layout>
-    <x-slot:title>
-        الصفحة الرئيسية
-    </x-slot>
     <div itemscope itemtype="https://schema.org/Store" class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <div class="w-full ccontainer m-auto">

@@ -1,8 +1,4 @@
 <x-layout>
-    <x-slot:title>
-        الصفحة الرئيسية
-    </x-slot>
-
     <div itemscope itemtype="https://schema.org/ItemList" class="w-full bg-base-100 mb-6">
         <div class="ccontainer m-auto w-full">
             <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر']]"/>

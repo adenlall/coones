@@ -1,7 +1,4 @@
 <x-layout>
-    <x-slot:title>
-        الصفحة الرئيسية
-    </x-slot>
     <div class="w-full bg-base-100 mb-8 pb-4">
     <div class="ccontainer full-width bg-base-100" style="padding:0px 20px;">
         <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=> app('request')->input('sort') === 'top'?'أقوى العروض':'أحدث العروض']]"/>
