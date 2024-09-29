@@ -24,6 +24,7 @@
                 <meta itemprop="name" content="أحدث الكوبونات">
                 <meta itemprop="description" content="احدث كود خصم وكوبون فعال لكل المواقع">
                 @foreach($paginated_ncoupons as $ncoupon)
+                    <li>
                     <x-cobone-card
                         :id="$ncoupon->ID"
                         :title="$ncoupon->title"
@@ -33,6 +34,7 @@
                         :link="$ncoupon->_ncoupon_link"
                         :code="$ncoupon->_ncoupon_code"
                     />
+                    </li>
                 @endforeach
             </ul>
         @else
