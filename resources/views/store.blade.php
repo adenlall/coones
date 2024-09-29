@@ -38,6 +38,13 @@
                 </div>
             </div>
         </div>
+        <div style="width:0; height:0;" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" style="display: none;">
+            <span itemprop="streetAddress"></span>
+            <span itemprop="addressLocality"></span>
+            <span itemprop="addressRegion"></span>
+            <span itemprop="postalCode"></span>
+            <span itemprop="addressCountry"></span>
+        </div>
         <div class="ccontainer w-full flex items-start flex-col-reverse md:flex-row-reverse gap-5 p-4" style="padding-top:20px;">
             <div class="w-full md:w-[22em]">
                 <x-aside/>
