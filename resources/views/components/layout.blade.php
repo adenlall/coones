@@ -9,7 +9,7 @@
         TODO:
          * add all meta tags < Description Opengraph Twitter >
          * DONE :: add sitemap.xml
-         * add Schema.org
+         * DONE :: add Schema.org
          * add Language Doctype Encodingc Canonical Robots Tags 
      -->
     @vite('resources/css/app.css')
