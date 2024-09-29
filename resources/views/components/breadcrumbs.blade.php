@@ -1,13 +1,20 @@
 @isset($items)
-<div class="breadcrumbs text-sm p-0 pt-2 mt-3 overflow-hidden">
-  <ul>
+<nav aria-label="Breadcrumb" class="breadcrumbs text-sm p-0 pt-2 mt-3 overflow-hidden">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
       @foreach($items as $index => $item)
           @if(isset($item['path']))
-              <li><a aria-label="{{$item['path']}}" href="{{$item['path']}}">{{$item['name']}}</a></li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemscope itemtype="https://schema.org/Thing" itemprop="item" aria-label="{{$item['path']}}" href="{{$item['path']}}">
+                  <span itemprop="name">
+                    {{$item['name']}}
+                  </span>
+                </a>
+                <meta itemprop="position" content="{{$index+1}}" />
+              </li>
           @else
             <li>{{$item['name']}}</li>
           @endif
       @endforeach
-  </ul>
-</div>
+  </ol>
+</nav>
 @endisset

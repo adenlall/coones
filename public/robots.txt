@@ -13,3 +13,4 @@ User-agent: bingbot
 Crawl-delay: 10
 
 Sitemap: https://coral-quetzal-195094.hostingersite.com/blog/sitemap_index.xml
+Sitemap: https://coral-quetzal-195094.hostingersite.com/sitemaps/main.xml
