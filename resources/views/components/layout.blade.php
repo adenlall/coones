@@ -14,6 +14,14 @@
      -->
     @vite('resources/css/app.css')
     @stack('styles')
+    <div itemscope itemtype="https://schema.org/WebSite">
+        <meta itemprop="name" content="كوبون على السريع">
+        <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/">
+        <div itemscope itemprop="potentialAction" itemtype="https://schema.org/SearchAction">
+            <meta itemprop="target" content="https://coral-quetzal-195094.hostingersite.com/store?search={search_term_string}">
+            <meta itemprop="query-input" content="required name=search_term_string">
+        </div>
+    </div>
 </head>
 <body class="bg-base-200">
 
