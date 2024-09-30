@@ -3,14 +3,13 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                 <div itemscope itemtype="https://schema.org/Organization" class="mb-6 md:mb-0">
                   <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject" class="h-16 w-auto my-2">
-                    <img alt="شعار موقع كوبون على السريع" src="/logo.webp" class="h-16 w-auto" />
+                    <img itemprop="image" alt="شعار موقع كوبون على السريع" src="/logo.webp" class="h-16 w-auto" />
                     <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/logo.webp" />
                     <meta itemprop="width" content="145">
                     <meta itemprop="height" content="64">
                   </div>
                   <h2 itemprop="name" class="text-2xl font-bold mb-4">كوبون على السريع</h2>
                   <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/" />
-                  <meta itemprop="telephone" content="+966-5-555-5555" />
                   <div itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
                       <meta itemprop="contactType" content="اتصل بنا" />
                       <meta itemprop="email" content="admin@cosn275.com" />
