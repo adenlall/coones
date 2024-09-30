@@ -18,14 +18,14 @@
                       <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
-                          <a itemprop="item" href="https://example.com/dresses">
+                          <a itemprop="item" href="/contact">
                         <span itemprop="name">اتصل بنا</span></a>
                         <meta itemprop="position" content="1" />
                       </li>
                       <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-shield/>
-                          <a itemprop="item" href="https://example.com/dresses/real">
+                          <a itemprop="item" href="/privacy">
                         <span itemprop="name">سياسة الخصوصية</span></a>
                         <meta itemprop="position" content="2" />
                       </li>
@@ -33,67 +33,67 @@
                   </nav>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم مودانيسا
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/noon-discount-code/">
+                            كود خصم نون
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم فارفيتش
-                          </a>
-                        </h3>
-                        <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم شي ان
-                          </a>
-                        </h3>
-                        <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم امريكان ايجل
-                          </a>
-                        </h3>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/%d9%83%d9%88%d8%af-%d8%ae%d8%b5%d9%85-%d9%86%d9%85%d8%b4%d9%8a/">
                             كود خصم نمشي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم اتش اند ام
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/vogacloset-discount-code/">
+                            كود خصم فوغا كلوسيت
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم ريفي للمفاصل
-                          </a>
-                        </h3>
-                        <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم فورايفر كولسيت
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/iherb-discount-code/">
+                          كود خصم اي هيرب
                           </a>
                         </h3>
                     </div>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم أي هريب
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/sivvi-discount-code-2023/">
+                          كود خصم سيفي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم نوون
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/mumzworld-discount-code/">
+                          كود خصم ممزورلد
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم ممزورلد
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/styli-discount-code/">
+                          كود خصم ستايلي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="#">
-                            كود خصم مذركير الحبيب
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/bath-and-body-discount-code/">
+                          كود خصم باث اند بودي
+                          </a>
+                        </h3>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-2">
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/shein-discount-code/">
+                          كود خصم شي ان
+                          </a>
+                        </h3>
+                        <h3 class="font-semibold mb-2">
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/%d9%83%d9%88%d8%af-%d8%ae%d8%b5%d9%85-%d8%ac%d9%88%d9%8a-%d9%84%d9%84%d9%87%d8%af%d8%a7%d9%8a%d8%a7/">
+                          كود خصم جوي للهدايا
+                          </a>
+                        </h3>
+                        <h3 class="font-semibold mb-2">
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/%d9%83%d9%88%d8%af-%d8%ae%d8%b5%d9%85-%d8%aa%d8%b1%d9%8a%d9%86%d8%af%d9%8a%d9%88%d9%84/">
+                          كود خصم ترينديول
+                          </a>
+                        </h3>
+                        <h3 class="font-semibold mb-2">
+                          <a itemprop="url" href="https://cosn275.com/coupon-store/%d9%83%d9%88%d8%af-%d8%ae%d8%b5%d9%85-%d8%a7%d8%aa%d8%b4-%d8%a7%d9%86%d8%af-%d8%a7%d9%85/">
+                          كود خصم اتش اند ام
                           </a>
                         </h3>
                     </div>
