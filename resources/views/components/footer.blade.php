@@ -117,12 +117,4 @@
                 <p>Developed By <a class="underline" href="https://janah.pro">Janah Bilal</a></p>
             </div>
         </div>
-        <div itemscope itemtype="https://schema.org/WebSite">
-            <meta itemprop="name" content="كوبون على السريع" />
-            <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/" />
-            <meta itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-                <meta itemprop="target" content="https://coral-quetzal-195094.hostingersite.com/store?search={search_term}" />
-                <meta itemprop="query-input" content="required name=search_term" />
-            </meta>
-        </div>
     </footer>

@@ -1,15 +1,16 @@
 <x-layout>
-    <div itemscope itemtype="https://schema.org/Store" class="m-auto w-full">
+    <div itemscope itemtype="https://schema.org/Product" class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <div class="w-full ccontainer m-auto">
+                <meta itemprop="name" content="{{$store->_store_name}}" />
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
-                        <img itemprop="logo" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
+                        <img itemprop="image" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
                         <a aria-label="زيارة المتجر" itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                     </div>
                     <div class="w-full h-full">
-                        <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
                         <div class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
                             <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
@@ -48,9 +49,10 @@
             </div>
             <div class="w-full md:w-[800px]">
                 @if(count($coupons))
-                    <ul class="flex-center-col gap-4 mb-4">
+                    <ul itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer" class="flex-center-col gap-4 mb-4">
+                    <meta itemprop="priceCurrency" content="USD" />
                     @foreach($coupons as $coupon)
-                        <li itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
+                        <li itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
                             <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
                                 <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
