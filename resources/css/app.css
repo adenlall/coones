@@ -110,7 +110,7 @@ background-repeat: repeat-y;
 
 .hidd {
     max-height: 0;
-    overflow: hidd;
+    overflow: hidden;
     opacity: 0;
     transition: max-height 0.5s ease, opacity 0.5s ease;
 }
