@@ -7,7 +7,7 @@
             <p class="text-gray-500 font-semibold mt-4">لن وقتك غالي علينا وفرنا لك رد آلي لأكواد الخصم</p>
             <p class="text-red-600 font-semibold">فقط أرسل اسم المتجر ويتم الرد عليك فوراً</p>
             <div class="border-t-2 my-6 border-base-300 w-full"></div>
-            <a aria-label="الدخول إلى الرد الآلي تيليجرام" class="btn btn-accent hover:text-yellow-400 shadow-md shadow-blue-950/30 rounded-full">
+            <a href="https://t.me/COSN275h" target="_blank" aria-label="الدخول إلى الرد الآلي تيليجرام" class="btn btn-accent hover:text-yellow-400 shadow-md shadow-blue-950/30 rounded-full">
                 <x-tabler-brand-telegram class="w-6 h-6 fill-base-100"/>
                 الدخول إلى الرد الآلي تيليجرام
             </a>
