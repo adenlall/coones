@@ -2,12 +2,35 @@
     <div itemscope itemtype="https://schema.org/Product" class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <div class="w-full ccontainer m-auto">
-                <meta itemprop="name" content="{{$store->_store_name}}" />
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
                         <img itemprop="image" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
                         <a aria-label="زيارة المتجر" itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
+                    </div>
+                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product">
+                        <meta itemprop="name" content="Smartphone XYZ" />
+                        <meta itemprop="description" content="The Smartphone XYZ offers cutting-edge performance and a stunning camera with 5G connectivity." />
+                        
+                        <!-- Product Image -->
+                        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                            <meta itemprop="url" content="https://example.com/smartphone-xyz.jpg" />
+                            <meta itemprop="width" content="800" />
+                            <meta itemprop="height" content="800" />
+                        </div>
+
+                        <!-- Brand -->
+                        <meta itemprop="brand" content="TechBrand" />
+                        
+                        <!-- Offer Details -->
+                        <div itemscope itemtype="https://schema.org/Offer" itemprop="offers">
+                            <meta itemprop="priceCurrency" content="USD" />
+                            <meta itemprop="price" content="799.00" />
+                            <link itemprop="availability" href="https://schema.org/InStock" />
+                        </div>
+                        
+                        <!-- SKU -->
+                        <meta itemprop="sku" content="XYZ123" />
                     </div>
                     <div class="w-full h-full">
                         <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
