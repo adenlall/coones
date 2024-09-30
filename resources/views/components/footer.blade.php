@@ -1,3 +1,7 @@
+<div itemscope itemtype="https://schema.org/WebSite">
+    <meta itemprop="name" content="كوبون على السريع" />
+    <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/" />
+</div>
 <footer class="bg-accent text-accent-content py-8 mt-8">
         <div class="ccontainer mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
