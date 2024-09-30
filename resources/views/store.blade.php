@@ -16,6 +16,18 @@
                                 <meta itemprop="bestRating" content="5" />
                                 <meta itemprop="worstRating" content="1" />
                                 <meta itemprop="name" content="{{$store->_store_name}}" />
+                                
+                                <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product">
+                                    <meta itemprop="name" content="{{$store->_store_name}}" />
+                                    <meta itemprop="description" content="{{$store->_store_description}}" />
+                                    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                        <meta itemprop="url" content="{{$store->thumbnail}}" />
+                                        <meta itemprop="width" content="135" />
+                                        <meta itemprop="height" content="68" />
+                                    </div>
+                                    <meta itemprop="brand" content="{{$store->_store_name}}" />
+                                </div>
+                                
                                 <div class="rating rating-half mr-1">
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=1?'checked':''}} />
