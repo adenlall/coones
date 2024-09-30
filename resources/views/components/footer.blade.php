@@ -1,7 +1,7 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" class="bg-accent text-accent-content py-8 mt-8">
         <div class="ccontainer mx-auto">
-            <div itemscope itemtype="https://schema.org/Organization" class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                <div class="mb-6 md:mb-0">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div itemscope itemtype="https://schema.org/Organization" class="mb-6 md:mb-0">
                     <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject" class="h-16 w-auto my-2">
                       <img alt="شعار موقع كوبون على السريع" src="/logo.webp" class="h-16 w-auto" />
                       <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com//logo.webp" />
