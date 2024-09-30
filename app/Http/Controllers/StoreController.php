@@ -66,7 +66,6 @@ class StoreController extends Controller
     public function single(string $name)
     {
 
-        SEOTools::setTitle('متجر'. $name .' - كوبون على السريع');
         SEOTools::setDescription("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.");
         SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/store/'.$name);
         SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/store/'.$name);
@@ -88,6 +87,7 @@ class StoreController extends Controller
             return ['rate'=>$rate, 'average'=>$average];
         });
 
+        SEOTools::setTitle( $store->title .' - كوبون على السريع');
         SEOTools::addImages($store->thumbnail);
 
         return view('store')->with([
