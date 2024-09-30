@@ -1,7 +1,3 @@
-<div itemscope itemtype="https://schema.org/WebSite">
-    <meta itemprop="name" content="كوبون على السريع" />
-    <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/" />
-</div>
 <footer class="bg-accent text-accent-content py-8 mt-8">
         <div class="ccontainer mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -120,5 +116,13 @@
                 <p itemprop="copyrightYear">© 2024 جميع الحقوق محفوظة تم تطويره بواسطة فريق كوبون على السريع.</p>
                 <p>Developed By <a class="underline" href="https://janah.pro">Janah Bilal</a></p>
             </div>
+        </div>
+        <div itemscope itemtype="https://schema.org/WebSite">
+            <meta itemprop="name" content="كوبون على السريع" />
+            <meta itemprop="url" content="https://coral-quetzal-195094.hostingersite.com/" />
+            <meta itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+                <meta itemprop="target" content="https://coral-quetzal-195094.hostingersite.com/store?search={search_term}" />
+                <meta itemprop="query-input" content="required name=search_term" />
+            </meta>
         </div>
     </footer>
