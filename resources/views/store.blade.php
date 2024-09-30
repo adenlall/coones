@@ -5,7 +5,7 @@
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
-                        <img itemprop="logo" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}"/>
+                        <img itemprop="logo" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
                         <a aria-label="زيارة المتجر" itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                     </div>
                     <div class="w-full h-full">
@@ -50,7 +50,7 @@
                 @if(count($coupons))
                     <ul class="flex-center-col gap-4 mb-4">
                     @foreach($coupons as $coupon)
-                        <div itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
+                        <li itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
                             <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
                                 <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
@@ -99,14 +99,14 @@
                                 @php echo $coupon->content @endphp
                             </p>
                             <div>
-                                <h5 onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
+                                <div onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
                                     <span id="show_more_{{$coupon->ID}}">
                                        عرض التفاصيل 
                                     </span>
                                     <x-tabler-chevron-down id="show_icon_{{$coupon->ID}}" class="rotate-0"/>
-                                </h5>
+                                </div>
                             </div>
-                        </div>
+                        </li>
                     @endforeach
                     </ul>
                 @endif
