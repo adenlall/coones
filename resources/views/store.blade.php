@@ -9,13 +9,13 @@
                         <a aria-label="زيارة المتجر" itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                     </div>
                     <div class="w-full h-full">
-                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
                         <div class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
                             <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
                                 <meta itemprop="bestRating" content="5" />
                                 <meta itemprop="worstRating" content="1" />
-                                <meta itemprop="name" content="تقييم متجر {{$store->_store_name}}" />
+                                <meta itemprop="name" content="{{$store->_store_name}}" />
                                 <div class="rating rating-half mr-1">
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=1?'checked':''}} />
