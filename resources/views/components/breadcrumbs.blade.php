@@ -4,7 +4,7 @@
       @foreach($items as $index => $item)
           @if(isset($item['path']))
               <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a itemscope itemtype="https://schema.org/Thing" itemprop="item" aria-label="{{$item['path']}}" href="{{$item['path']}}">
+                <a itemprop="item" aria-label="{{$item['path']}}" href="{{$item['path']}}">
                   <span itemprop="name">
                     {{$item['name']}}
                   </span>

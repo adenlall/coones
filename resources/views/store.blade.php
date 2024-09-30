@@ -51,6 +51,7 @@
                 @if(count($coupons))
                     <ul itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer" class="flex-center-col gap-4 mb-4">
                     <meta itemprop="priceCurrency" content="USD" />
+                    <meta itemprop="offerCount" content="{{count($coupons)}}" />
                     @foreach($coupons as $coupon)
                         <li itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
