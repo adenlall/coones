@@ -10,11 +10,11 @@ Route::get('/', function () {
 
     SEOTools::setTitle('الصفحة الرئيسية - كوبون على السريع');
     SEOTools::setDescription('اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
-    SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/');
-    SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/');
+    SEOTools::opengraph()->setUrl('https://coupon3sari3.com/');
+    SEOTools::setCanonical('https://coupon3sari3.com/');
     SEOTools::opengraph()->addProperty('type', 'product');
     SEOTools::twitter()->setSite('@COSN275');
-    SEOTools::addImages('https://coral-quetzal-195094.hostingersite.com/logo.webp');
+    SEOTools::addImages('https://coupon3sari3.com/logo.webp');
 
     $paginated_ncoupons = Cache::remember('paginated_ncoupons_home', 300, function () {
         $pagcop = Post::type('ncoupons')->status('publish')->latest()->take(12)->get();
@@ -28,11 +28,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/auto-replay', function () {
-    
+
     SEOTools::setTitle('تقنية الرد الآلي - كوبون على السريع');
     SEOTools::setDescription("استكشف تقنية الرد الآلي على كوبون على السريع. احصل على تحديثات فورية حول العروض والخصومات عبر بوتنا في تيليجرام وكن دائماً على اطلاع بأفضل الكوبونات.");
-    SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/auto-replay');
-    SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/auto-replay');
+    SEOTools::opengraph()->setUrl('https://coupon3sari3.com/auto-replay');
+    SEOTools::setCanonical('https://coupon3sari3.com/auto-replay');
     SEOTools::opengraph()->addProperty('type', 'product.group');
     SEOTools::twitter()->setSite('@COSN275');
     SEOTools::addImages('https://cosn275.com/wp-content/uploads/2023/05/6603270-1024x1010.png');
@@ -41,11 +41,11 @@ Route::get('/auto-replay', function () {
 })->name('autoreplay');
 
 Route::get('/privacy', function () {
-    
+
     SEOTools::setTitle('سياسة الخصوصية - كوبون على السريع');
     SEOTools::setDescription("استكشف سياسة الخصوصية على كوبون على السريع. احصل على تحديثات فورية حول العروض والخصومات عبر بوتنا في تيليجرام وكن دائماً على اطلاع بأفضل الكوبونات.");
-    SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/privacy');
-    SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/privacy');
+    SEOTools::opengraph()->setUrl('https://coupon3sari3.com/privacy');
+    SEOTools::setCanonical('https://coupon3sari3.com/privacy');
     SEOTools::opengraph()->addProperty('type', 'product.group');
     SEOTools::twitter()->setSite('@COSN275');
     SEOTools::addImages('https://cosn275.com/wp-content/uploads/2023/05/6603270-1024x1010.png');
@@ -54,11 +54,11 @@ Route::get('/privacy', function () {
 })->name('privacy');
 
 Route::get('/contact', function () {
-    
+
     SEOTools::setTitle('تواصل معنا - كوبون على السريع');
     SEOTools::setDescription("استكشف تواصل معنا على كوبون على السريع. احصل على تحديثات فورية حول العروض والخصومات عبر بوتنا في تيليجرام وكن دائماً على اطلاع بأفضل الكوبونات.");
-    SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/privacy');
-    SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/privacy');
+    SEOTools::opengraph()->setUrl('https://coupon3sari3.com/privacy');
+    SEOTools::setCanonical('https://coupon3sari3.com/privacy');
     SEOTools::opengraph()->addProperty('type', 'product.group');
     SEOTools::twitter()->setSite('@COSN275');
     SEOTools::addImages('https://cosn275.com/wp-content/uploads/2023/05/6603270-1024x1010.png');

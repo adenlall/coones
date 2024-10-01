@@ -20,7 +20,7 @@ class StoreController extends Controller
         $stars = round($percentage / 20 * 2) / 2;
         return $stars;
         return $stars;
-    }    
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,11 +29,11 @@ class StoreController extends Controller
 
         SEOTools::setTitle('جميع المتاجر والكوبونات - كوبون على السريع');
         SEOTools::setDescription("تصفح جميع المتاجر والكوبونات المتاحة على كوبون على السريع. احصل على خصومات حصرية وعروض مميزة من متاجر متنوعة لتوفير المزيد على مشترياتك.");
-        SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/store');
-        SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/store');
+        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/store');
+        SEOTools::setCanonical('https://coupon3sari3.com/store');
         SEOTools::opengraph()->addProperty('type', 'product.group');
         SEOTools::twitter()->setSite('@COSN275');
-        SEOTools::addImages('https://coral-quetzal-195094.hostingersite.com/logo.webp');
+        SEOTools::addImages('https://coupon3sari3.com/logo.webp');
 
         $categories = Cache::remember('stores_categories_items', 300, function () {
             return Taxonomy::where('taxonomy', 'storecategory')->get();
@@ -67,8 +67,8 @@ class StoreController extends Controller
     {
 
         SEOTools::setDescription("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.");
-        SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/store/'.$name);
-        SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/store/'.$name);
+        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/store/'.$name);
+        SEOTools::setCanonical('https://coupon3sari3.com/store/'.$name);
         SEOTools::opengraph()->addProperty('type', 'product.item');
         SEOTools::twitter()->setSite('@COSN275');
 

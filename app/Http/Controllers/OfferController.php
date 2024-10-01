@@ -22,11 +22,11 @@ class OfferController extends Controller
 
         SEOTools::setTitle('جميع العروض والخصومات - كوبون على السريع');
         SEOTools::setDescription("استعرض جميع العروض والخصومات المتاحة على كوبون على السريع. احصل على أفضل الكوبونات والتخفيضات الفورية لتوفير المزيد على مشترياتك من مختلف المتاجر.");
-        SEOTools::opengraph()->setUrl('https://coral-quetzal-195094.hostingersite.com/offers');
-        SEOTools::setCanonical('https://coral-quetzal-195094.hostingersite.com/offers');
+        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/offers');
+        SEOTools::setCanonical('https://coupon3sari3.com/offers');
         SEOTools::opengraph()->addProperty('type', 'product.group');
         SEOTools::twitter()->setSite('@COSN275');
-        SEOTools::addImages('https://coral-quetzal-195094.hostingersite.com/logo.webp');
+        SEOTools::addImages('https://coupon3sari3.com/logo.webp');
 
         $cacheKey = 'offers_' . md5($request->fullUrl() . json_encode($request->all()));
         $paginated_offers = Cache::remember($cacheKey, 300, function () use($request) {
