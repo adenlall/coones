@@ -9,7 +9,7 @@
         <hr class="border-base-content/30 w-full"/>
     </div>
     <x-coupon-modal :store="$store" :link="$link" :id="$id" :title="$title" :desc="$desc" :code="$code" />
-    <x-share-modal :id="$id" :title="$title" :url="urlencode('http://localhost/store/'.$store->_store_name)" />
+    <x-share-modal :id="$id" :title="$title" :url="urlencode('https://coupon3sari3.com/store/'.$store->_store_name)" />
     <h2 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h2>
     <hr class="border-base-content/30 w-full"/>
     <div class="w-full space-y-2">
