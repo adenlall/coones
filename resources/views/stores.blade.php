@@ -13,13 +13,13 @@
             <div class="swiper flex">
                 @isset($categories)
                 <div class="swiper-wrapper">
-                    <div style="width:fit-content" class="swiper-slide">
+                    <div style="width:auto" class="swiper-slide">
                         <button aria-label="عرض الكل"  onclick="getData('all')" id="all" class="cat-item {{app('request')->input('category') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 rounded-full text-center px-6 py-2">
                             عرض الكل
                         </button>
                     </div>
                     @foreach($categories as $category)
-                    <div style="width:fit-content" class="swiper-slide">
+                    <div style="width:auto" class="swiper-slide">
                         <button aria-label="{{$category->name}}" onclick="getData('{{$category->name}}')" id="{{$category->name}}" class="cat-item {{app('request')->input('category') === $category->name ? 'text-accent border-accent font-bold border-[3px]':''}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
                             {{$category->name}}
                         </button>
@@ -123,7 +123,6 @@
             const swiper = new Swiper('.swiper', {
                 slidesPerView:"auto"
             });
-            console.log('All assets are loaded')
         })
     </script>
     @endpush
