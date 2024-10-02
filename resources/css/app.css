@@ -20,7 +20,6 @@ table {
     width: 100% !important;
 }
 .mprose {
-    @apply prose;
     min-width: 100% !important;
 }
 
