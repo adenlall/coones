@@ -134,7 +134,7 @@
                 @endif
                 <x-paginator :paginator="$coupons" />
                 <div class="w-full">
-                    <div itemprop="detailedDescription" itemscope itemtype="https://schema.org/CreativeWork" class="prose-md">
+                    <div itemprop="detailedDescription" itemscope itemtype="https://schema.org/CreativeWork" class="prose prose-md">
                         @php
                             $content = $store->content;
                             $parsed = str_replace('$$$', '<div style="width:calc(100% + 16px); margin-right:-8px;" class="separator w-full bg-base-200 p-2 my-2"></div>', $content);
