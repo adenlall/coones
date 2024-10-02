@@ -16,6 +16,13 @@
     /* background-color: chartreuse; */
     padding: 0;
 }
+.prose table {
+    width: 100% !important;
+}
+.mprose {
+    @apply prose;
+    min-width: 100% !important;
+}
 
 /* On screens that are 1135px wide or less, make the menu links stack on top of each other instead of next to each other */
 @media screen and (max-width: 1135px) {
