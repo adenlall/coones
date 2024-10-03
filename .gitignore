@@ -5,6 +5,7 @@
 /public/blog
 /vendor
 .env.backup
+storage
 .env.production
 .phpactor.json
 .phpunit.result.cache
