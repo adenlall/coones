@@ -44,14 +44,14 @@ class StoreController extends Controller
             if(isset($request->search)){
                 return Post::type('stores')->status('publish')
                 ->where('post_title', 'like', '%'.($request->search).'%')
-                ->with('thumbnail')->paginate(42);
+                ->with('thumbnail')->paginate(44);
             }else{
                 return Post::type('stores')->status('publish')
                 ->with('thumbnail')
                 ->with(['taxonomies' => function ($query) {
                     $query->where('taxonomy', 'storecategory');
                 }])
-                ->paginate(42);
+                ->paginate(44);
                 // dd($stores[0]->taxonomies);
             }
             if (isset($request->category)) {
@@ -62,7 +62,7 @@ class StoreController extends Controller
                             $query->where('slug', urlencode($request->category));
                         });
                 })->with('thumbnail')
-                ->paginate(42);
+                ->paginate(44);
             }
         });
         return view('stores')->with(['categories'=>$categories, 'stores'=>$stores]);
