@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
@@ -69,6 +70,7 @@ Route::get('/contact', function () {
 Route::post('/review', [\App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
 Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index'])->name('store.index');
 Route::get('/store/{name}', [\App\Http\Controllers\StoreController::class, 'single'])->name('store.single');
+Route::get('/preview/store', [\App\Http\Controllers\StoreController::class, 'preview'])->name('store.single.preview');
 Route::get('/offers', [\App\Http\Controllers\OfferController::class, 'index'])->name('offers.index');
 
 Route::any('/blog/{any?}', function () {

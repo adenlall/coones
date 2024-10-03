@@ -96,4 +96,43 @@ class StoreController extends Controller
             'totalrate'=>$stats['rate']->total
         ])->with(compact('coupons'));
     }
+
+
+    /**
+     * preview.
+     */
+    public function preview(Request $request)
+    {
+        $post = Post::find($request->id);
+        try {
+            $store = $post->revision()->orderBy('ID', 'desc')->first();
+        } catch (\Throwable $th) {
+            return redirect()->back();
+        }
+        try {
+            $store->thumbnail = Post::find($request->thumbnail)->guid;
+        } catch (\Throwable $th) {
+            $store->thumbnail = $post->thumbnail;
+        }
+
+        SEOTools::setDescription("اكتشف خصومات مذهلة في متجر على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.");
+        SEOTools::setTitle( $store->title .' - كوبون على السريع');
+        SEOTools::addImages($store->thumbnail);
+
+        $coupons = Cache::remember('store_coupons_'.md5($request->name), 300, function () use($request) {
+            return Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $request->name)->paginate(360);
+        });
+
+        $rate = DB::table('reviews')
+            ->where('storeName', $request->name)
+            ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')
+            ->first();
+        $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
+
+        return view('store')->with([
+            'store'=>$store,
+            'rate'=>$this->percentageToStars($average),
+            'totalrate'=>$rate->total
+        ])->with(compact('coupons'));
+    }
 }
