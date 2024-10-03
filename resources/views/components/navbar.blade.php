@@ -15,7 +15,7 @@
         </label>
     </div>
     <div class="flex-1">
-        <a href="/" class="h-16 w-auto" ><img alt="شعار {{env('APP_NAME')}}" class="h-16 w-auto" src="/logo.webp"/></a>
+        <a href="/" class="md:h-16 h-11 w-auto" ><img alt="شعار {{env('APP_NAME')}}" class="md:h-16 h-11 w-auto" src="/logo.webp"/></a>
     </div>
     <div class="flex-none">
         <form action="{{route('store.index')}}" class="join m-0 ml-2 md:ml-6">
