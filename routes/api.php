@@ -15,7 +15,7 @@ Route::get('/stores', function (Request $request) {
     $cacheKey = 'api_store_items_' . md5($request->fullUrl() . json_encode($request->all()));
     $stores = Cache::remember($cacheKey, 300, function () use($request) {
         if (isset($request->category)) {
-            $stores = Post::type('stores')->status('publish')
+            return Post::type('stores')->status('publish')
                 ->whereHas('taxonomies', function($query) use($request) {
                     $query->where('taxonomy', 'storecategory')
                         ->whereHas('term', function($query) use($request) {
@@ -24,7 +24,7 @@ Route::get('/stores', function (Request $request) {
                 })->with('thumbnail')
                 ->take(20)->get();
         } else {
-            $stores =  Post::type('stores')->status('publish')->with('thumbnail')->get();
+            return Post::type('stores')->status('publish')->with('thumbnail')->get();
         }
     });
     return response()->json(['stores'=>$stores]);
