@@ -15,16 +15,16 @@ Route::get('/stores', function (Request $request) {
     $cacheKey = 'api_store_items_' . md5($request->fullUrl() . json_encode($request->all()));
     $stores = Cache::remember($cacheKey, 300, function () use($request) {
         if (isset($request->category)) {
-            return Post::type('stores')->status('publish')
+            $stores = Post::type('stores')->status('publish')
                 ->whereHas('taxonomies', function($query) use($request) {
                     $query->where('taxonomy', 'storecategory')
                         ->whereHas('term', function($query) use($request) {
                             $query->where('slug', urlencode($request->category));
                         });
                 })->with('thumbnail')
-                ->take(20);
+                ->take(20)->get();
         } else {
-            return Post::type('stores')->status('publish')->with('thumbnail')->get();
+            $stores =  Post::type('stores')->status('publish')->with('thumbnail')->get();
         }
     });
     return response()->json(['stores'=>$stores]);
