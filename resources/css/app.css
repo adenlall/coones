@@ -125,3 +125,50 @@ background-repeat: repeat-y;
     opacity: 1;
     transition: max-height 0.5s ease, opacity 0.5s ease;
 }
+
+
+table {
+    width:100%;
+    border:1px solid #eee;
+    margin:15px 0;
+    font-size:15px
+  }
+  hr {
+    border-top:1px solid #eee;
+    margin:10px 0
+  }
+  table th {
+    background:#f5f5f5;
+    padding:3px
+  }
+  table:not(.alignleft):not(.alignright) th,
+  table:not(.alignleft):not(.alignright) td {
+    text-align:center
+  }
+  
+  
+.insert-table {
+width:100%;
+border-collapse:collapse;
+background-color:#fff
+}
+.insert-table th,
+.insert-table td {
+border:1px solid #ddd;
+padding:8px
+}
+.insert-table tr:nth-child(even) {
+background-color:#f2f2f2
+}
+.insert-table tr:hover {
+background-color:#ddd
+}
+.insert-table th {
+padding-top:12px;
+padding-bottom:12px;
+text-align:left;
+background-color:#fff;
+color:#000;
+font-weight:700;
+border-bottom:2px solid #000
+}
