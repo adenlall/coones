@@ -25,28 +25,28 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
                   <nav aria-label="Breadcrumb">
                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                      <li itemprop="itemListElement" itemscope class="hidden font-semibold mb-2 items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
                           <a itemprop="item" href="/">
                         <span itemprop="name">الصفحة الرئيسية</span></a>
                         <meta itemprop="position" content="1" />
                       </li>
-                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                      <li itemprop="itemListElement" itemscope class="hidden font-semibold mb-2 items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
                           <a itemprop="item" href="/store">
                         <span itemprop="name">المتاجر</span></a>
                         <meta itemprop="position" content="2" />
                       </li>
-                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                      <li itemprop="itemListElement" itemscope class="hidden font-semibold mb-2 items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
                           <a itemprop="item" href="/offers">
                         <span itemprop="name">العروض</span></a>
                         <meta itemprop="position" content="3" />
                       </li>
-                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                      <li itemprop="itemListElement" itemscope class="hidden font-semibold mb-2 items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
                           <a itemprop="item" href="/blog">
