@@ -68,6 +68,7 @@
                 element.classList.remove('text-accent','border-accent','font-bold','border-[3px]');
                 element.classList.add('border-base-200','border-[3px]');
             }
+            document.getElementById(type).classList.remove('border-base-200');
             document.getElementById(type).classList.add('text-accent','border-accent','font-bold','border-[3px]');
         }
         function bringFromList(list, meta_key) {
