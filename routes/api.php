@@ -22,7 +22,7 @@ Route::get('/stores', function (Request $request) {
                             $query->where('slug', urlencode($request->category));
                         });
                 })->with('thumbnail')
-                ->get();
+                ->take(20);
         } else {
             return Post::type('stores')->status('publish')->with('thumbnail')->get();
         }
