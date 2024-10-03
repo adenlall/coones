@@ -34,7 +34,7 @@
         @isset($stores)
         <ul id="offerlist" class="grid grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-5 md:px-0 px-2">
             @foreach($stores as $store)
-                <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
+                <li data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
                     <a aria-label="{{$store->_store_name}}" itemscope itemtype="https://schema.org/Organization" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <div class="my-5">
                             <img itemprop="logo" class="w-[135px] h-[68px] rounded-md m-auto" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->_store_name}}"/>
@@ -53,63 +53,22 @@
     @push('scripts')
     <script>
         async function getData(type) {
-            const url = "/api/stores"+((type&&type!=='all')?("?category="+type):'');
-            // try {
-                const response = await fetch(url, {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error(`Response status: ${response.status}`);
+            console.log(type);
+            const itemList = document.getElementById('offerlist');
+            const items = itemList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-filters').includes(type !== 'all' ? type : '')) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
                 }
-                const json = await response.json();
-                console.log(json);
-            
-                const list = document.querySelector("#offerlist");
-                list.innerHTML = '';
-
-                json.stores.forEach(store => {
-                    const storeName = bringFromList(store.meta, "_store_name");
-                    const storeImage = store.image;
-                    // Create list item
-                    const listItem = document.createElement('li');
-                    listItem.className = 'w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30';
-                    // Create anchor tag
-                    const anchor = document.createElement('a');
-                    anchor.href = `/store/${storeName}`;
-                    anchor.className = 'block p-2 w-full h-full';
-                    // Create div for image
-                    const imageDiv = document.createElement('div');
-                    imageDiv.className = 'my-5';
-                    // Create image tag
-                    const img = document.createElement('img');
-                    img.className = 'w-[135px] h-[68px] rounded-md m-auto';
-                    img.src = storeImage;
-                    img.alt = `شعار متجر ${storeName}`;
-                    imageDiv.appendChild(img);
-                    // Create horizontal rule
-                    const hr = document.createElement('hr');
-                    // Create store name heading
-                    const h2 = document.createElement('h2');
-                    h2.className = 'font-bold my-2 text-lg text-center';
-                    h2.textContent = storeName;
-                    // Append elements
-                    anchor.appendChild(imageDiv);
-                    anchor.appendChild(hr);
-                    anchor.appendChild(h2);
-                    listItem.appendChild(anchor);
-                    // Append list item to container
-                    list.appendChild(listItem);
-                });
-                const catItems = document.getElementsByClassName('cat-item');
-                for (const element of catItems) {
-                    element.classList.remove('text-accent','border-accent','font-bold','border-[3px]');
-                }
-                document.getElementById(type).classList.add('text-accent','border-accent','font-bold','border-[3px]');
-            // } catch (error) {
-            //     console.error(error.message);
-            // }
+            }
+            const catItems = document.getElementsByClassName('cat-item');
+            for (const element of catItems) {
+                element.classList.remove('text-accent','border-accent','font-bold','border-[3px]');
+                element.classList.add('border-base-200','border-[3px]');
+            }
+            document.getElementById(type).classList.add('text-accent','border-accent','font-bold','border-[3px]');
         }
         function bringFromList(list, meta_key) {
             for (const item of list) {

@@ -42,9 +42,17 @@ class StoreController extends Controller
         $cacheKey = 'store_items_' . md5($request->fullUrl() . json_encode($request->all()));
         $stores = Cache::remember($cacheKey, 300, function () use($request) {
             if(isset($request->search)){
-                return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->with('thumbnail')->paginate(20);
+                return Post::type('stores')->status('publish')
+                ->where('post_title', 'like', '%'.($request->search).'%')
+                ->with('thumbnail')->paginate(20);
             }else{
-                return Post::type('stores')->status('publish')->with('thumbnail')->paginate(20);
+                return Post::type('stores')->status('publish')
+                ->with('thumbnail')
+                ->with(['taxonomies' => function ($query) {
+                    $query->where('taxonomy', 'storecategory');
+                }])
+                ->paginate(20);
+                // dd($stores[0]->taxonomies);
             }
             if (isset($request->category)) {
                 return Post::published()
