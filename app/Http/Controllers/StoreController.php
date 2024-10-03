@@ -42,9 +42,9 @@ class StoreController extends Controller
         $cacheKey = 'store_items_' . md5($request->fullUrl() . json_encode($request->all()));
         $stores = Cache::remember($cacheKey, 300, function () use($request) {
             if(isset($request->search)){
-                return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->with('thumbnail')->paginate(36);
+                return Post::type('stores')->status('publish')->where('post_title', 'like', '%'.($request->search).'%')->with('thumbnail')->paginate(1);
             }else{
-                return Post::type('stores')->status('publish')->with('thumbnail')->paginate(36);
+                return Post::type('stores')->status('publish')->with('thumbnail')->paginate(1);
             }
             if (isset($request->category)) {
                 return Post::published()
@@ -54,7 +54,7 @@ class StoreController extends Controller
                             $query->where('slug', urlencode($request->category));
                         });
                 })->with('thumbnail')
-                ->paginate(36);
+                ->paginate(1);
             }
         });
         return view('stores')->with(['categories'=>$categories, 'stores'=>$stores]);

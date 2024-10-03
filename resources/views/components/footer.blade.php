@@ -28,16 +28,44 @@
                       <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
+                          <a itemprop="item" href="/">
+                        <span itemprop="name">الصفحة الرئيسية</span></a>
+                        <meta itemprop="position" content="1" />
+                      </li>
+                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                          itemtype="https://schema.org/ListItem">
+                          <x-tabler-access-point/>
+                          <a itemprop="item" href="/store">
+                        <span itemprop="name">المتاجر</span></a>
+                        <meta itemprop="position" content="2" />
+                      </li>
+                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                          itemtype="https://schema.org/ListItem">
+                          <x-tabler-access-point/>
+                          <a itemprop="item" href="/offers">
+                        <span itemprop="name">العروض</span></a>
+                        <meta itemprop="position" content="3" />
+                      </li>
+                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                          itemtype="https://schema.org/ListItem">
+                          <x-tabler-access-point/>
+                          <a itemprop="item" href="/blog">
+                        <span itemprop="name">المدونة</span></a>
+                        <meta itemprop="position" content="4" />
+                      </li>
+                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                          itemtype="https://schema.org/ListItem">
+                          <x-tabler-access-point/>
                           <a itemprop="item" href="/contact">
                         <span itemprop="name">اتصل بنا</span></a>
-                        <meta itemprop="position" content="1" />
+                        <meta itemprop="position" content="5" />
                       </li>
                       <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-shield/>
                           <a itemprop="item" href="/privacy">
                         <span itemprop="name">سياسة الخصوصية</span></a>
-                        <meta itemprop="position" content="2" />
+                        <meta itemprop="position" content="6" />
                       </li>
                     </ol>
                   </nav>
@@ -114,7 +142,6 @@
             </div>
             <div class="mt-4 text-center text-xs">
                 <p itemprop="copyrightYear">© 2024 جميع الحقوق محفوظة تم تطويره بواسطة فريق كوبون على السريع.</p>
-                <p>Developed By <a class="underline" href="https://janah.pro">Janah Bilal</a></p>
             </div>
         </div>
     </footer>
