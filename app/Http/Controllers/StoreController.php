@@ -110,6 +110,7 @@ class StoreController extends Controller
             return redirect()->back();
         }
         try {
+            $store->meta = $post->meta;
             $store->thumbnail = Post::find($request->thumbnail)->guid;
         } catch (\Throwable $th) {
             $store->thumbnail = $post->thumbnail;
