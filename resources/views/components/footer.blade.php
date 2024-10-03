@@ -71,66 +71,66 @@
                   </nav>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ نون">
+                          <a itemprop="url" href="/store/نون">
                             كود خصم نون
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ نمشي">
+                          <a itemprop="url" href="/store/نمشي">
                             كود خصم نمشي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ فوغا كلوسيت">
+                          <a itemprop="url" href="/store/فوغا كلوسيت">
                             كود خصم فوغا كلوسيت
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ اي هيرب">
+                          <a itemprop="url" href="/store/اي هيرب">
                           كود خصم اي هيرب
                           </a>
                         </h3>
                     </div>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ سيفي">
+                          <a itemprop="url" href="/store/سيفي">
                           كود خصم سيفي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ ممزورلد">
+                          <a itemprop="url" href="/store/ممزورلد">
                           كود خصم ممزورلد
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ ستايلي">
+                          <a itemprop="url" href="/store/ستايلي">
                           كود خصم ستايلي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ باث اند بودي">
+                          <a itemprop="url" href="/store/باث اند بودي">
                           كود خصم باث اند بودي
                           </a>
                         </h3>
                     </div>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ شي ان">
+                          <a itemprop="url" href="/store/شي ان">
                           كود خصم شي ان
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ جوي للهدايا">
+                          <a itemprop="url" href="/store/جوي للهدايا">
                           كود خصم جوي للهدايا
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ ترينديول">
+                          <a itemprop="url" href="/store/ترينديول">
                           كود خصم ترينديول
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ اتش اند ام">
+                          <a itemprop="url" href="/store/اتش اند ام">
                           كود خصم اتش اند ام
                           </a>
                         </h3>
