@@ -35,7 +35,11 @@
             @foreach($stores as $index => $store)
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/Product" data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
                     <meta itemprop="position" content="{{$index+1}}" />
-                    <meta itemprop="offers" content=" " />
+                    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="hidden">
+                        <meta itemprop="bestRating" content="5" />
+                        <meta itemprop="ratingValue" content="{{$rate}}"/>
+                        <meta itemprop="ratingCount" content="{{$totalrate+((int)$store->_store_stars)+1}}"/>
+                    </div>
                     <a itemprop="image" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <meta itemprop="description" content="{{$store->_store_description}}"/>
                         <meta itemprop="address" content="متجر {{$store->_store_name}} {{mt_rand(10, 100)}}"/>
