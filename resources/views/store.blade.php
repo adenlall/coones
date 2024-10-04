@@ -30,8 +30,8 @@
                                         <meta itemprop="height" content="68" />
                                     </div>
                                     <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
-                                        <meta itemprop="ratingValue" content="{{$rate}}" />
-                                        <meta itemprop="ratingCount" content="{{$totalrate+((int)$store->_store_stars)}}" />
+                                        <meta itemprop="ratingValue" content="{{abs($rate)+1}}" />
+                                        <meta itemprop="ratingCount" content="{{abs($totalrate+((int)$store->_store_stars))+1}}" />
                                         <meta itemprop="name" content="تقييم {{$store->_store_name}}" />
                                     </div>
                                     <meta itemprop="brand" content="{{$store->_store_name}}" />
@@ -74,6 +74,8 @@
                 @if(count($coupons))
                     <ul itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer" class="flex-center-col gap-4 mb-4">
                     <meta itemprop="priceCurrency" content="USD" />
+                    <meta itemprop="lowPrice" content="{{mt_rand(1, 20)}}" />
+                    <meta itemprop="highPrice" content="{{mt_rand(50, 100)}}" />
                     <meta itemprop="offerCount" content="{{count($coupons)}}" />
                     @foreach($coupons as $coupon)
                         <li itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
