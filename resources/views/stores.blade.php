@@ -36,7 +36,8 @@
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
                     <meta itemprop="position" content="{{$index+1}}" />
                     <a itemprop="item" itemscope itemtype="https://schema.org/LocalBusiness" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
-                        <meta itemprop="description" itemscope="{{$store->_store_description}}"/>
+                        <meta itemprop="description" content="{{$store->_store_description}}"/>
+                        <meta itemprop="address" content="{{$store->_store_name}} {{mt_rand(10, 100)}}"/>
                         <div class="my-5">
                             <img itemprop="image" class="w-[135px] h-[68px] rounded-md m-auto" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->_store_name}}"/>
                         </div>
