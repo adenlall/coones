@@ -35,10 +35,10 @@
             @foreach($stores as $index => $store)
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
                     <meta itemprop="position" content="{{$index+1}}" />
-                    <a itemprop="item" itemscope itemtype="https://schema.org/Organization" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
+                    <a itemprop="item" itemscope itemtype="https://schema.org/LocalBusiness" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <meta itemprop="description" itemscope="{{$store->_store_description}}"/>
                         <div class="my-5">
-                            <img itemprop="logo" class="w-[135px] h-[68px] rounded-md m-auto" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->_store_name}}"/>
+                            <img itemprop="image" class="w-[135px] h-[68px] rounded-md m-auto" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->_store_name}}"/>
                         </div>
                         <hr/>
                         <h2 itemprop="name" class="font-bold my-2 text-lg text-center">
