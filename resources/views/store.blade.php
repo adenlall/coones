@@ -1,5 +1,5 @@
 <x-layout>
-    <div itemscope itemtype="https://schema.org/Product" class="m-auto w-full">
+    <div class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <div class="w-full ccontainer m-auto">
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
@@ -30,7 +30,7 @@
                                         <meta itemprop="height" content="68" />
                                     </div>
                                     <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
-                                        <meta itemprop="ratingValue" content="{{abs($rate)+1}}" />
+                                        <meta itemprop="ratingValue" content="{{abs($rate)}}" />
                                         <meta itemprop="ratingCount" content="{{abs($totalrate+((int)$store->_store_stars))+1}}" />
                                         <meta itemprop="name" content="تقييم {{$store->_store_name}}" />
                                     </div>
@@ -45,7 +45,7 @@
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
                                 </div>
                                 <span class="mr-1">
-                                    <span itemprop="ratingValue">{{$rate}}</span> / 5
+                                    <span>{{$rate}}</span> / 5
                                 </span>
                                 <span class="mr-1" id="totale-rates">
                                     {{"("}} <span itemprop="reviewCount">{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
