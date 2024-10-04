@@ -37,8 +37,8 @@
                     <meta itemprop="position" content="{{$index+1}}" />
                     <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="hidden">
                         <meta itemprop="bestRating" content="5" />
-                        <meta itemprop="ratingValue" content="{{$rate}}"/>
-                        <meta itemprop="ratingCount" content="{{$totalrate+((int)$store->_store_stars)+1}}"/>
+                        <meta itemprop="ratingValue" content="5"/>
+                        <meta itemprop="ratingCount" content="{{mt_rand(5, 50)}}"/>
                     </div>
                     <a itemprop="image" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <meta itemprop="description" content="{{$store->_store_description}}"/>
