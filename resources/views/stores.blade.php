@@ -33,9 +33,9 @@
         @isset($stores)
         <ul itemscope itemtype="https://schema.org/ItemList" id="offerlist" class="grid grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-5 md:px-0 px-2">
             @foreach($stores as $index => $store)
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/Product" data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
                     <meta itemprop="position" content="{{$index+1}}" />
-                    <a itemprop="item" itemscope itemtype="https://schema.org/LocalBusiness" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
+                    <a itemprop="image" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <meta itemprop="description" content="{{$store->_store_description}}"/>
                         <meta itemprop="address" content="{{$store->_store_name}} {{mt_rand(10, 100)}}"/>
                         <div class="my-5">

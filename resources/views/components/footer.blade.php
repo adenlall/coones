@@ -14,6 +14,7 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
                   <nav aria-label="Breadcrumb">
                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                        <meta itemprop="name" content="عناصر التنقل" />
                       <li itemprop="itemListElement" itemscope class="hidden font-semibold mb-2 items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
