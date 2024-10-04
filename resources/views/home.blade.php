@@ -33,54 +33,6 @@
                         :code="$ncoupon->_ncoupon_code"
                     />
                 @endforeach
-                @foreach($paginated_ncoupons as $index => $ncoupon)
-                    <x-cobone-card
-                        :index="$index"
-                        :id="$ncoupon->ID"
-                        :title="$ncoupon->title"
-                        :store="$ncoupon->store"
-                        :desc="$ncoupon->_ncoupon_desc"
-                        :type="$ncoupon->_ncoupon_type"
-                        :link="$ncoupon->_ncoupon_link"
-                        :code="$ncoupon->_ncoupon_code"
-                    />
-                @endforeach
-                @foreach($paginated_ncoupons as $index => $ncoupon)
-                    <x-cobone-card
-                        :index="$index"
-                        :id="$ncoupon->ID"
-                        :title="$ncoupon->title"
-                        :store="$ncoupon->store"
-                        :desc="$ncoupon->_ncoupon_desc"
-                        :type="$ncoupon->_ncoupon_type"
-                        :link="$ncoupon->_ncoupon_link"
-                        :code="$ncoupon->_ncoupon_code"
-                    />
-                @endforeach
-                @foreach($paginated_ncoupons as $index => $ncoupon)
-                    <x-cobone-card
-                        :index="$index"
-                        :id="$ncoupon->ID"
-                        :title="$ncoupon->title"
-                        :store="$ncoupon->store"
-                        :desc="$ncoupon->_ncoupon_desc"
-                        :type="$ncoupon->_ncoupon_type"
-                        :link="$ncoupon->_ncoupon_link"
-                        :code="$ncoupon->_ncoupon_code"
-                    />
-                @endforeach
-                @foreach($paginated_ncoupons as $index => $ncoupon)
-                    <x-cobone-card
-                        :index="$index"
-                        :id="$ncoupon->ID"
-                        :title="$ncoupon->title"
-                        :store="$ncoupon->store"
-                        :desc="$ncoupon->_ncoupon_desc"
-                        :type="$ncoupon->_ncoupon_type"
-                        :link="$ncoupon->_ncoupon_link"
-                        :code="$ncoupon->_ncoupon_code"
-                    />
-                @endforeach
             </ul>
         @else
             <div class="flex-center-col shadow-md bg-base-300 p-4 rounded-lg rounded-tr-none">
