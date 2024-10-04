@@ -5,6 +5,7 @@
         Sitemap: https://coupon3sari3.com/blog/sitemap_index.xml
         Sitemap: https://coupon3sari3.com/sitemaps/main.xml
      -->
+    <meta name="robots" content="noindex, nofollow">
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="preconnect" href="https://fonts.googleapis.com">

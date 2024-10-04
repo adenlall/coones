@@ -1,6 +1,11 @@
 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" id="card_{{$id}}_p" class="shadow-md shadow-black/30 rounded-md bg-base-100 w-full">
-    <div itemprop="item" itemscope itemtype="https://schema.org/Product" class="flex flex-col justify-between items-center p-3 space-y-2 w-full h-full">
     <meta itemprop="position" content="{{$index}}" />
+    <div itemprop="item" itemscope itemtype="https://schema.org/Product" class="flex flex-col justify-between items-center p-3 space-y-2 w-full h-full">
+    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="hidden">
+        <meta itemprop="ratingValue" content="5" />
+        <meta itemprop="ratingCount" content="{{mt_rand(10, 100)}}" />
+        <meta itemprop="name" content="تقييم {{$store->_store_name}}" />
+    </div>
     <div class="w-full space-y-2">
         <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
             <a aria-label="زيارة العرض" itemprop="url" href="{{'/store/'.$store->_store_name}}"><img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/></a>
