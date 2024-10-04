@@ -7,9 +7,10 @@
         <meta itemprop="name" content="تقييم متجر {{$store->_store_name}}" />
     </div>
     <div class="w-full space-y-2">
-        <div itemprop="seller" itemscope class="flex flex-row items-center justify-between w-full">
+        <div itemprop="seller" class="flex flex-row items-center justify-between w-full">
             <meta itemprop="name" content="متجر {{$store->_store_name}}" />
-            <a aria-label="زيارة العرض" itemprop="url" href="{{'/store/'.$store->_store_name}}">
+            <meta itemprop="url" content="{{'https://coupon3sari3.com/store/'.$store->_store_name}}" />
+            <a aria-label="زيارة العرض" href="{{'/store/'.$store->_store_name}}">
                 <img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/>
             </a>
             <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
