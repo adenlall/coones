@@ -1,8 +1,7 @@
 <x-layout>
-    <div itemscope itemtype="https://schema.org/ItemList" class="w-full bg-base-100 mb-6">
+    <div class="w-full bg-base-100 mb-6">
         <div class="ccontainer m-auto w-full">
             <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر']]"/>
-            <meta itemprop="itemListOrder" content="ascending" />
             @if(app('request')->input('search'))
                 <meta itemprop="name" content="اختر المتجر المفضل لديك" />
                 <h1 class="text-3xl font-medium mb-3 mt-2">نتائج البحث عن : {{app('request')->input('search')}}</h1>
@@ -32,10 +31,12 @@
         </div>
         <div class="ccontainer m-auto w-full full-width min-h-[50vh]">
         @isset($stores)
-        <ul id="offerlist" class="grid grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-5 md:px-0 px-2">
-            @foreach($stores as $store)
-                <li data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
-                    <a aria-label="{{$store->_store_name}}" itemscope itemtype="https://schema.org/Organization" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
+        <ul itemscope itemtype="https://schema.org/ItemList" id="offerlist" class="grid grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-5 md:px-0 px-2">
+            @foreach($stores as $index => $store)
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" data-filters="@foreach($store->taxonomies as $taxonomy) {{urldecode($taxonomy->slug)}} @endforeach" class="w-full h-auto bg-base-100 rounded-md shadow-md shadow-black/30">
+                    <meta itemprop="position" content="{{$index+1}}" />
+                    <a itemprop="item" itemscope itemtype="https://schema.org/Organization" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
+                        <meta itemprop="description" itemscope="{{$store->_store_description}}"/>
                         <div class="my-5">
                             <img itemprop="logo" class="w-[135px] h-[68px] rounded-md m-auto" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->_store_name}}"/>
                         </div>
