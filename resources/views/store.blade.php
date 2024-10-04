@@ -1,6 +1,7 @@
 <x-layout>
     <div itemscope itemtype="https://schema.org/Product" class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
+            <meta itemprop="name" content="{{$store->_store_name}}"/>
             <div class="w-full ccontainer m-auto">
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
@@ -13,7 +14,7 @@
                         @endif
                     </div>
                     <div class="w-full h-full">
-                        <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
                         <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
                             <meta itemprop="bestRating" content="5" />
@@ -29,7 +30,7 @@
                                     <span itemprop="ratingValue">{{$rate}}</span> / 5
                                 </span>
                                 <span class="mr-1" id="totale-rates">
-                                    {{"("}} <span itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
+                                    {{"("}} <span itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)+1}}</span> تقييم {{")"}}
                                 </span>
                             </div>
                         </div>
