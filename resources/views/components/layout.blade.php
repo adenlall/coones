@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html data-theme="cobones" lang="ar" dir="rtl">
 <head>
+    <!-- 
+        Sitemap: https://coupon3sari3.com/blog/sitemap_index.xml
+        Sitemap: https://coupon3sari3.com/sitemaps/main.xml
+     -->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
