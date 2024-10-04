@@ -16,29 +16,7 @@
                         <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
                         <div class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
-                            <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
-                                <meta itemprop="bestRating" content="5" />
-                                <meta itemprop="worstRating" content="1" />
-                                <meta itemprop="name" content="{{$store->_store_name}}" />
-                                <meta itemprop="ratingValue" content="{{abs($rate)}}" />
-                                <meta itemprop="ratingCount" content="{{abs($totalrate+((int)$store->_store_stars))+1}}" />
-                                <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product">
-                                    <meta itemprop="name" content="{{$store->_store_name}}" />
-                                    <meta itemprop="description" content="{{$store->_store_description}}" />
-                                    <meta itemprop="url" content="{{$store->_store_url}}" />
-                                    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                        <meta itemprop="url" content="{{$store->thumbnail}}" />
-                                        <meta itemprop="width" content="135" />
-                                        <meta itemprop="height" content="68" />
-                                    </div>
-                                    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
-                                        <meta itemprop="ratingValue" content="{{abs($rate)}}" />
-                                        <meta itemprop="ratingCount" content="{{abs($totalrate+((int)$store->_store_stars))+1}}" />
-                                        <meta itemprop="name" content="تقييم {{$store->_store_name}}" />
-                                    </div>
-                                    <meta itemprop="brand" content="{{$store->_store_name}}" />
-                                </div>
-                                
+                            <div class="flex items-center md:mt-0 mt-2">
                                 <div class="rating rating-half mr-1">
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=1?'checked':''}} />
@@ -50,23 +28,23 @@
                                     <span>{{$rate}}</span> / 5
                                 </span>
                                 <span class="mr-1" id="totale-rates">
-                                    {{"("}} <span itemprop="reviewCount">{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
+                                    {{"("}} <span>{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
                                 </span>
                             </div>
                         </div>
-                        <p itemprop="description">
+                        <p>
                             {{$store->_store_description}}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="width:0; height:0;" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" style="display: none;">
-            <span itemprop="streetAddress"></span>
-            <span itemprop="addressLocality"></span>
-            <span itemprop="addressRegion"></span>
-            <span itemprop="postalCode"></span>
-            <span itemprop="addressCountry"></span>
+        <div style="width:0; height:0;" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
         <div class="ccontainer w-full flex items-start flex-col-reverse md:flex-row-reverse gap-5 p-4" style="padding-top:20px;">
             <div class="w-full md:w-[22em]">
@@ -74,16 +52,12 @@
             </div>
             <div class="w-full md:w-[800px]">
                 @if(count($coupons))
-                    <ul itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer" class="flex-center-col gap-4 mb-4">
-                    <meta itemprop="priceCurrency" content="USD" />
-                    <meta itemprop="lowPrice" content="{{mt_rand(1, 20)}}" />
-                    <meta itemprop="highPrice" content="{{mt_rand(50, 100)}}" />
-                    <meta itemprop="offerCount" content="{{count($coupons)}}" />
+                    <ul class="flex-center-col gap-4 mb-4">
                     @foreach($coupons as $coupon)
-                        <li itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
+                        <li class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                             <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
                             <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
-                                <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
+                                <h3 class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
                                 <div class="md:w-auto w-full md:p-0 px-3" dir="ltr">
                                     @if($coupon->_ncoupon_type==="3")
                                         <a aria-label="الحصول على العرض" href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
@@ -125,7 +99,7 @@
                                 </div>
                             </div>
                             <hr class="md:mt-0 mt-2 mb-2"/>
-                            <p itemprop="description" id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
+                            <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
                                 @php echo $coupon->content @endphp
                             </p>
                             <div>
@@ -142,12 +116,12 @@
                 @endif
                 <x-paginator :paginator="$coupons" />
                 <div class="w-full">
-                    <div itemprop="detailedDescription" itemscope itemtype="https://schema.org/CreativeWork" class="mprose prose prose-md">
+                    <div class="mprose prose prose-md">
                         @php
                             $content = $store->content;
                             $parsed = str_replace('$$$', '<div style="width:calc(100% + 16px); margin-right:-8px;" class="separator w-full bg-base-200 p-2 my-2"></div>', $content);
                         @endphp
-                        <div itemprop="text" class="bg-base-100 mb-4 p-2 rounded-md">
+                        <div class="bg-base-100 mb-4 p-2 rounded-md">
                             @php echo $parsed @endphp
                         </div>
                     </div>
