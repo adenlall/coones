@@ -1,11 +1,11 @@
 <x-layout>
-    <div class="m-auto w-full">
+    <div itemscope itemtype="https://schema.org/Product" class="m-auto w-full">
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <div class="w-full ccontainer m-auto">
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
-                        <img class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
+                        <img itemprop="image" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
                         @if(filter_var($store->_store_url, FILTER_VALIDATE_URL) !== false)
                             <a aria-label="زيارة المتجر" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                         @else
@@ -13,9 +13,10 @@
                         @endif
                     </div>
                     <div class="w-full h-full">
-                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
-                        <div class="flex md:flex-row flex-col mb-4">
+                        <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
+                            <meta itemprop="bestRating" content="5" />
                             <div class="flex items-center md:mt-0 mt-2">
                                 <div class="rating rating-half mr-1">
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('0')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=0?'checked':''}} />
@@ -25,10 +26,10 @@
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
                                 </div>
                                 <span class="mr-1">
-                                    <span>{{$rate}}</span> / 5
+                                    <span itemprop="ratingValue">{{$rate}}</span> / 5
                                 </span>
                                 <span class="mr-1" id="totale-rates">
-                                    {{"("}} <span>{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
+                                    {{"("}} <span itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)}}</span> تقييم {{")"}}
                                 </span>
                             </div>
                         </div>
@@ -38,13 +39,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div style="width:0; height:0;" style="display: none;">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
         </div>
         <div class="ccontainer w-full flex items-start flex-col-reverse md:flex-row-reverse gap-5 p-4" style="padding-top:20px;">
             <div class="w-full md:w-[22em]">
