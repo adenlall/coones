@@ -5,15 +5,15 @@
                 <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
-                        <img itemprop="image" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
+                        <img class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
                         @if(filter_var($store->_store_url, FILTER_VALIDATE_URL) !== false)
-                            <a aria-label="زيارة المتجر" itemprop="url" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
+                            <a aria-label="زيارة المتجر" target="_blank" href="{{$store->_store_url}}" class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</a>
                         @else
                             <button class="btn btn-sm text-md btn-accent btn-block">زيارة المتجر</button>
                         @endif
                     </div>
                     <div class="w-full h-full">
-                        <h1 itemprop="name" class="text-3xl font-medium mb-1">{{$store->title}}</h1>
+                        <h1 class="text-3xl font-medium mb-1">{{$store->title}}</h1>
                         <div class="flex md:flex-row flex-col mb-4">
                             <p>أخر تحديث: {{getCurrentMonthInArabic()}} {{date("Y")}}</p>
                             <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
@@ -24,6 +24,7 @@
                                 <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product">
                                     <meta itemprop="name" content="{{$store->_store_name}}" />
                                     <meta itemprop="description" content="{{$store->_store_description}}" />
+                                    <meta itemprop="url" content="{{$store->_store_url}}" />
                                     <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                         <meta itemprop="url" content="{{$store->thumbnail}}" />
                                         <meta itemprop="width" content="135" />
