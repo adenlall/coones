@@ -7,7 +7,7 @@
         <meta itemprop="name" content="تقييم متجر {{$store->_store_name}}" />
     </div>
     <div class="w-full space-y-2">
-        <div itemprop="seller" class="flex flex-row items-center justify-between w-full">
+        <div itemprop="seller" itemscope class="flex flex-row items-center justify-between w-full">
             <meta itemprop="name" content="متجر {{$store->_store_name}}" />
             <meta itemprop="url" content="{{'https://coupon3sari3.com/store/'.$store->_store_name}}" />
             <a aria-label="زيارة العرض" href="{{'/store/'.$store->_store_name}}">
