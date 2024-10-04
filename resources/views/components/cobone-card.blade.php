@@ -14,7 +14,7 @@
     <x-share-modal :id="$id" :title="$title" :url="urlencode('https://coupon3sari3.com/store/'.$store->_store_name)" />
     <h2 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h2>
     <hr class="border-base-content/30 w-full"/>
-    <div class="w-full space-y-2">
+    <div class="w-[100%] space-y-2">
         <a aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
         <div class="w-full" dir="ltr">
             @if($type==="3" && isset($link))
