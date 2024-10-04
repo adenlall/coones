@@ -47,66 +47,70 @@
             </div>
             <div class="w-full md:w-[800px]">
                 @if(count($coupons))
-                    <ul class="flex-center-col gap-4 mb-4">
-                    @foreach($coupons as $coupon)
-                        <li class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
-                            <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
-                            <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
-                                <h3 class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
-                                <div class="md:w-auto w-full md:p-0 px-3" dir="ltr">
-                                    @if($coupon->_ncoupon_type==="3")
-                                        <a aria-label="الحصول على العرض" href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
-                                            الحصول على العرض
-                                        </a>
-                                    @elseif($coupon->_ncoupon_type==="1")
-                                        <div onclick="function openmodaland(){
-                                            window.location.href = '{{$coupon->_ncoupon_link}}';
-                                            window.open('{{url()->current()}}?modal={{$coupon->ID}}#card_{{$coupon->ID}}_p', '_blank');
-                                        }
-                                        openmodaland();" class="inline-flex w-full items-center group">
-                                            <div class="relative overflow-hidden">
-                                                <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] text-xl rounded-l-md">
-                                                    {{ $coupon->_ncoupon_code ? str_split($coupon->_ncoupon_code, 3)[0] : '' }}
+                    <ul itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer" class="flex-center-col gap-4 mb-4">
+                        <meta itemprop="priceCurrency" content="USD" />
+                        <meta itemprop="lowPrice" content="0"/>
+                        <meta itemprop="highPrice" content="100"/>
+                        <meta itemprop="offerCount" content="{{count($coupons)}}"/>
+                        @foreach($coupons as $coupon)
+                            <li itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
+                                <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
+                                <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
+                                    <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
+                                    <div class="md:w-auto w-full md:p-0 px-3" dir="ltr">
+                                        @if($coupon->_ncoupon_type==="3")
+                                            <a itemprop="url" aria-label="الحصول على العرض" href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
+                                                الحصول على العرض
+                                            </a>
+                                        @elseif($coupon->_ncoupon_type==="1")
+                                            <div onclick="function openmodaland(){
+                                                window.location.href = '{{$coupon->_ncoupon_link}}';
+                                                window.open('{{url()->current()}}?modal={{$coupon->ID}}#card_{{$coupon->ID}}_p', '_blank');
+                                            }
+                                            openmodaland();" class="inline-flex w-full items-center group">
+                                                <div class="relative overflow-hidden">
+                                                    <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] text-xl rounded-l-md">
+                                                        {{ $coupon->_ncoupon_code ? str_split($coupon->_ncoupon_code, 3)[0] : '' }}
+                                                    </div>
                                                 </div>
+                                                <button
+                                                    class="bg-accent w-[130%] text-white text-xl py-3 px-4 font-bold rounded-r-md transition-colors duration-200 relative z-10"
+                                                    aria-label="عرض الكوبون AZ"
+                                                >
+                                                    عرض الكوبون
+                                                </button>
                                             </div>
-                                            <button
-                                                class="bg-accent w-[130%] text-white text-xl py-3 px-4 font-bold rounded-r-md transition-colors duration-200 relative z-10"
-                                                aria-label="عرض الكوبون AZ"
-                                            >
-                                                عرض الكوبون
-                                            </button>
-                                        </div>
-                                    @else
-                                        <div onclick="{{'coupon_modal_'.$coupon->ID.'_o'}}.showModal();"  class="inline-flex w-full items-center group">
-                                            <div class="relative overflow-hidden">
-                                                <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] font-medium text-xl rounded-l-md">
-                                                    {{ $coupon->_ncoupon_code ? str_split($coupon->_ncoupon_code, 3)[0] : '' }}
+                                        @else
+                                            <div onclick="{{'coupon_modal_'.$coupon->ID.'_o'}}.showModal();"  class="inline-flex w-full items-center group">
+                                                <div class="relative overflow-hidden">
+                                                    <div class="bg-gray-100 border-[3px] border-r-0 border-accent text-gray-700 px-3 py-[.55rem] font-medium text-xl rounded-l-md">
+                                                        {{ $coupon->_ncoupon_code ? str_split($coupon->_ncoupon_code, 3)[0] : '' }}
+                                                    </div>
                                                 </div>
+                                                <button
+                                                    class="bg-accent w-[130%] text-white text-xl py-3 px-4 font-bold rounded-r-md transition-colors duration-200 relative z-10"
+                                                    aria-label="عرض الكوبون AZ"
+                                                >
+                                                    عرض الكوبون
+                                                </button>
                                             </div>
-                                            <button
-                                                class="bg-accent w-[130%] text-white text-xl py-3 px-4 font-bold rounded-r-md transition-colors duration-200 relative z-10"
-                                                aria-label="عرض الكوبون AZ"
-                                            >
-                                                عرض الكوبون
-                                            </button>
-                                        </div>
-                                    @endif
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <hr class="md:mt-0 mt-2 mb-2"/>
-                            <p id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
-                                @php echo $coupon->content @endphp
-                            </p>
-                            <div>
-                                <div onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
-                                    <span id="show_more_{{$coupon->ID}}">
-                                       عرض التفاصيل 
-                                    </span>
-                                    <x-tabler-chevron-down id="show_icon_{{$coupon->ID}}" class="rotate-0"/>
+                                <hr class="md:mt-0 mt-2 mb-2"/>
+                                <p itemprop="description" id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
+                                    @php echo $coupon->content @endphp
+                                </p>
+                                <div>
+                                    <div onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
+                                        <span id="show_more_{{$coupon->ID}}">
+                                        عرض التفاصيل 
+                                        </span>
+                                        <x-tabler-chevron-down id="show_icon_{{$coupon->ID}}" class="rotate-0"/>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
+                            </li>
+                        @endforeach
                     </ul>
                 @endif
                 <x-paginator :paginator="$coupons" />
