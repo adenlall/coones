@@ -1,11 +1,13 @@
-<li itemscope itemtype="https://schema.org/Offer" id="card_{{$id}}_p" class="flex flex-col justify-between items-center shadow-md shadow-black/30 rounded-md bg-base-100 p-3 space-y-2 w-full">
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" id="card_{{$id}}_p" class="shadow-md shadow-black/30 rounded-md bg-base-100 w-full">
+    <div itemprop="item" itemscope itemtype="https://schema.org/Product" class="flex flex-col justify-between items-center p-3 space-y-2 w-full h-full">
+    <meta itemprop="position" content="{{$index}}" />
     <div class="w-full space-y-2">
-    <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
-        <a aria-label="زيارة العرض" itemprop="url" href="{{'/store/'.$store->_store_name}}"><img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/></a>
-        <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
-            <x-tabler-share class="hover:bg-base-200/80 rounded-full h-8 w-8 p-1 cursor-pointer" />
+        <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
+            <a aria-label="زيارة العرض" itemprop="url" href="{{'/store/'.$store->_store_name}}"><img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/></a>
+            <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
+                <x-tabler-share class="hover:bg-base-200/80 rounded-full h-8 w-8 p-1 cursor-pointer" />
+            </div>
         </div>
-    </div>
         <hr class="border-base-content/30 w-full"/>
     </div>
     <x-coupon-modal :store="$store" :link="$link" :id="$id" :title="$title" :desc="$desc" :code="$code" />
@@ -53,5 +55,6 @@
             </div>
             @endif
         </div>
+    </div>
     </div>
 </li>

@@ -14,6 +14,7 @@ class CoboneCard extends Component
     public function __construct(
         public $title,
         public $code,
+        public $index,
         public string|null $desc,
         public $type,
         public string|null $link,

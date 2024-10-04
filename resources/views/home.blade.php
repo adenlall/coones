@@ -15,16 +15,63 @@
         </div>
     </div>
 
-    <div itemscope itemtype="https://schema.org/WebPage" class="ccontainer p-2 w-full full-width my-4">
+    <div class="ccontainer p-2 w-full full-width my-4">
         <h2 class="text-3xl my-4">
             أحدث الكوبونات
         </h2>
         @if(count($paginated_ncoupons))
-            <ul itemscope itemtype="https://schema.org/OfferCatalog" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-stretch justify-center gap-6">
-                <meta itemprop="name" content="أحدث الكوبونات">
-                <meta itemprop="description" content="احدث كود خصم وكوبون فعال لكل المواقع">
-                @foreach($paginated_ncoupons as $ncoupon)
+            <ul itemscope itemtype="https://schema.org/ItemList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-stretch justify-center gap-6">
+                @foreach($paginated_ncoupons as $index => $ncoupon)
                     <x-cobone-card
+                        :index="$index"
+                        :id="$ncoupon->ID"
+                        :title="$ncoupon->title"
+                        :store="$ncoupon->store"
+                        :desc="$ncoupon->_ncoupon_desc"
+                        :type="$ncoupon->_ncoupon_type"
+                        :link="$ncoupon->_ncoupon_link"
+                        :code="$ncoupon->_ncoupon_code"
+                    />
+                @endforeach
+                @foreach($paginated_ncoupons as $index => $ncoupon)
+                    <x-cobone-card
+                        :index="$index"
+                        :id="$ncoupon->ID"
+                        :title="$ncoupon->title"
+                        :store="$ncoupon->store"
+                        :desc="$ncoupon->_ncoupon_desc"
+                        :type="$ncoupon->_ncoupon_type"
+                        :link="$ncoupon->_ncoupon_link"
+                        :code="$ncoupon->_ncoupon_code"
+                    />
+                @endforeach
+                @foreach($paginated_ncoupons as $index => $ncoupon)
+                    <x-cobone-card
+                        :index="$index"
+                        :id="$ncoupon->ID"
+                        :title="$ncoupon->title"
+                        :store="$ncoupon->store"
+                        :desc="$ncoupon->_ncoupon_desc"
+                        :type="$ncoupon->_ncoupon_type"
+                        :link="$ncoupon->_ncoupon_link"
+                        :code="$ncoupon->_ncoupon_code"
+                    />
+                @endforeach
+                @foreach($paginated_ncoupons as $index => $ncoupon)
+                    <x-cobone-card
+                        :index="$index"
+                        :id="$ncoupon->ID"
+                        :title="$ncoupon->title"
+                        :store="$ncoupon->store"
+                        :desc="$ncoupon->_ncoupon_desc"
+                        :type="$ncoupon->_ncoupon_type"
+                        :link="$ncoupon->_ncoupon_link"
+                        :code="$ncoupon->_ncoupon_code"
+                    />
+                @endforeach
+                @foreach($paginated_ncoupons as $index => $ncoupon)
+                    <x-cobone-card
+                        :index="$index"
                         :id="$ncoupon->ID"
                         :title="$ncoupon->title"
                         :store="$ncoupon->store"

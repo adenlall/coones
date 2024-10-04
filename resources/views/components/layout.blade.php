@@ -22,7 +22,6 @@
     <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffd50e">
-
     {!! SEO::generate() !!}
     @vite('resources/css/app.css')
     @stack('styles')

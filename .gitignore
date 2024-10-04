@@ -4,6 +4,7 @@
 /blog
 /public/blog
 /vendor
+build
 .env.backup
 storage
 .env.production
