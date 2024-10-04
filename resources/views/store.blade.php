@@ -20,7 +20,9 @@
                                 <meta itemprop="bestRating" content="5" />
                                 <meta itemprop="worstRating" content="1" />
                                 <meta itemprop="name" content="{{$store->_store_name}}" />
-                                
+                                <meta itemprop="ratingValue" content="{{abs($rate)}}" />
+                                <meta itemprop="ratingCount" content="{{abs($totalrate+((int)$store->_store_stars))+1}}" />
+
                                 <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product">
                                     <meta itemprop="name" content="{{$store->_store_name}}" />
                                     <meta itemprop="description" content="{{$store->_store_description}}" />
@@ -29,11 +31,6 @@
                                         <meta itemprop="url" content="{{$store->thumbnail}}" />
                                         <meta itemprop="width" content="135" />
                                         <meta itemprop="height" content="68" />
-                                    </div>
-                                    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="flex items-center md:mt-0 mt-2">
-                                        <meta itemprop="ratingValue" content="{{abs($rate)}}" />
-                                        <meta itemprop="ratingCount" content="{{abs($totalrate+((int)$store->_store_stars))+1}}" />
-                                        <meta itemprop="name" content="تقييم {{$store->_store_name}}" />
                                     </div>
                                     <meta itemprop="brand" content="{{$store->_store_name}}" />
                                 </div>
