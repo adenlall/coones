@@ -1,17 +1,11 @@
-<li itemprop="itemListElement" itemscope itemtype="https://schema.org/Product" id="card_{{$id}}_p" class="shadow-md shadow-black/30 rounded-md bg-base-100 w-full">
-    <meta itemprop="position" content="{{$index+1}}" />
+<li id="card_{{$id}}_p" class="shadow-md shadow-black/30 rounded-md bg-base-100 w-full">
     <div class="flex flex-col justify-between items-center p-3 space-y-2 w-full h-full">
-        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" class="hidden">
-            <meta itemprop="ratingValue" content="5" />
-            <meta itemprop="ratingCount" content="{{mt_rand(10, 100)}}" />
-            <meta itemprop="name" content="تقييم متجر {{$store->_store_name}}" />
-        </div>
         <div class="w-full space-y-2">
-            <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
-                <meta itemprop="name" content="متجر {{$store->_store_name}}" />
-                <meta itemprop="url" content="{{'https://coupon3sari3.com/coupons/'.$store->_store_name}}" />
+            <div class="flex flex-row items-center justify-between w-full">
+                <meta content="متجر {{$store->_store_name}}" />
+                <meta content="{{'https://coupon3sari3.com/coupons/'.$store->_store_name}}" />
                 <a aria-label="زيارة العرض" href="{{'/coupons/'.$store->_store_name}}">
-                    <img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/>
+                    <img class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/>
                 </a>
                 <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
                     <x-tabler-share class="hover:bg-base-200/80 rounded-full h-8 w-8 p-1 cursor-pointer" />
@@ -21,7 +15,7 @@
         </div>
         <x-coupon-modal :store="$store" :link="$link" :id="$id" :title="$title" :desc="$desc" :code="$code" />
         <x-share-modal :id="$id" :title="$title" :url="urlencode('https://coupon3sari3.com/coupons/'.$store->_store_name)" />
-        <h3 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h3>
+        <h3 class="text-xl text-right w-full h-full">{{$title}}</h3>
         <hr class="border-base-content/30 w-full"/>
         <div class="w-[100%] space-y-2">
             <a aria-label="{{$store->_store_name}}" href="/coupons/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
