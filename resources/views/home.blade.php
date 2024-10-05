@@ -21,6 +21,7 @@
         </h2>
         @if(count($paginated_ncoupons))
             <ul itemscope itemtype="https://schema.org/ItemList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-stretch justify-center gap-6">
+                <meta itemprop="name" content="احدث الكوبونات" />
                 @foreach($paginated_ncoupons as $index => $ncoupon)
                     <x-cobone-card
                         :index="$index"
