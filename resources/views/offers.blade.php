@@ -90,7 +90,7 @@
                                     </svg>
                                 </h5>
                                 <div class="flex flex-wrap gap-2 p-2 md:w-auto w-full justify-center">
-                                    <a aria-label="الموقع الرئيسي" href="/store/${store_name}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent rounded-full">كود خصم إضافي</a>
+                                    <a aria-label="الموقع الرئيسي" href="/coupons/${store_name}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent rounded-full">كود خصم إضافي</a>
                                     ${link ? `<a target="_blank" href="${link}" class="btn btn-sm text-lg px-4 h-[2em] font-bold btn-accent rounded-full">زيارة العرض</a>` : ''}
                                 </div>
                             </div>

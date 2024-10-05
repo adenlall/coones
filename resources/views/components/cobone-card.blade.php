@@ -9,8 +9,8 @@
         <div class="w-full space-y-2">
             <div itemprop="seller" itemscope itemtype="https://schema.org/Organization" class="flex flex-row items-center justify-between w-full">
                 <meta itemprop="name" content="متجر {{$store->_store_name}}" />
-                <meta itemprop="url" content="{{'https://coupon3sari3.com/store/'.$store->_store_name}}" />
-                <a aria-label="زيارة العرض" href="{{'/store/'.$store->_store_name}}">
+                <meta itemprop="url" content="{{'https://coupon3sari3.com/coupons/'.$store->_store_name}}" />
+                <a aria-label="زيارة العرض" href="{{'/coupons/'.$store->_store_name}}">
                     <img itemprop="logo" class="w-[135px] h-[68px] rounded-md" alt="شعار متجر {{$store->_store_name}}" src="{{$store->thumbnail}}"/>
                 </a>
                 <div class="flex-center-row gap-2" onclick="{{'share_modal_'.$id.'_o'}}.showModal()" >
@@ -20,11 +20,11 @@
             <hr class="border-base-content/30 w-full"/>
         </div>
         <x-coupon-modal :store="$store" :link="$link" :id="$id" :title="$title" :desc="$desc" :code="$code" />
-        <x-share-modal :id="$id" :title="$title" :url="urlencode('https://coupon3sari3.com/store/'.$store->_store_name)" />
+        <x-share-modal :id="$id" :title="$title" :url="urlencode('https://coupon3sari3.com/coupons/'.$store->_store_name)" />
         <h3 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h3>
         <hr class="border-base-content/30 w-full"/>
         <div class="w-[100%] space-y-2">
-            <a aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
+            <a aria-label="{{$store->_store_name}}" href="/coupons/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
             <div class="w-full" dir="ltr">
                 @if($type==="3" && isset($link))
                     <a aria-label="الحصول على العرض" href="{{$link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">

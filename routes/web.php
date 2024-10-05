@@ -83,9 +83,9 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/review', [\App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
-Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index'])->name('store.index');
-Route::get('/store/{name}', [\App\Http\Controllers\StoreController::class, 'single'])->name('store.single');
-Route::get('/preview/store', [\App\Http\Controllers\StoreController::class, 'preview'])->name('store.single.preview');
+Route::get('/coupons', [\App\Http\Controllers\StoreController::class, 'index'])->name('store.index');
+Route::get('/coupons/{name}', [\App\Http\Controllers\StoreController::class, 'single'])->name('store.single');
+Route::get('/preview/coupons', [\App\Http\Controllers\StoreController::class, 'preview'])->name('store.single.preview');
 Route::get('/offers', [\App\Http\Controllers\OfferController::class, 'index'])->name('offers.index');
 
 Route::any('/blog/{any?}', function () {

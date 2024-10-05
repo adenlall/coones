@@ -25,7 +25,7 @@
                       <li itemprop="itemListElement" itemscope class="hidden font-semibold mb-2 items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
-                          <a itemprop="item" href="/store">
+                          <a itemprop="item" href="/coupons">
                         <span itemprop="name">المتاجر</span></a>
                         <meta itemprop="position" content="2" />
                       </li>
@@ -61,66 +61,66 @@
                   </nav>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/نون">
+                          <a itemprop="url" href="/coupons/نون">
                             كود خصم نون
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/نمشي">
+                          <a itemprop="url" href="/coupons/نمشي">
                             كود خصم نمشي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/فوغا كلوسيت">
+                          <a itemprop="url" href="/coupons/فوغا كلوسيت">
                             كود خصم فوغا كلوسيت
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/اي هيرب">
+                          <a itemprop="url" href="/coupons/اي هيرب">
                           كود خصم اي هيرب
                           </a>
                         </h3>
                     </div>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/سيفي">
+                          <a itemprop="url" href="/coupons/سيفي">
                           كود خصم سيفي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ممزورلد">
+                          <a itemprop="url" href="/coupons/ممزورلد">
                           كود خصم ممزورلد
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ستايلي">
+                          <a itemprop="url" href="/coupons/ستايلي">
                           كود خصم ستايلي
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/باث اند بودي">
+                          <a itemprop="url" href="/coupons/باث اند بودي">
                           كود خصم باث اند بودي
                           </a>
                         </h3>
                     </div>
                     <div>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/شي ان">
+                          <a itemprop="url" href="/coupons/شي ان">
                           كود خصم شي ان
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/جوي للهدايا">
+                          <a itemprop="url" href="/coupons/جوي للهدايا">
                           كود خصم جوي للهدايا
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/ترينديول">
+                          <a itemprop="url" href="/coupons/ترينديول">
                           كود خصم ترينديول
                           </a>
                         </h3>
                         <h3 class="font-semibold mb-2">
-                          <a itemprop="url" href="/store/اتش اند ام">
+                          <a itemprop="url" href="/coupons/اتش اند ام">
                           كود خصم اتش اند ام
                           </a>
                         </h3>

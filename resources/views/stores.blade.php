@@ -40,7 +40,7 @@
                         <meta itemprop="ratingValue" content="5"/>
                         <meta itemprop="ratingCount" content="{{mt_rand(5, 50)}}"/>
                     </div>
-                    <a itemprop="image" aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="block p-2 w-full h-full">
+                    <a itemprop="image" aria-label="{{$store->_store_name}}" href="/coupons/{{$store->_store_name}}" class="block p-2 w-full h-full">
                         <meta itemprop="description" content="{{$store->_store_description}}"/>
                         <meta itemprop="address" content="متجر {{$store->_store_name}} {{mt_rand(10, 100)}}"/>
                         <div class="my-5">

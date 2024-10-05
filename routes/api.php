@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 
 
-Route::get('/stores', function (Request $request) {
+Route::get('/coupons', function (Request $request) {
     $cacheKey = 'api_store_items_' . md5($request->fullUrl() . json_encode($request->all()));
     $stores = Cache::remember($cacheKey, 300, function () use($request) {
         if (isset($request->category)) {

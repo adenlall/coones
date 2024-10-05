@@ -30,7 +30,7 @@
         <meta itemprop="name" content="كوبون على السريع">
         <meta itemprop="url" content="https://coupon3sari3.com/">
         <div itemscope itemprop="potentialAction" itemtype="https://schema.org/SearchAction">
-            <meta itemprop="target" content="https://coupon3sari3.com/store?search={search_term_string}">
+            <meta itemprop="target" content="https://coupon3sari3.com/coupons?search={search_term_string}">
             <meta itemprop="query-input" content="required name=search_term_string">
         </div>
     </div>

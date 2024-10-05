@@ -3,7 +3,7 @@
         <div class="w-full md:px-0 px-2 bg-base-100 pt-2 pb-4">
             <meta itemprop="name" content="{{$store->_store_name}}"/>
             <div class="w-full ccontainer m-auto">
-                <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/store'],['name'=>$store->_store_name]]"/>
+                <x-breadcrumbs :items="[['name'=>'الرئيسية', 'path'=>'/'],['name'=>'جميع المتاجر', 'path'=>'/coupons'],['name'=>$store->_store_name]]"/>
                 <div class="flex gap-6 md:flex-row flex-col justify-center items-end mt-2 mb-4">
                     <div class="md:min-w-[135px] mx-1 min-w-full space-y-2">
                         <img itemprop="image" class="w-[135px] h-[68px] md:m-0 m-auto rounded-md" src="{{$store->thumbnail}}" alt="شعار متجر {{$store->title}}"/>
