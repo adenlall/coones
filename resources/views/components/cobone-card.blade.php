@@ -21,7 +21,7 @@
         </div>
         <x-coupon-modal :store="$store" :link="$link" :id="$id" :title="$title" :desc="$desc" :code="$code" />
         <x-share-modal :id="$id" :title="$title" :url="urlencode('https://coupon3sari3.com/store/'.$store->_store_name)" />
-        <h2 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h2>
+        <h3 itemprop="name" class="text-xl text-right w-full h-full">{{$title}}</h3>
         <hr class="border-base-content/30 w-full"/>
         <div class="w-[100%] space-y-2">
             <a aria-label="{{$store->_store_name}}" href="/store/{{$store->_store_name}}" class="btn rounded-sm btn-sm btn-ghost font-bold text-lg w-full mt-3">عرض جميع الكوبونات</a>
