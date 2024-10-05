@@ -27,14 +27,6 @@ class StoreController extends Controller
     public function index(Request $request)
     {
 
-        SEOTools::setTitle('جميع المتاجر والكوبونات - كوبون على السريع');
-        SEOTools::setDescription("تصفح جميع المتاجر والكوبونات المتاحة على كوبون على السريع. احصل على خصومات حصرية وعروض مميزة من متاجر متنوعة لتوفير المزيد على مشترياتك.");
-        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/store');
-        SEOTools::setCanonical('https://coupon3sari3.com/store');
-        SEOTools::opengraph()->addProperty('type', 'product.group');
-        SEOTools::twitter()->setSite('@COSN275');
-        SEOTools::addImages('https://coupon3sari3.com/logo.webp');
-
         $categories = Cache::remember('stores_categories_items', 300, function () {
             return Taxonomy::where('taxonomy', 'storecategory')->get();
         });
@@ -65,6 +57,15 @@ class StoreController extends Controller
                 ->paginate(44);
             }
         });
+
+        SEOTools::setTitle('جميع المتاجر والكوبونات - كوبون على السريع');
+        SEOTools::setDescription("تصفح جميع المتاجر والكوبونات المتاحة على كوبون على السريع. احصل على خصومات حصرية وعروض مميزة من متاجر متنوعة لتوفير المزيد على مشترياتك.");
+        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/coupons');
+        SEOTools::setCanonical('https://coupon3sari3.com/coupons');
+        SEOTools::opengraph()->addProperty('type', 'product.group');
+        SEOTools::twitter()->setSite('@COSN275');
+        SEOTools::addImages('https://coupon3sari3.com/logo.webp');
+
         return view('stores')->with(['categories'=>$categories, 'stores'=>$stores]);
     }
 
@@ -73,13 +74,6 @@ class StoreController extends Controller
      */
     public function single(string $name)
     {
-
-        SEOTools::setDescription("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.");
-        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/store/'.$name);
-        SEOTools::setCanonical('https://coupon3sari3.com/store/'.$name);
-        SEOTools::opengraph()->addProperty('type', 'product.item');
-        SEOTools::twitter()->setSite('@COSN275');
-
         $store = Cache::remember('store_'.md5($name), 300, function () use($name) {
             return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->with('thumbnail')->firstOrFail();
         });
@@ -94,8 +88,26 @@ class StoreController extends Controller
             $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
             return ['rate'=>$rate, 'average'=>$average];
         });
+        $title = $store->rank_math_title;
+        $description = $store->rank_math_description;
+        $fdescription = $store->rank_math_facebook_description;
+        $ftitle = $store->rank_math_facebook_title;
 
-        SEOTools::setTitle( $store->title .' - كوبون على السريع');
+        SEOTools::setTitle($title??($store->title .' - كوبون على السريع'));
+        SEOTools::setDescription($description??("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك."));
+
+        SEOTools::setCanonical('https://coupon3sari3.com/coupons/'.$name);
+
+        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/coupons/'.$name);
+        SEOTools::opengraph()->addProperty('type', 'product.item');
+        SEOTools::opengraph()->setDescription($fdescription??($description??("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.")));
+        SEOTools::opengraph()->setTitle($ftitle??($title??($store->title .' - كوبون على السريع')));
+
+        SEOTools::twitter()->setUrl('https://coupon3sari3.com/coupons/'.$name);
+        SEOTools::twitter()->setSite('@COSN275');
+        SEOTools::twitter()->setDescription($fdescription??($description??("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.")));
+        SEOTools::twitter()->setTitle($ftitle??($ftitle??($title .' - كوبون على السريع')));
+
         SEOTools::addImages($store->thumbnail);
 
         return view('store')->with([
