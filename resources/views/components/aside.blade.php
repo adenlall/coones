@@ -9,7 +9,7 @@
                 @foreach($latest as $index => $item)
                     <li itemscope itemtype="https://schema.org/Organization" itemprop="itemListElement" class="w-full">
                         <meta itemprop="position" content="{{$index}}" />
-                        <a aria-label="{{$item->_store_name}}" itemprop="url" class="block bg-accent text-center font-medium w-full rounded-md text-accent-content p-1" href="/coupons/{{$item->_store_name}}">
+                        <a aria-label="{{$item->_store_name}}" itemprop="url" class="block bg-accent text-center font-medium w-full rounded-md text-accent-content p-1" href="/coupons/{{$item->_store_param===null?$item->_store_name:$item->_store_param}}">
                             {{$item->_store_name}}
                         </a>
                     </li>
@@ -27,7 +27,7 @@
                 @foreach($top as $item)
                     <li itemscope itemtype="https://schema.org/Organization" itemprop="itemListElement" class="w-full">
                         <meta itemprop="position" content="{{$index}}" />
-                        <a aria-label="{{$item->_store_name}}" itemprop="url" class="block bg-accent text-center font-medium w-full rounded-md text-accent-content p-1" href="/coupons/{{$item->_store_name}}">
+                        <a aria-label="{{$item->_store_name}}" itemprop="url" class="block bg-accent text-center font-medium w-full rounded-md text-accent-content p-1" href="/coupons/{{$item->_store_param===null?$item->_store_name:$item->_store_param}}">
                             {{$item->_store_name}}
                         </a>
                     </li>

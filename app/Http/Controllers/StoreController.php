@@ -74,15 +74,22 @@ class StoreController extends Controller
      */
     public function single(string $name)
     {
+        
         $store = Cache::remember('store_'.md5($name), 300, function () use($name) {
-            return Post::type('stores')->status('publish')->hasMeta('_store_name', $name)->with('thumbnail')->firstOrFail();
+            $fstore = Post::type('stores')->status('publish')->hasMeta(['_store_name' => $name])->with('thumbnail')->first();
+            if ($fstore) {
+                return $fstore;
+            } else {
+                return Post::type('stores')->status('publish')->hasMeta(['_store_param' => $name])->with('thumbnail')->firstOrFail();
+            }
         });
-        $coupons = Cache::remember('store_coupons_'.md5($name), 300, function () use($name) {
-            return Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $name)->paginate(360);
+
+        $coupons = Cache::remember('store_coupons_'.md5($store->_store_name), 300, function () use($store) {
+            return Post::type('ncoupons')->status('publish')->latest()->hasMeta('_ncoupon_store', $store->_store_name)->paginate(360);
         });
-        $stats = Cache::remember('store_stats_'.md5($name), 300, function () use($name) {
+        $stats = Cache::remember('store_stats_'.md5($store), 300, function () use($store) {
             $rate = DB::table('reviews')
-            ->where('storeName', $name)
+            ->where('storeName', $store->_store_name)
             ->selectRaw('COUNT(*) as total, SUM(CASE WHEN review = 1 THEN 1 ELSE 0 END) as positive')
             ->first();
             $average = round((((int) ($rate->positive?$rate->positive:1)) / ((int) ($rate->total?$rate->total:1)))*100);
@@ -94,18 +101,18 @@ class StoreController extends Controller
         $ftitle = $store->rank_math_facebook_title;
 
         SEOTools::setTitle($title??($store->title .' - كوبون على السريع'));
-        SEOTools::setDescription($description??("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك."));
+        SEOTools::setDescription($description??("اكتشف خصومات مذهلة في متجر ".$store->_store_name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك."));
 
-        SEOTools::setCanonical('https://coupon3sari3.com/coupons/'.$name);
+        SEOTools::setCanonical('https://coupon3sari3.com/coupons/'.$store->_store_name);
 
-        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/coupons/'.$name);
+        SEOTools::opengraph()->setUrl('https://coupon3sari3.com/coupons/'.$store->_store_name);
         SEOTools::opengraph()->addProperty('type', 'product.item');
-        SEOTools::opengraph()->setDescription($fdescription??($description??("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.")));
+        SEOTools::opengraph()->setDescription($fdescription??($description??("اكتشف خصومات مذهلة في متجر ".$store->_store_name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.")));
         SEOTools::opengraph()->setTitle($ftitle??($title??($store->title .' - كوبون على السريع')));
 
-        SEOTools::twitter()->setUrl('https://coupon3sari3.com/coupons/'.$name);
+        SEOTools::twitter()->setUrl('https://coupon3sari3.com/coupons/'.$store->_store_name);
         SEOTools::twitter()->setSite('@COSN275');
-        SEOTools::twitter()->setDescription($fdescription??($description??("اكتشف خصومات مذهلة في متجر ".$name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.")));
+        SEOTools::twitter()->setDescription($fdescription??($description??("اكتشف خصومات مذهلة في متجر ".$store->_store_name." على كوبون على السريع. احصل على أفضل العروض والكوبونات الحصرية لتوفير المزيد على مشترياتك.")));
         SEOTools::twitter()->setTitle($ftitle??($ftitle??($title .' - كوبون على السريع')));
 
         SEOTools::addImages($store->thumbnail);
