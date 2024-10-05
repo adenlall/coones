@@ -8,12 +8,12 @@
         </div>
         <p itemprop="description" id="desc_{{$id}}" class="hidd w-full text-lg py-2">@php echo $desc @endphp</p>
         <div class="w-full mt-2 flex flex-wrap justify-between items-center gap-2">
-            <h5 onclick="showMore({{$id}})" class="md:pb-4 relative z-10 md:pt-1 cursor-pointer w-fit flex gap-1 md:pr-4 pr-1 text-accent">
+            <h4 onclick="showMore({{$id}})" class="md:pb-4 relative z-10 md:pt-1 cursor-pointer w-fit flex gap-1 md:pr-4 pr-1 text-accent">
                 <span id="show_more_{{$id}}">
                     عرض التفاصيل 
                 </span>
                 <x-tabler-chevron-down id="show_icon_{{$id}}" class="rotate-0"/>
-            </h5>
+            </h4>
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="flex flex-wrap gap-2 p-2 md:w-auto w-full justify-center">
                 @if(isset($store)&&$store)
