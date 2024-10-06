@@ -13,6 +13,10 @@
     font-family: 'Cairo Light', sans-serif;
 } */
 
+.aligncenter {
+    text-align: center;
+}
+
 .flex-center-col {
     @apply flex flex-col items-center justify-center
 }
