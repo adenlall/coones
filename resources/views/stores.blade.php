@@ -9,19 +9,19 @@
                 <meta itemprop="name" content="اختر المتجر المفضل لديك" />
                 <h1 class="text-3xl font-medium mb-3 mt-2">اختر المتجر المفضل لديك!</h1>
             @endif
-            <div class="swiper flex">
+            <div class="swiper">
                 @isset($categories)
                 <div class="swiper-wrapper">
                     <div style="width:auto" class="swiper-slide">
-                        <button aria-label="عرض الكل"  onclick="getData('all')" id="all" class="cat-item {{app('request')->input('category') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 rounded-full text-center px-6 py-2">
+                        <div aria-label="عرض الكل"  onclick="getData('all')" id="all" class="cat-item {{app('request')->input('category') ? '' : 'text-accent border-accent font-bold border-[3px]'}} bg-base-100 rounded-full text-center px-6 py-2 cursor-pointer">
                             عرض الكل
-                        </button>
+                        </div>
                     </div>
                     @foreach($categories as $category)
                     <div style="width:auto" class="swiper-slide">
-                        <button aria-label="{{$category->name}}" onclick="getData('{{$category->name}}')" id="{{$category->name}}" class="cat-item {{app('request')->input('category') === $category->name ? 'text-accent border-accent font-bold border-[3px]':''}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
+                        <div aria-label="{{$category->name}}" onclick="getData('{{$category->name}}')" id="{{$category->name}}" class="cat-item cursor-pointer {{app('request')->input('category') === $category->name ? 'text-accent border-accent font-bold border-[3px]':''}} bg-base-100 border-[3px] rounded-full text-center px-6 py-2">
                             {{$category->name}}
-                        </button>
+                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -72,23 +72,25 @@
             }
             const catItems = document.getElementsByClassName('cat-item');
             for (const element of catItems) {
-                element.classList.remove('text-accent','border-accent','font-bold','border-[3px]');
-                element.classList.add('border-base-200','border-[3px]');
+                element.classList.remove('text-accent','border-accent','font-bold');
+                element.classList.add('border-base-200');
             }
             document.getElementById(type).classList.remove('border-base-200');
-            document.getElementById(type).classList.add('text-accent','border-accent','font-bold','border-[3px]');
+            document.getElementById(type).classList.add('text-accent','border-accent','font-bold');
         }
         function bringFromList(list, meta_key) {
             for (const item of list) {
                 if (item.meta_key === meta_key) {
                     console.log("item", item);
-                    return item.meta_value; // Return value when found
+                    return item.meta_value;
                 }
             }
         }
         window.addEventListener('load', function() {
             const swiper = new Swiper('.swiper', {
-                slidesPerView:"auto"
+                slidesPerView:"auto",
+                resistance:false,
+                freeMode:true
             });
         })
     </script>
