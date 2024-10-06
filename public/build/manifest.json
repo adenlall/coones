@@ -4,12 +4,12 @@
     "src": "public/blog/wp-content/themes/coupon-theme/style.css",
     "isEntry": true
   },
-  "public/fonts/Cairo-Light.ttf": {
-    "file": "assets/Cairo-Light-CB4yp-7N.ttf",
-    "src": "public/fonts/Cairo-Light.ttf"
+  "public/fonts/Cairo-Medium.ttf": {
+    "file": "assets/Cairo-Medium-BS5LWzLe.ttf",
+    "src": "public/fonts/Cairo-Medium.ttf"
   },
   "resources/css/app.css": {
-    "file": "assets/app-D1H1iNiF.css",
+    "file": "assets/app-CTKE7HC3.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
