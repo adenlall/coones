@@ -99,7 +99,7 @@
                                 </div>
                                 <hr class="md:mt-0 mt-2 mb-2"/>
                                 <p itemprop="description" id="desc_{{$coupon->ID}}" class="hidd text-lg px-2">
-                                    {!! $post->content !!}                                
+                                    {!! $coupon->content !!}                                
                                 </p>
                                 <div>
                                     <div onclick="showMore({{$coupon->ID}})" class="pb-4 relative z-10 pt-1 cursor-pointer w-fit flex gap-1 pr-4 text-accent">
