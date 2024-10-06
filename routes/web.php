@@ -30,7 +30,7 @@ Route::get('/', function () {
         $pageName = 'home';
         $options = Cache::remember('meta_option', 500, function () {
             return Option::where('option_name', 'seo_meta_fields_options')->first();
-        }); 
+        });
         $f = unserialize($options->option_value)[$pageName];
         SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'الصفحة الرئيسية - كوبون على السريع');
         SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
@@ -130,6 +130,31 @@ Route::get('/contact', function () {
 
     return view('contact');
 })->name('contact');
+
+
+Route::get('/about-us', function () {
+    try {
+        $pageName = 'aboutus';
+        $options = Cache::remember('meta_option', 500, function () {
+            return Option::where('option_name', 'seo_meta_fields_options')->first();
+        });        
+        $f = unserialize($options->option_value)[$pageName];
+        SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'من نحن - كوبون على السريع');
+        SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. من نحن تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
+        SEOTools::setCanonical($f['canonical_url']!==''?$f['canonical_url']:'https://coupon3sari3.com/about-us');
+        SEOTools::addImages($f['og_image']!==''?$f['og_image']:'https://coupon3sari3.com/logo.webp');
+        SEOTools::opengraph()->setUrl($f['canonical_url']!==''?$f['canonical_url']:'https://coupon3sari3.com/about-us');
+        SEOTools::opengraph()->addProperty('type', 'product.item');
+        SEOTools::opengraph()->setDescription($f['og_description']);
+        SEOTools::opengraph()->setTitle($f['og_title']);
+        SEOTools::twitter()->setUrl($f['canonical_url']!==''?$f['canonical_url']:'https://coupon3sari3.com/about-us');
+        SEOTools::twitter()->setSite('@COSN275');
+        SEOTools::twitter()->setDescription($f['og_description']);
+        SEOTools::twitter()->setTitle($f['og_title']);
+    } catch (\Throwable $th) {}
+    return view('about');
+})->name('about');
+
 
 Route::post('/review', [\App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
 Route::get('/coupons', [\App\Http\Controllers\StoreController::class, 'index'])->name('store.index');

@@ -43,83 +43,90 @@
                         <span itemprop="name">المدونة</span></a>
                         <meta itemprop="position" content="4" />
                       </li>
-                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                      <li itemprop="itemListElement" itemscope class="mb-2 flex items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-access-point/>
                           <a itemprop="item" href="/contact">
                         <span itemprop="name">اتصل بنا</span></a>
                         <meta itemprop="position" content="5" />
                       </li>
-                      <li itemprop="itemListElement" itemscope class="font-semibold mb-2 flex items-center gap-2"
+                      <li itemprop="itemListElement" itemscope class="mb-2 flex items-center gap-2"
                           itemtype="https://schema.org/ListItem">
                           <x-tabler-shield/>
                           <a itemprop="item" href="/privacy">
                         <span itemprop="name">سياسة الخصوصية</span></a>
                         <meta itemprop="position" content="6" />
                       </li>
+                      <li itemprop="itemListElement" itemscope class="mb-2 flex items-center gap-2"
+                          itemtype="https://schema.org/ListItem">
+                          <x-tabler-help-circle/>
+                          <a itemprop="item" href="/about-us">
+                        <span itemprop="name">من نحن</span></a>
+                        <meta itemprop="position" content="7" />
+                      </li>
                     </ol>
                   </nav>
                     <div>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/نون">
                             كود خصم نون
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/نمشي">
                             كود خصم نمشي
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/فوغا كلوسيت">
                             كود خصم فوغا كلوسيت
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/اي هيرب">
                           كود خصم اي هيرب
                           </a>
                         </h3>
                     </div>
                     <div>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/سيفي">
                           كود خصم سيفي
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/ممزورلد">
                           كود خصم ممزورلد
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/ستايلي">
                           كود خصم ستايلي
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/باث اند بودي">
                           كود خصم باث اند بودي
                           </a>
                         </h3>
                     </div>
                     <div>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/شي ان">
                           كود خصم شي ان
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/جوي للهدايا">
                           كود خصم جوي للهدايا
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/ترينديول">
                           كود خصم ترينديول
                           </a>
                         </h3>
-                        <h3 class="font-semibold mb-2">
+                        <h3 class="mb-2">
                           <a itemprop="url" href="/coupons/اتش اند ام">
                           كود خصم اتش اند ام
                           </a>
@@ -128,10 +135,10 @@
                 </div>
             </div>
             <div class="mt-8 text-center text-sm">
-              <p>وفر اكثر عند التسوق اون لاين، موقع كوبون على السريع يتعاون مع العديد من العلامات التجارية للتسويق بالعمولة وقد نربح عمولات مقابل شرائكم مع امازون واكسبرس والعديد من المتاجر الالكترونية</p>
+              <p>في كوبون على السريع، نعمل مع أفضل العلامات التجارية مثل أمازون وآي هيرب لنقدم لك خصومات حقيقية وموثوقة. شراكاتنا تتيح لنا كسب عمولات، لكن أولويتنا هي مساعدتك على التوفير بكل ثقة وأمان.</p>
             </div>
             <div class="mt-4 text-center text-xs">
-                <p itemprop="copyrightYear">© 2024 جميع الحقوق محفوظة تم تطويره بواسطة فريق كوبون على السريع.</p>
+                <p itemprop="copyrightYear">© {{date("Y")}} جميع الحقوق محفوظة لـ كوبون على السريع</p>
             </div>
         </div>
     </footer>
