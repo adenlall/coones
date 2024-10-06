@@ -4,8 +4,12 @@
     "src": "public/blog/wp-content/themes/coupon-theme/style.css",
     "isEntry": true
   },
+  "public/fonts/Cairo-Light.ttf": {
+    "file": "assets/Cairo-Light-CB4yp-7N.ttf",
+    "src": "public/fonts/Cairo-Light.ttf"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-OVBKE2pM.css",
+    "file": "assets/app-D1H1iNiF.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

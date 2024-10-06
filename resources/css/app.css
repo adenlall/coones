@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../public/fonts/Cairo-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/*
+@font-face {
     font-family: 'Cairo Light';
     src: url('/fonts/Cairo-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+*/
 
 * {
-    font-family: 'Cairo Light', sans-serif;
-} */
+    font-family: 'Cairo', sans-serif;
+}
 
 .aligncenter {
     text-align: center;
