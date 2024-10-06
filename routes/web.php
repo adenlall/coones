@@ -28,7 +28,9 @@ Route::get('/', function () {
 
     try {
         $pageName = 'home';
-        $options = Option::where('option_name', 'seo_meta_fields_options')->first();        
+        $options = Cache::remember('meta_option', 500, function () {
+            return Option::where('option_name', 'seo_meta_fields_options')->first();
+        }); 
         $f = unserialize($options->option_value)[$pageName];
         SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'الصفحة الرئيسية - كوبون على السريع');
         SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
@@ -58,7 +60,9 @@ Route::get('/', function () {
 Route::get('/auto-replay', function () {
     try {
         $pageName = 'autoreplay';
-        $options = Option::where('option_name', 'seo_meta_fields_options')->first();        
+        $options = Cache::remember('meta_option', 500, function () {
+            return Option::where('option_name', 'seo_meta_fields_options')->first();
+        });        
         $f = unserialize($options->option_value)[$pageName];
         SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'الرد الالي - كوبون على السريع');
         SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
@@ -81,7 +85,9 @@ Route::get('/privacy', function () {
 
     try {
         $pageName = 'privacy';
-        $options = Option::where('option_name', 'seo_meta_fields_options')->first();        
+        $options = Cache::remember('meta_option', 500, function () {
+            return Option::where('option_name', 'seo_meta_fields_options')->first();
+        });        
         $f = unserialize($options->option_value)[$pageName];
         SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'الخصوصية - كوبون على السريع');
         SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
@@ -104,7 +110,9 @@ Route::get('/contact', function () {
 
     try {
         $pageName = 'contact';
-        $options = Option::where('option_name', 'seo_meta_fields_options')->first();        
+        $options = Cache::remember('meta_option', 500, function () {
+            return Option::where('option_name', 'seo_meta_fields_options')->first();
+        });        
         $f = unserialize($options->option_value)[$pageName];
         SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'تواصل - كوبون على السريع');
         SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');

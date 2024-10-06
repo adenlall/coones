@@ -22,7 +22,9 @@ class OfferController extends Controller
     {
         try {
             $pageName = 'offers';
-            $options = Option::where('option_name', 'seo_meta_fields_options')->first();        
+            $options = Cache::remember('meta_option', 500, function () {
+            return Option::where('option_name', 'seo_meta_fields_options')->first();
+        });        
             $f = unserialize($options->option_value)[$pageName];
             SEOTools::setTitle($f['meta_title']!==''?$f['meta_title']:'جميع العروض - كوبون على السريع');
             SEOTools::setDescription($f['meta_description']!==''?$f['meta_description']:'اكتشف أفضل العروض والخصومات على كوبون على السريع. تصفح مجموعتنا المتنوعة من الكوبونات الحصرية واستفد من التخفيضات الفورية لتوفير المزيد على مشترياتك');
