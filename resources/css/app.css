@@ -4,20 +4,10 @@
 
 @font-face {
     font-family: 'Cairo';
-    src: url('../../public/fonts/Cairo-Light.ttf') format('truetype');
+    src: url('../../public/fonts/Cairo-Medium.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
-
-
-/*
-@font-face {
-    font-family: 'Cairo Light';
-    src: url('/fonts/Cairo-Light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-*/
 
 * {
     font-family: 'Cairo', sans-serif;
