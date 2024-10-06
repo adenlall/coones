@@ -27,17 +27,23 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
+        $search = $request->search;
 
         $categories = Cache::remember('stores_categories_items', 300, function () {
             return Taxonomy::where('taxonomy', 'storecategory')->get();
         });
 
         $cacheKey = 'store_items_' . md5($request->fullUrl() . json_encode($request->all()));
-        $stores = Cache::remember($cacheKey, 300, function () use($request) {
+        $stores = Cache::remember($cacheKey, 300, function () use($request, $search) {
             if(isset($request->search)){
-                return Post::type('stores')->status('publish')
-                ->where('post_title', 'like', '%'.($request->search).'%')
-                ->with('thumbnail')->paginate(44);
+                $query = Post::query()->where('post_type', 'stores')->where('post_status', 'publish');
+                $query->where('post_title', 'like', '%' . $search . '%');
+                $query->orWhereHas('meta', function($subQuery) use ($search) {
+                    $subQuery->where('meta_key', '_store_name')
+                            ->where('meta_value', 'like', '%' . $search . '%');
+                });
+                $posts = $query->with('thumbnail')->paginate(44);
+                return $posts;
             }else{
                 return Post::type('stores')->status('publish')
                 ->with('thumbnail')
@@ -45,7 +51,6 @@ class StoreController extends Controller
                     $query->where('taxonomy', 'storecategory');
                 }])
                 ->paginate(44);
-                // dd($stores[0]->taxonomies);
             }
             if (isset($request->category)) {
                 return Post::published()
