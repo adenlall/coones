@@ -26,11 +26,12 @@
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=3?'checked':''}} />
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
                                 </div>
+                                <span id="thanks" class="badge mx-1" style="display:none;">شكرا لك على تقييمك</span>
                                 <span class="mr-1">
                                     <span itemprop="ratingValue">{{$rate}}</span> / 5
                                 </span>
-                                <span class="mr-1" id="totale-rates">
-                                    {{"("}} <span itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)+1}}</span> تقييم {{")"}}
+                                <span class="mr-1">
+                                    {{"("}} <span id="totale-rates" itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)+1}}</span> تقييم {{")"}}
                                 </span>
                             </div>
                         </div>
@@ -131,6 +132,7 @@
     @push('scripts')
     <script>
         function checkisrated(force){
+            console.log(!sessionStorage.getItem('{{$store->_store_name}}') || force);
             if (!sessionStorage.getItem('{{$store->_store_name}}') || force) {
                 const stars = document.querySelectorAll('.mask-star-2');
                 for (const element of stars) {
@@ -149,7 +151,8 @@
             console.log('revvv:: '+review);
             await postReview({storeName:'{{$store->_store_name}}',fingerprint:'{{\Illuminate\Support\Str::random(25)}}', review:review, couponId:''})
             sessionStorage.setItem('{{$store->_store_name}}', review);
-            document.querySelector('#totale-rates').innerText = '( {{$totalrate+((int)$store->_store_stars)+1}} تقييم )';
+            document.querySelector('#totale-rates').innerText = '{{$totalrate+((int)$store->_store_stars)+2}}';
+            document.querySelector('#thanks').style.display = 'block';
             checkisrated();
         }
         function showMore(id) {
