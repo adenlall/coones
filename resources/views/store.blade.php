@@ -144,11 +144,11 @@
                 for (const element of stars) {
                     element.disabled = true;
                     element.classList.add('cursor-default');
+                    document.querySelector('#thanks').style.display = 'block';
                 }
             }
         }checkisrated();
         async function ratefromstore(review) {
-            console.log('revvv:: '+review);
             await postReview({storeName:'{{$store->_store_name}}',fingerprint:'{{\Illuminate\Support\Str::random(25)}}', review:review, couponId:''})
             sessionStorage.setItem('{{$store->_store_name}}', review);
             document.querySelector('#totale-rates').innerText = '{{$totalrate+((int)$store->_store_stars)+2}}';
