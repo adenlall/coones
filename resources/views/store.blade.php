@@ -26,13 +26,13 @@
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=3?'checked':''}} />
                                     <input aria-label="تقييم" disabled onclick="ratefromstore('1')" type="radio" name="rating-10" class="mask mask-star-2 bg-primary md:p-[.55rem] p-4 cursor-default" {{$rate>=4?'checked':''}} />
                                 </div>
-                                <span id="thanks" class="badge mx-1" style="display:none;">شكرا لك على تقييمك</span>
                                 <span class="mr-1">
                                     <span itemprop="ratingValue">{{$rate}}</span> / 5
                                 </span>
                                 <span class="mr-1">
                                     {{"("}} <span id="totale-rates" itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)+1}}</span> تقييم {{")"}}
                                 </span>
+                                <span id="thanks" class="badge mx-1" style="display:none;">شكرا لك على تقييمك</span>
                             </div>
                         </div>
                         <p>
