@@ -73,11 +73,11 @@
             console.log('json',json);
             if(type.couponId){
                 if (json === true || json === 'true') {
-                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'block';
-                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'none';
+                    document.getElementById(type.couponId+'-'+decodeURIComponent(type.storeName)+'-1').style.display = 'block';
+                    document.getElementById(type.couponId+'-'+decodeURIComponent(type.storeName)+'-0').style.display = 'none';
                 }else{
-                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-0').style.display = 'block';
-                    document.getElementById(type.couponId+'-'+encodeURIComponent(type.storeName)+'-1').style.display = 'none';
+                    document.getElementById(type.couponId+'-'+decodeURIComponent(type.storeName)+'-0').style.display = 'block';
+                    document.getElementById(type.couponId+'-'+decodeURIComponent(type.storeName)+'-1').style.display = 'none';
                 }
             }
         } catch (error) {
