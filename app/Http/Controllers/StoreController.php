@@ -95,12 +95,7 @@ class StoreController extends Controller
     {
         
         $store = Cache::remember('store_'.md5($name), 300, function () use($name) {
-            $fstore = Post::type('stores')->status('publish')->hasMeta(['_store_name' => $name])->with('thumbnail')->first();
-            if ($fstore) {
-                return $fstore;
-            } else {
-                return Post::type('stores')->status('publish')->hasMeta(['_store_param' => $name])->with('thumbnail')->firstOrFail();
-            }
+            return Post::type('stores')->status('publish')->hasMeta(['_store_param' => $name])->with('thumbnail')->firstOrFail();
         });
 
         $coupons = Cache::remember('store_coupons_'.md5($store->_store_name), 300, function () use($store) {
