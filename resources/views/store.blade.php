@@ -32,7 +32,7 @@
                                 <span class="mr-1">
                                     {{"("}} <span id="totale-rates" itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)+1}}</span> تقييم {{")"}}
                                 </span>
-                                <span id="thanks" class="badge md:mx-1 mx-0 h-auto md:w-auto w-[90px]" style="display:none;">شكرا لك على تقييمك</span>
+                                <span id="thanks" class="badge md:mx-1 mx-0 h-auto md:w-auto w-[90px]" style="display:none;">شكراً لتقييمك</span>
                             </div>
                         </div>
                         <p>
