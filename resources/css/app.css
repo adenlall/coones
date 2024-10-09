@@ -13,15 +13,16 @@
     font-family: 'Cairo', sans-serif;
 }
 
-.rating:hover .mask-star-2 {
-    background-color: #fef5d0;
-}
-.mask-star-2:hover,
-.mask-star-2:hover ~ .mask-star-2 {
-    background-color: #facc15;
-}
 .rating {
-  direction: ltr;
+    direction: ltr;
+}
+.rating input:hover ~ input,
+.rating input:checked ~ input {
+    @apply bg-yellow-400;
+}
+.rating input:hover,
+.rating input:checked {
+    @apply bg-yellow-600;
 }
 
 
