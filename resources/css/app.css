@@ -21,10 +21,10 @@
     background-color: #facc15;
 }
 .rating {
-    direction: ltr;
+    direction: rtl;
 }
 .rating > .mask-star-2 {
-    direction: ltr;
+    direction: rtl;
 }
 
 .aligncenter {
