@@ -13,7 +13,7 @@
     font-family: 'Cairo', sans-serif;
 }
 
-.rating:hover .star {
+.rating:hover .mask-star-2 {
     background-color: #fef5d0;
 }
 .mask-star-2:hover,
@@ -21,11 +21,9 @@
     background-color: #facc15;
 }
 .rating {
-    direction: rtl;
+  direction: ltr;
 }
-.rating > .mask-star-2 {
-    direction: rtl;
-}
+
 
 .aligncenter {
     text-align: center;
