@@ -15,9 +15,9 @@ Route::get('robots', function () {
     return response()->file($filePath);
 });
 
-Route::get('robots.txt', function () {
-    $filePath = public_path('robots.txt');
-    return response()->file($filePath);
+Route::get('/robots.txt', function () {
+    return response(file_get_contents(public_path('robots.txt')))
+        ->header('Content-Type', 'text/plain');
 });
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
