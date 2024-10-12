@@ -67,70 +67,70 @@
                     </ol>
                   </nav>
                     <div>
-                        <span class="mb-2">
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/noon">
                             كود خصم نون
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/namshi">
                             كود خصم نمشي
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/vogacloset">
                             كود خصم فوغا كلوسيت
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/iherb">
                           كود خصم اي هيرب
                           </a>
-                        </span>
+                        </div>
                     </div>
                     <div>
-                        <span class="mb-2">
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/sivvi">
                           كود خصم سيفي
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/mumzworld">
                           كود خصم ممزورلد
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/stylishop">
                           كود خصم ستايلي
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/bathandbodyworks">
                           كود خصم باث اند بودي
                           </a>
-                        </span>
+                        </div>
                     </div>
                     <div>
-                        <span class="mb-2">
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/shein">
                           كود خصم شي ان
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/joigifts">
                           كود خصم جوي للهدايا
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/trendyol">
                           كود خصم ترينديول
                           </a>
-                        </span>
-                        <span class="mb-2">
+                        </div>
+                        <div class="mb-2">
                           <a itemprop="url" href="/coupons/hm">
                           كود خصم اتش اند ام
                           </a>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>
