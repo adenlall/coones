@@ -52,11 +52,7 @@ Route::get('/', function () {
         foreach ($pagcop as $index => $coupon) {
             $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->with('thumbnail')->first();
             $coupon->store = $store;
-            if (!$store || !isset($store)) {
-                dd($coupon->title);
-            }
         }
-        dd($stores);
         return $pagcop;
     });
     return view('home', compact('paginated_ncoupons'));
