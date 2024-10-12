@@ -12,7 +12,7 @@ use Corcel\Model\Option;
 
 Route::get('robots', function () {
     return Response()->json(['hello':'world']);
-})
+});
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
