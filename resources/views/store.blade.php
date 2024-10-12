@@ -32,7 +32,7 @@
                                 <span class="mr-1">
                                     {{"("}} <span id="totale-rates" itemprop="ratingCount">{{$totalrate+((int)$store->_store_stars)+1}}</span> تقييم {{")"}}
                                 </span>
-                                <span id="thanks" class="badge md:mx-1 mx-0 h-auto md:w-auto w-[90px]" style="display:none;">شكراً لتقييمك</span>
+                                <span id="thanks" class="badge md:mx-1 mx-0 h-auto w-auto" style="display:none;">شكراً لتقييمك</span>
                             </div>
                         </div>
                         <p>
@@ -144,7 +144,7 @@
                 for (const element of stars) {
                     element.disabled = true;
                     element.classList.add('cursor-default');
-                    document.querySelector('#thanks').style.display = 'block';
+                    document.querySelector('#thanks').style.display = 'ruby';
                 }
             }
         }checkisrated();
@@ -152,7 +152,7 @@
             await postReview({storeName:'{{$store->_store_name}}',fingerprint:'{{\Illuminate\Support\Str::random(25)}}', review:review, couponId:''})
             sessionStorage.setItem('{{$store->_store_name}}', review);
             document.querySelector('#totale-rates').innerText = '{{$totalrate+((int)$store->_store_stars)+2}}';
-            document.querySelector('#thanks').style.display = 'block';
+            document.querySelector('#thanks').style.display = 'ruby';
             checkisrated();
         }
         function showMore(id) {
