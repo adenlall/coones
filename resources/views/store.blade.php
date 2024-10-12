@@ -57,7 +57,7 @@
                             <li itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="w-full border-accent border-r-[5px] border-2 rounded-md bg-base-100">
                                 <x-coupon-modal :store="$store" :link="$coupon->_ncoupon_link" :id="$coupon->ID" :title="$coupon->title" :desc="$coupon->_ncoupon_desc" :code="$coupon->_ncoupon_code" />
                                 <div class="flex md:flex-row flex-col justify-between items-start gap-3 md:p-8 md:pl-5">
-                                    <h3 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h3>
+                                    <h2 itemprop="name" class="font-bold text-md md:p-0 p-3">{{$coupon->title}}</h2>
                                     <div class="md:w-auto w-full md:p-0 px-3" dir="ltr">
                                         @if($coupon->_ncoupon_type==="3")
                                             <a itemprop="url" aria-label="الحصول على العرض" href="{{$coupon->_ncoupon_link}}" target="_blank" class="btn btn-accent h-[3rem] font-bold text-xl rounded-md min-h-min w-full">
