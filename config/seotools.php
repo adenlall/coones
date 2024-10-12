@@ -15,7 +15,7 @@ return [
             'separator'    => ' - ',
             'keywords'     => ['كوبون', 'خصم', 'عروض'],
             'canonical'    => 'https://coupon3sari3.com/', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'robots'       => 'none', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'robots'       => 'all', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
          * Webmaster tags are always added.
