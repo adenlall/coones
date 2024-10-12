@@ -50,10 +50,11 @@ Route::get('/', function () {
     $paginated_ncoupons = Cache::remember('paginated_ncoupons_home', 300, function () {
         $pagcop = Post::type('ncoupons')->status('publish')->latest()->take(12)->get();
         foreach ($pagcop as $index => $coupon) {
-            $stores[$index] = ['id'=>$index];
             $store = Post::type('stores')->status('publish')->hasMeta('_store_name', $coupon->meta->_ncoupon_store)->with('thumbnail')->first();
             $coupon->store = $store;
-            $stores[$index] = ['store'=>$store];
+            if (!$store || !isset($store)) {
+                dd($coupon->title);
+            }
         }
         dd($stores);
         return $pagcop;
