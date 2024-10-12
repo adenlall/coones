@@ -11,7 +11,13 @@ use App\Http\Controllers\Auth\AuthController;
 use Corcel\Model\Option;
 
 Route::get('robots', function () {
-    return response()->json(['hello'=>'world']);
+    $filePath = public_path('robots.txt');
+    return response()->file($filePath);
+});
+
+Route::get('robots.txt', function () {
+    $filePath = public_path('robots.txt');
+    return response()->file($filePath);
 });
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
