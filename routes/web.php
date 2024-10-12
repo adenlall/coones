@@ -10,6 +10,10 @@ use App\Http\Controllers\Auth\AuthController;
 
 use Corcel\Model\Option;
 
+Route::get('robots', function () {
+    return Response()->json(['hello':'world']);
+})
+
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
